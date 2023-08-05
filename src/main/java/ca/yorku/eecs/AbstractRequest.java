@@ -27,4 +27,8 @@ public abstract class AbstractRequest implements Request {
         }
         return query_pairs;
     }
+
+    public void sendFailedServerResponse(HttpExchange request) throws IOException {
+        sendStringRequest(request, "INTERNAL SERVER ERROR", 500);
+    }
 }
