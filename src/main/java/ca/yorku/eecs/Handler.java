@@ -17,6 +17,7 @@ public class Handler implements HttpHandler {
                 new PUTRequest().handleRequest(exchange);
             } else {
                 sendString(exchange, "Method not implemented\n", 501);
+                System.out.printf("Request type '%s' has not been implemented%n", exchange.getRequestMethod());
             }
         } catch (Exception e) {
             e.printStackTrace();
