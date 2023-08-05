@@ -15,9 +15,8 @@ public class App
     public static void main(String[] args) throws IOException
     {
         HttpServer server = HttpServer.create(new InetSocketAddress("0.0.0.0", PORT), 0);
-        // TODO: two lines of code are expected to be added here
-        // please refer to the HTML server example
-
+        Handler httpHandler = new Handler();
+        server.createContext("/api/v1", httpHandler :: handle);
 
         server.start();
         System.out.printf("Server started on port %d...\n", PORT);
