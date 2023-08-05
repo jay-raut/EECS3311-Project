@@ -19,4 +19,12 @@ public final class Neo4jDriverSession {//using singleton design pattern to use t
         }
         return driver;
     }
+
+    public static void close(){ //use this method to close the driver session
+        if (driver == null){
+            throw new IllegalStateException("Driver has not been instantiated");
+        }
+        driver.close();
+        driver = null; //setting back to null to ensure the same driver instance is always used
+    }
 }
