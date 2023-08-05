@@ -11,5 +11,4 @@ public interface Request {
 
     public void handleRequest(HttpExchange request);
 
-    public Map<String, String> splitQuery(String query) throws UnsupportedEncodingException;
 }

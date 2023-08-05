@@ -18,17 +18,27 @@ public abstract class AbstractRequest implements Request {
         os.close();
     }
 
-    public Map<String, String> splitQuery(String query) throws UnsupportedEncodingException {
-        Map<String, String> query_pairs = new LinkedHashMap<String, String>();
-        String[] pairs = query.split("&");
-        for (String pair : pairs) {
-            int idx = pair.indexOf("=");
-            query_pairs.put(URLDecoder.decode(pair.substring(0, idx), "UTF-8"), URLDecoder.decode(pair.substring(idx + 1), "UTF-8"));
+    public void sendFailedServerResponse(HttpExchange request) {
+        try {
+            sendStringRequest(request, "INTERNAL SERVER ERROR", 500);
+        } catch (IOException e) {
+            System.out.println("Exception at sendFailedServerResponse");
         }
-        return query_pairs;
     }
 
-    public void sendFailedServerResponse(HttpExchange request) throws IOException {
-        sendStringRequest(request, "INTERNAL SERVER ERROR", 500);
+    public void sendBadRequestResponse(HttpExchange request) {
+        try {
+            sendStringRequest(request, "BAD REQUEST", 400);
+        } catch (IOException e) {
+            System.out.println("Exception at sendBadRequestResponse");
+        }
+    }
+
+    public void sendOkResponse(HttpExchange request) {
+        try {
+            sendStringRequest(request, "OK", 200);
+        } catch (IOException e) {
+            System.out.println("Exception at sendOkResponse");
+        }
     }
 }

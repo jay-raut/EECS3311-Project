@@ -9,19 +9,54 @@ import java.util.Map;
 public class PUTRequest extends AbstractRequest {
     @Override
     public void handleRequest(HttpExchange request) {
-        try {
-            Map<String, String> getRequestQuery = splitQuery(request.getRequestURI().getQuery());
-            System.out.println(getRequestQuery);
+        System.out.println("Handling put request");
+        Map<String, String> getRequestQuery;
+        try { //getting the query of the json and putting it into the getRequestQuery map
+            getRequestQuery = Utils.splitQuery(request.getRequestURI().getQuery());
         } catch (UnsupportedEncodingException e) {
-            throw new RuntimeException("getting request query failed");
-        }
-        System.out.println("Request PUT");
-        try{
-            sendStringRequest(request, "request put", 200);
-        }catch (IOException e) {
-            throw new RuntimeException(e);
+            sendFailedServerResponse(request);
+            throw new RuntimeException("Internal Server Error at PUTRequest");
         }
 
-        System.out.println(request.getRequestURI().toString().contains("addActor"));
+
+
+        String requestURI = request.getRequestURI().toString();
+        if (requestURI.contains("addActor")) { //checking the endpoints
+            if (addActor(getRequestQuery)) {
+                sendOkResponse(request);
+            } else {
+                sendBadRequestResponse(request);
+            }
+        }
+        else if (requestURI.contains("addMovie")) {
+            if (addMovie(getRequestQuery)) {
+                sendOkResponse(request);
+            } else {
+                sendBadRequestResponse(request);
+            }
+        }
+        else if (requestURI.contains("addRelationship")) {
+            if (addRelationship(getRequestQuery)) {
+                sendOkResponse(request);
+            } else {
+                sendBadRequestResponse(request);
+            }
+        }
+        else{ //if the api caller requested a method which is not implemented
+            sendBadRequestResponse(request);
+        }
+
+    }
+
+    private boolean addActor(Map<String, String> requestQuery) {
+        return true;
+    }
+
+    private boolean addMovie(Map<String, String> requestQuery) {
+        return true;
+    }
+
+    private boolean addRelationship(Map<String, String> requestQuery) {
+        return true;
     }
 }
