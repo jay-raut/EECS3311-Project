@@ -4,9 +4,25 @@ import com.sun.net.httpserver.HttpExchange;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
 import java.util.Map;
 
 public class PUTRequest extends AbstractRequest {
+    private interface EndpointHandler {
+        boolean handleEndpoint(Map<String, String> requestQuery);
+    }
+
+    private static Map<String, EndpointHandler> endpointHandlers = null;
+
+
+    public PUTRequest() {
+        endpointHandlers = new HashMap<>();
+        endpointHandlers.put("/addActor", PUTRequest::addActor);
+        endpointHandlers.put("/addMovie", PUTRequest::addMovie);
+        endpointHandlers.put("/addRelationship", PUTRequest::addRelationship);
+
+    }
+
     @Override
     public void handleRequest(HttpExchange request) {
         System.out.println("Handling put request");
@@ -19,44 +35,29 @@ public class PUTRequest extends AbstractRequest {
         }
 
 
-
-        String requestURI = request.getRequestURI().toString();
-        if (requestURI.contains("addActor")) { //checking the endpoints
-            if (addActor(getRequestQuery)) {
-                sendOkResponse(request);
-            } else {
-                sendBadRequestResponse(request);
-            }
-        }
-        else if (requestURI.contains("addMovie")) {
-            if (addMovie(getRequestQuery)) {
-                sendOkResponse(request);
-            } else {
-                sendBadRequestResponse(request);
-            }
-        }
-        else if (requestURI.contains("addRelationship")) {
-            if (addRelationship(getRequestQuery)) {
-                sendOkResponse(request);
-            } else {
-                sendBadRequestResponse(request);
-            }
-        }
-        else{ //if the api caller requested a method which is not implemented
+        String endPointValue = Utils.getEndpointFromPath(request);
+        EndpointHandler handleAPICall = endpointHandlers.get(endPointValue);
+        if (handleAPICall == null) {
+            sendBadRequestResponse(request);
+        } else if (handleAPICall.handleEndpoint(getRequestQuery)) {
+            sendOkResponse(request);
+        } else {
             sendBadRequestResponse(request);
         }
-
     }
 
-    private boolean addActor(Map<String, String> requestQuery) {
+    private static boolean addActor(Map<String, String> requestQuery) {
+        System.out.println("Called addActor");
         return true;
     }
 
-    private boolean addMovie(Map<String, String> requestQuery) {
+    private static boolean addMovie(Map<String, String> requestQuery) {
+        System.out.println("Called addMovie");
         return true;
     }
 
-    private boolean addRelationship(Map<String, String> requestQuery) {
+    private static boolean addRelationship(Map<String, String> requestQuery) {
+        System.out.println("Called addRelationship");
         return true;
     }
 }
