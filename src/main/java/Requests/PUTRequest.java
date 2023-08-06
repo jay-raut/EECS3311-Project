@@ -91,7 +91,36 @@ class PUTRequest extends AbstractRequest {
 
     private static boolean addMovie(Map<String, String> requestQuery) {
         System.out.println("Called addMovie");
-        return true;
+        if (requestQuery.size() != 2 || !requestQuery.containsKey("name") || !requestQuery.containsKey("movieId")) {
+            return false; // Invalid input parameters
+        }
+
+        String name = requestQuery.get("name");
+        String actorId = requestQuery.get("movieId");
+
+        Driver driver = Neo4jDriverSession.getDriverInstance();
+        try (Session session = driver.session()) { //checking if id already exists
+            String checkForExistingActor = "MATCH (a:Movie {movieId: $movieId}) RETURN COUNT(a) AS count";
+            StatementResult result = session.run(checkForExistingActor, Values.parameters("movieId", actorId));
+            if (result.hasNext()) {
+                Record record = result.next();
+                int count = record.get("count").asInt();
+                if (count != 0) {
+                    return false;
+                }
+            }
+
+            Session newSession = driver.session();
+            String createActorQuery = "CREATE (:Movie {name: $name, movieId: $movieId})";
+            newSession.run(createActorQuery, Values.parameters("name", name, "movieId", actorId));
+
+
+        } catch (Exception e) {
+            // Handle exceptions and log errors if needed
+            e.printStackTrace();
+            throw e;
+        }
+        return true; // Movie addition was successful
     }
 
     private static boolean addRelationship(Map<String, String> requestQuery) {
