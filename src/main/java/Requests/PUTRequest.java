@@ -8,7 +8,8 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.neo4j.driver.v1.Driver;
+import org.neo4j.driver.v1.*;
+import org.neo4j.driver.v1.Record;
 
 class PUTRequest extends AbstractRequest {
     private interface EndpointHandler {
@@ -31,7 +32,7 @@ class PUTRequest extends AbstractRequest {
         Map<String, String> getRequestQuery;
         try { //getting the query of the json and putting it into the getRequestQuery map
             String query = request.getRequestURI().getQuery();
-            if (query == null){ //if the query does not contain json data then throw exception
+            if (query == null) { //if the query does not contain json data then throw exception
                 throw new UnsupportedEncodingException();
             }
             getRequestQuery = Utils.splitQuery(query);
@@ -56,13 +57,36 @@ class PUTRequest extends AbstractRequest {
 
     private static boolean addActor(Map<String, String> requestQuery) {
         System.out.println("Called addActor");
-        if (requestQuery.keySet().size() != 2){ //does not contain exactly 2 body parameters
-            return false;
+        if (requestQuery.size() != 2 || !requestQuery.containsKey("name") || !requestQuery.containsKey("actorId")) {
+            return false; // Invalid input parameters
         }
+
+        String name = requestQuery.get("name");
+        String actorId = requestQuery.get("actorId");
+
         Driver driver = Neo4jDriverSession.getDriverInstance();
+        try (Session session = driver.session()) {
+            String checkForExistingActor = "MATCH (a:Actor {actorId: $actorId}) RETURN COUNT(a) AS count";
+            StatementResult result = session.run(checkForExistingActor, Values.parameters("actorId", actorId));
+            if (result.hasNext()) {
+                Record record = result.next();
+                int count = record.get("count").asInt();
+                if (count != 0) {
+                    return false;
+                }
+            }
+
+            Session newSession = driver.session();
+            String createActorQuery = "CREATE (:Actor {name: $name, actorId: $actorId})";
+            newSession.run(createActorQuery, Values.parameters("name", name, "actorId", actorId));
 
 
-        return true;
+        } catch (Exception e) {
+            // Handle exceptions and log errors if needed
+            e.printStackTrace();
+            throw e;
+        }
+        return true; // Actor addition was successful
     }
 
     private static boolean addMovie(Map<String, String> requestQuery) {
