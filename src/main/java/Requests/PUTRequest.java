@@ -65,7 +65,7 @@ class PUTRequest extends AbstractRequest {
         String actorId = requestQuery.get("actorId");
 
         Driver driver = Neo4jDriverSession.getDriverInstance();
-        try (Session session = driver.session()) {
+        try (Session session = driver.session()) { //checking if id already exists
             String checkForExistingActor = "MATCH (a:Actor {actorId: $actorId}) RETURN COUNT(a) AS count";
             StatementResult result = session.run(checkForExistingActor, Values.parameters("actorId", actorId));
             if (result.hasNext()) {
