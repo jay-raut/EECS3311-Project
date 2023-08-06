@@ -41,4 +41,12 @@ public abstract class AbstractRequest implements Request {
             System.out.println("Exception at sendOkResponse");
         }
     }
+
+    public void sendNotFoundResponse(HttpExchange request) {
+        try {
+            sendStringRequest(request, "NOT FOUND", 404);
+        } catch (IOException e) {
+            System.out.println("Exception at sendOkResponse");
+        }
+    }
 }

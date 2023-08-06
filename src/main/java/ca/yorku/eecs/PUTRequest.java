@@ -12,11 +12,10 @@ public class PUTRequest extends AbstractRequest {
         boolean handleEndpoint(Map<String, String> requestQuery);
     }
 
-    private static Map<String, EndpointHandler> endpointHandlers = null;
+    private static Map<String, EndpointHandler> endpointHandlers = new HashMap<>();
 
 
     public PUTRequest() {
-        endpointHandlers = new HashMap<>();
         endpointHandlers.put("/addActor", PUTRequest::addActor);
         endpointHandlers.put("/addMovie", PUTRequest::addMovie);
         endpointHandlers.put("/addRelationship", PUTRequest::addRelationship);
@@ -28,18 +27,24 @@ public class PUTRequest extends AbstractRequest {
         System.out.println("Handling put request");
         Map<String, String> getRequestQuery;
         try { //getting the query of the json and putting it into the getRequestQuery map
-            getRequestQuery = Utils.splitQuery(request.getRequestURI().getQuery());
+            String query = request.getRequestURI().getQuery();
+            if (query == null){
+                throw new UnsupportedEncodingException();
+            }
+            getRequestQuery = Utils.splitQuery(query);
         } catch (UnsupportedEncodingException e) {
-            sendFailedServerResponse(request);
-            throw new RuntimeException("Internal Server Error at PUTRequest");
+            sendBadRequestResponse(request);
+            return;
         }
 
 
-        String endPointValue = Utils.getEndpointFromPath(request);
-        EndpointHandler handleAPICall = endpointHandlers.get(endPointValue);
+        String endPointFromURI = Utils.getEndpointFromPath(request);
+        EndpointHandler handleAPICall = endpointHandlers.get(endPointFromURI);
         if (handleAPICall == null) {
             sendBadRequestResponse(request);
-        } else if (handleAPICall.handleEndpoint(getRequestQuery)) {
+            return;
+        }
+        if (handleAPICall.handleEndpoint(getRequestQuery)) {
             sendOkResponse(request);
         } else {
             sendBadRequestResponse(request);
