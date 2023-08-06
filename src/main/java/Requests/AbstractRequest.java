@@ -1,13 +1,9 @@
-package ca.yorku.eecs;
+package Requests;
 
 import com.sun.net.httpserver.HttpExchange;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 public abstract class AbstractRequest implements Request {
     @Override
@@ -49,4 +45,5 @@ public abstract class AbstractRequest implements Request {
             System.out.println("Exception at sendOkResponse");
         }
     }
+
 }

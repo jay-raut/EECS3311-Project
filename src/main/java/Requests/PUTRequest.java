@@ -1,11 +1,14 @@
-package ca.yorku.eecs;
+package Requests;
 
+import Session.Neo4jDriverSession;
+import ca.yorku.eecs.Utils;
 import com.sun.net.httpserver.HttpExchange;
 
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
+
+import org.neo4j.driver.v1.Driver;
 
 public class PUTRequest extends AbstractRequest {
     private interface EndpointHandler {
@@ -32,7 +35,7 @@ public class PUTRequest extends AbstractRequest {
                 throw new UnsupportedEncodingException();
             }
             getRequestQuery = Utils.splitQuery(query);
-        } catch (UnsupportedEncodingException e) {
+        } catch (UnsupportedEncodingException e) { //any exceptions thrown will just send a bad request back to client
             sendBadRequestResponse(request);
             return;
         }
@@ -53,6 +56,12 @@ public class PUTRequest extends AbstractRequest {
 
     private static boolean addActor(Map<String, String> requestQuery) {
         System.out.println("Called addActor");
+        if (requestQuery.keySet().size() != 2){ //does not contain exactly 2 body parameters
+            return false;
+        }
+        Driver driver = Neo4jDriverSession.getDriverInstance();
+
+
         return true;
     }
 

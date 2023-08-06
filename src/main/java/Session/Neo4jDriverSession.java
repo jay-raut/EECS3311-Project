@@ -1,4 +1,4 @@
-package ca.yorku.eecs;
+package Session;
 
 import org.neo4j.driver.v1.*;
 

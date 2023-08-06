@@ -1,4 +1,4 @@
-package ca.yorku.eecs;
+package Requests;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;

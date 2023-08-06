@@ -1,8 +1,8 @@
-package ca.yorku.eecs;
+package Requests;
 
+import ca.yorku.eecs.Utils;
 import com.sun.net.httpserver.HttpExchange;
 
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
@@ -34,7 +34,7 @@ public class GETRequest extends AbstractRequest {
                 throw new UnsupportedEncodingException();
             }
             getRequestQuery = Utils.splitQuery(query);
-        } catch (UnsupportedEncodingException e) {
+        } catch (UnsupportedEncodingException e) {//any exceptions thrown will just send a bad request back to client
             sendBadRequestResponse(request);
             return;
         }
