@@ -42,7 +42,7 @@ abstract class AbstractRequest implements Request {
         try {
             sendStringRequest(request, "NOT FOUND", 404);
         } catch (IOException e) {
-            System.out.println("Exception at sendOkResponse");
+            System.out.println("Exception at sendNotFoundResponse");
         }
     }
 
