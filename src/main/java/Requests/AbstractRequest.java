@@ -5,7 +5,7 @@ import com.sun.net.httpserver.HttpExchange;
 import java.io.IOException;
 import java.io.OutputStream;
 
-public abstract class AbstractRequest implements Request {
+abstract class AbstractRequest implements Request {
     @Override
     public void sendStringRequest(HttpExchange request, String data, int restAPICode) throws IOException {
         request.sendResponseHeaders(restAPICode, data.length());

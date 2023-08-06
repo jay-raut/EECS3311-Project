@@ -10,7 +10,7 @@ import java.util.Map;
 
 import org.neo4j.driver.v1.Driver;
 
-public class PUTRequest extends AbstractRequest {
+class PUTRequest extends AbstractRequest {
     private interface EndpointHandler {
         boolean handleEndpoint(Map<String, String> requestQuery);
     }

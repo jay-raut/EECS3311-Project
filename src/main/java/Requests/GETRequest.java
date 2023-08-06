@@ -7,7 +7,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class GETRequest extends AbstractRequest {
+class GETRequest extends AbstractRequest {
 
     private interface EndpointHandler {
         Map<String, String> handleEndpoint(Map<String, String> requestQuery);
@@ -30,7 +30,7 @@ public class GETRequest extends AbstractRequest {
         Map<String, String> getRequestQuery;
         try { //getting the query of the json and putting it into the getRequestQuery map
             String query = request.getRequestURI().getQuery();
-            if (query == null){//if the query does not contain json data then throw exception
+            if (query == null) {//if the query does not contain json data then throw exception
                 throw new UnsupportedEncodingException();
             }
             getRequestQuery = Utils.splitQuery(query);
