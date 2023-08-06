@@ -30,7 +30,7 @@ public class GETRequest extends AbstractRequest {
         Map<String, String> getRequestQuery;
         try { //getting the query of the json and putting it into the getRequestQuery map
             String query = request.getRequestURI().getQuery();
-            if (query == null){
+            if (query == null){//if the query does not contain json data then throw exception
                 throw new UnsupportedEncodingException();
             }
             getRequestQuery = Utils.splitQuery(query);
@@ -39,15 +39,15 @@ public class GETRequest extends AbstractRequest {
             return;
         }
 
-        String endPointFromURI = Utils.getEndpointFromPath(request);
+        String endPointFromURI = Utils.getEndpointFromPath(request);//here we will figure out which endpoint the user wants
         GETRequest.EndpointHandler handleAPICall = endpointHandlers.get(endPointFromURI);
-        if (handleAPICall == null) {
+        if (handleAPICall == null) {// if the user asked for an endpoint which did not exist then send a badRequest response
             sendBadRequestResponse(request);
             return;
         }
 
         Map<String, String> jsonResponse = handleAPICall.handleEndpoint(getRequestQuery);
-        if (jsonResponse == null) {
+        if (jsonResponse == null) { //if the method returns a null object then something went wrong in the method
             sendBadRequestResponse(request);
         } else {
             sendOkResponse(request);

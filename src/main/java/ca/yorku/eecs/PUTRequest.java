@@ -12,7 +12,7 @@ public class PUTRequest extends AbstractRequest {
         boolean handleEndpoint(Map<String, String> requestQuery);
     }
 
-    private static Map<String, EndpointHandler> endpointHandlers = new HashMap<>();
+    private static Map<String, EndpointHandler> endpointHandlers = new HashMap<>(); //map allows to add endpoints easier
 
 
     public PUTRequest() {
@@ -28,7 +28,7 @@ public class PUTRequest extends AbstractRequest {
         Map<String, String> getRequestQuery;
         try { //getting the query of the json and putting it into the getRequestQuery map
             String query = request.getRequestURI().getQuery();
-            if (query == null){
+            if (query == null){ //if the query does not contain json data then throw exception
                 throw new UnsupportedEncodingException();
             }
             getRequestQuery = Utils.splitQuery(query);
@@ -38,13 +38,13 @@ public class PUTRequest extends AbstractRequest {
         }
 
 
-        String endPointFromURI = Utils.getEndpointFromPath(request);
+        String endPointFromURI = Utils.getEndpointFromPath(request); //here we will figure out which endpoint the user wants
         EndpointHandler handleAPICall = endpointHandlers.get(endPointFromURI);
-        if (handleAPICall == null) {
+        if (handleAPICall == null) {// if the user asked for an endpoint which did not exist then send a badRequest response
             sendBadRequestResponse(request);
             return;
         }
-        if (handleAPICall.handleEndpoint(getRequestQuery)) {
+        if (handleAPICall.handleEndpoint(getRequestQuery)) { //otherwise call the method from the map, if the method returns false then send bad request
             sendOkResponse(request);
         } else {
             sendBadRequestResponse(request);
