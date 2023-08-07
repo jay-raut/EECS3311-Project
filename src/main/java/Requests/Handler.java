@@ -11,7 +11,6 @@ public class Handler implements HttpHandler {//using façade design pattern for 
 
     @Override
     public void handle(HttpExchange exchange) throws IOException {
-        Neo4jDriverSession.getDriverInstance(); //initialize the driver before any API calls
         try {
             if (exchange.getRequestMethod().equals("GET")) {
                 new GETRequest().handleRequest(exchange);
@@ -25,7 +24,6 @@ public class Handler implements HttpHandler {//using façade design pattern for 
             e.printStackTrace();
             sendString(exchange, "Internal Server Error\n", 500);
         }
-        Neo4jDriverSession.close(); //close the driver to clean up all connections
     }
 
     @Deprecated
