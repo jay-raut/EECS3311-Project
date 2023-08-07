@@ -70,4 +70,9 @@ public class Utils {
         }
         return getRequestQuery;
     }
+
+    public static String MapToJSONBody (Map<String, Object> mapJsonBody){
+        JSONObject jsonObject = new JSONObject(mapJsonBody);
+        return jsonObject.toString();
+    }
 }

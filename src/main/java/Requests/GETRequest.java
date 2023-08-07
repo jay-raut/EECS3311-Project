@@ -6,6 +6,7 @@ import com.sun.net.httpserver.HttpExchange;
 import org.neo4j.driver.v1.*;
 import org.neo4j.driver.v1.Record;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
@@ -53,8 +54,11 @@ class GETRequest extends AbstractRequest {
         if (jsonResponse == null) { //if the method returns a null object then something went wrong in the method
             sendBadRequestResponse(request);
         } else {
-            sendOkResponse(request);
-            //figure out how to send the map as json response
+            try {
+                sendStringRequest(request, Utils.MapToJSONBody(jsonResponse), 200);
+            } catch (IOException e) {
+                sendFailedServerResponse(request);
+            }
         }
     }
 
@@ -79,12 +83,12 @@ class GETRequest extends AbstractRequest {
         }
         Map<String, Object> returnJSONQuery = new HashMap<>();
         Session queryActorSession = driver.session();
-        String queryActorAttributes = "MATCH (a: Actor {actorId: $actorId}) OPTIONAL MATCH (a)-[:ACTED_IN]->(m:Movie) RETURN a.name AS name, a.actorId as actorId, COLLECT(m.movieId) as movieId";
+        String queryActorAttributes = "MATCH (a: Actor {actorId: $actorId}) OPTIONAL MATCH (a)-[:ACTED_IN]->(m:Movie) RETURN a.name as name, a.actorId as actorId, COLLECT(m.movieId) as movieId";
         StatementResult result = queryActorSession.run(queryActorAttributes, Values.parameters("actorId", actorId));
         if (result.hasNext()){
             Record record = result.next();
             returnJSONQuery.put("actorId", actorId);
-            returnJSONQuery.put("name", record.get("name"));
+            returnJSONQuery.put("name", record.get("name").toString().replace("\"", "")); //the name is being returning with "" so this workaround will fix it
             returnJSONQuery.put("movies", record.get("movieId").asList(Value::asString));
         }
         return returnJSONQuery;

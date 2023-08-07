@@ -35,7 +35,7 @@ class PUTRequest extends AbstractRequest {
 
 
         String getJsonBody;
-        try {//using json body instead of params
+        try {//getting json body from request
             getJsonBody = Utils.getBody(request);
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -43,7 +43,7 @@ class PUTRequest extends AbstractRequest {
 
         Map<String, Object> getRequestQuery;
         try {
-            getRequestQuery = Utils.JSONBodyToMap(getJsonBody);
+            getRequestQuery = Utils.JSONBodyToMap(getJsonBody); //getting json body and placing them into map
         } catch (JSONException e) {
             sendBadRequestResponse(request);
             return;

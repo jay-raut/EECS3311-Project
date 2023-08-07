@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 
 import Requests.Handler;
+import Session.Neo4jDriverSession;
 import com.sun.net.httpserver.HttpServer;
 
 public class App 
@@ -14,7 +15,7 @@ public class App
         HttpServer server = HttpServer.create(new InetSocketAddress("0.0.0.0", PORT), 0);
         Handler httpHandler = new Handler();
         server.createContext("/api/v1", httpHandler :: handle);
-
+        Neo4jDriverSession.getDriverInstance(); //initialize the driver before any API calls happen
         server.start();
         System.out.printf("Server started on port %d...\n", PORT);
 
