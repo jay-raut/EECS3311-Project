@@ -1,7 +1,10 @@
 package Requests;
 
+import Session.Neo4jDriverSession;
 import ca.yorku.eecs.Utils;
 import com.sun.net.httpserver.HttpExchange;
+import org.neo4j.driver.v1.*;
+import org.neo4j.driver.v1.Record;
 
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
@@ -57,10 +60,34 @@ class GETRequest extends AbstractRequest {
 
     private static Map<String, Object> getActor(Map<String, String> requestQuery) {
         System.out.println("Called getActor");
-        if (requestQuery.size() != 1 || !requestQuery.containsKey("actorId")){
+        if (requestQuery.size() != 1 || !requestQuery.containsKey("actorId")) {//checking for invalid inputs
             return null;
         }
-        return null;
+
+        String actorId = requestQuery.get("actorId");
+        Driver driver = Neo4jDriverSession.getDriverInstance();
+        try (Session session = driver.session()) { //checking if id already exists
+            String checkForExistingActor = "MATCH (a:Actor {actorId: $actorId}) RETURN COUNT(a) AS count";
+            StatementResult result = session.run(checkForExistingActor, Values.parameters("actorId", actorId));
+            if (result.hasNext()) {
+                Record record = result.next();
+                int count = record.get("count").asInt();
+                if (count == 0) {//if the count is 0 then the actor does not exist in the database
+                    return null;
+                }
+            }
+        }
+        Map<String, Object> returnJSONQuery = new HashMap<>();
+        Session queryActorSession = driver.session();
+        String queryActorAttributes = "MATCH (a: Actor {actorId: $actorId}) OPTIONAL MATCH (a)-[:ACTED_IN]->(m:Movie) RETURN a.name AS name, a.actorId as actorId, COLLECT(m.movieId) as movieId";
+        StatementResult result = queryActorSession.run(queryActorAttributes, Values.parameters("actorId", actorId));
+        if (result.hasNext()){
+            Record record = result.next();
+            returnJSONQuery.put("actorId", actorId);
+            returnJSONQuery.put("name", record.get("name"));
+            returnJSONQuery.put("movies", record.get("movieId").asList(Value::asString));
+        }
+        return returnJSONQuery;
     }
 
     private static Map<String, Object> getMovie(Map<String, String> requestQuery) {
