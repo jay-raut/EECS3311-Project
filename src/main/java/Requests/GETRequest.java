@@ -25,7 +25,6 @@ class GETRequest extends AbstractRequest {
         endpointHandlers.put("/hasRelationship", GETRequest::hasRelationship);
         endpointHandlers.put("/computeBaconNumber", GETRequest::computeBaconNumber);
         endpointHandlers.put("/computeBaconPath", GETRequest::computeBaconPath);
-
     }
 
     @Override
@@ -51,9 +50,14 @@ class GETRequest extends AbstractRequest {
         }
 
         Map<String, Object> jsonResponse = handleAPICall.handleEndpoint(getRequestQuery);
+
         if (jsonResponse == null) { //if the method returns a null object then something went wrong in the method
             sendBadRequestResponse(request);
         } else {
+            if (jsonResponse.isEmpty()) {
+                sendNotFoundResponse(request);
+                return;
+            }
             try {
                 sendStringRequest(request, Utils.MapToJSONBody(jsonResponse), 200);
             } catch (IOException e) {
@@ -77,7 +81,7 @@ class GETRequest extends AbstractRequest {
                 Record record = result.next();
                 int count = record.get("count").asInt();
                 if (count == 0) {//if the count is 0 then the actor does not exist in the database
-                    return null;
+                    return new HashMap<>();
                 }
             }
         }
@@ -108,7 +112,7 @@ class GETRequest extends AbstractRequest {
                 Record record = result.next();
                 int count = record.get("count").asInt();
                 if (count == 0) {//if the count is 0 then the movie does not exist in the database
-                    return null;
+                    return new HashMap<>();
                 }
             }
         }
@@ -127,7 +131,45 @@ class GETRequest extends AbstractRequest {
 
     private static Map<String, Object> hasRelationship(Map<String, String> requestQuery) {
         System.out.println("Called hasRelationship");
-        return null;
+        if (requestQuery.size() != 2 || !requestQuery.containsKey("movieId") || !requestQuery.containsKey("actorId")) {
+            return null;
+        }
+        String movieId = requestQuery.get("movieId");
+        String actorId = requestQuery.get("actorId");
+        Driver driver = Neo4jDriverSession.getDriverInstance();
+        try (Session session = driver.session()) {//check if the database contains the actor and the movie
+            String checkForExistingMovie = "MATCH (a:Movie {movieId: $movieId}) RETURN COUNT(a) AS count";
+            String checkForExistingActor = "MATCH (a:Actor {actorId: $actorId}) RETURN COUNT(a) AS count";
+            StatementResult resultMovie = session.run(checkForExistingMovie, Values.parameters("movieId", movieId));
+            Session actorSession = driver.session();
+            StatementResult resultActor = actorSession.run(checkForExistingActor, Values.parameters("actorId", actorId));
+            if (resultMovie.hasNext()) {//checking if movie exists
+                Record record = resultMovie.next();
+                int count = record.get("count").asInt();
+                if (count == 0) {
+                    return new HashMap<>();
+                }
+            }
+            if (resultActor.hasNext()) {//checking if actor exists
+                Record record = resultActor.next();
+                int count = record.get("count").asInt();
+                if (count == 0) {
+                    return new HashMap<>();
+                }
+            }
+        }
+
+        Map<String, Object> returnJSONQuery = new HashMap<>();
+        Session querySession = driver.session();
+        String queryRelationship = "MATCH (a:Actor {actorId: $actorId}), (m:Movie {movieId: $movieId}) OPTIONAL MATCH (a)-[r:ACTED_IN]->(m) RETURN r IS NOT NULL as hasRelationship";
+        StatementResult result = querySession.run(queryRelationship, Values.parameters("actorId", actorId, "movieId", movieId));
+        if (result.hasNext()) {
+            Record record = result.next();
+            returnJSONQuery.put("actorId", actorId);
+            returnJSONQuery.put("movieId", movieId);
+            returnJSONQuery.put("hasRelationship", record.get("hasRelationship").asBoolean());
+        }
+        return returnJSONQuery;
     }
 
     private static Map<String, Object> computeBaconNumber(Map<String, String> requestQuery) {
