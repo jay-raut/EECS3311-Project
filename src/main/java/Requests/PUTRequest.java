@@ -46,8 +46,8 @@ class PUTRequest extends AbstractRequest {
 
         String endPointFromURI = Utils.getEndpointFromPath(request); //here we will figure out which endpoint the user wants
         EndpointHandler handleAPICall = endpointHandlers.get(endPointFromURI);
-        if (handleAPICall == null) {// if the user asked for an endpoint which did not exist then send a badRequest response
-            sendBadRequestResponse(request);
+        if (handleAPICall == null) {// if the user asked for an endpoint which did not exist then send a badResponse response
+            sendNotFoundResponse(request);
             return;
         }
         if (handleAPICall.handleEndpoint(getRequestQuery)) { //otherwise call the method from the map, if the method returns false then send bad request
