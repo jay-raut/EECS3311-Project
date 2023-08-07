@@ -40,17 +40,11 @@ class PUTRequest extends AbstractRequest {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        Map<String, Object> getRequestQuery = new HashMap<>();
 
-
+        Map<String, Object> getRequestQuery;
         try {
-            JSONObject jsonBody = new JSONObject(getJsonBody);
-            Iterator iterator = jsonBody.keys();
-            while (iterator.hasNext()) {
-                Object key = iterator.next();
-                getRequestQuery.put(key.toString(), jsonBody.get(key.toString()));
-            }
-        } catch (JSONException e) { //the json body is not formatted properly
+            getRequestQuery = Utils.JSONBodyToMap(getJsonBody);
+        } catch (JSONException e) {
             sendBadRequestResponse(request);
             return;
         }
@@ -74,7 +68,7 @@ class PUTRequest extends AbstractRequest {
         if (requestQuery.size() != 2 || !requestQuery.containsKey("name") || !requestQuery.containsKey("actorId")) {
             return false; // Invalid input parameters
         }
-        if (requestQuery.get("name").getClass() != String.class || requestQuery.get("actorId").getClass() != String.class){
+        if (requestQuery.get("name").getClass() != String.class || requestQuery.get("actorId").getClass() != String.class) { //check casting
             return false;
         }
 
@@ -111,7 +105,7 @@ class PUTRequest extends AbstractRequest {
         if (requestQuery.size() != 2 || !requestQuery.containsKey("name") || !requestQuery.containsKey("movieId")) {
             return false; // Invalid input parameters
         }
-        if (requestQuery.get("name").getClass() != String.class || requestQuery.get("movieId").getClass() != String.class){
+        if (requestQuery.get("name").getClass() != String.class || requestQuery.get("movieId").getClass() != String.class) { //check casting
             return false;
         }
         String name = requestQuery.get("name").toString();
@@ -147,7 +141,7 @@ class PUTRequest extends AbstractRequest {
         if (requestQuery.size() != 2 || !requestQuery.containsKey("actorId") || !requestQuery.containsKey("movieId")) {
             return false;
         }
-        if (requestQuery.get("actorId").getClass() != String.class || requestQuery.get("movieId").getClass() != String.class){
+        if (requestQuery.get("actorId").getClass() != String.class || requestQuery.get("movieId").getClass() != String.class) { //check casting
             return false;
         }
         Driver driver = Neo4jDriverSession.getDriverInstance();

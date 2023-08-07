@@ -6,10 +6,11 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.neo4j.driver.v1.AuthTokens;
 import org.neo4j.driver.v1.Config;
 import org.neo4j.driver.v1.Driver;
@@ -57,5 +58,16 @@ public class Utils {
         String requestPath = request.getRequestURI().getPath();
         requestPath = requestPath.replace("/api/v1", "");
         return requestPath;
+    }
+
+    public static Map<String, Object> JSONBodyToMap(String JSONBody) throws JSONException {
+        Map<String, Object> getRequestQuery = new HashMap<>();
+        JSONObject jsonBody = new JSONObject(JSONBody);
+        Iterator iterator = jsonBody.keys();
+        while (iterator.hasNext()) {
+            Object key = iterator.next();
+            getRequestQuery.put(key.toString(), jsonBody.get(key.toString()));
+        }
+        return getRequestQuery;
     }
 }
