@@ -10,7 +10,7 @@ import java.util.Map;
 class GETRequest extends AbstractRequest {
 
     private interface EndpointHandler {
-        Map<String, String> handleEndpoint(Map<String, String> requestQuery);
+        Map<String, Object> handleEndpoint(Map<String, String> requestQuery);
     }
 
     private static Map<String, GETRequest.EndpointHandler> endpointHandlers = new HashMap<>();
@@ -46,7 +46,7 @@ class GETRequest extends AbstractRequest {
             return;
         }
 
-        Map<String, String> jsonResponse = handleAPICall.handleEndpoint(getRequestQuery);
+        Map<String, Object> jsonResponse = handleAPICall.handleEndpoint(getRequestQuery);
         if (jsonResponse == null) { //if the method returns a null object then something went wrong in the method
             sendBadRequestResponse(request);
         } else {
@@ -55,27 +55,30 @@ class GETRequest extends AbstractRequest {
         }
     }
 
-    private static Map<String, String> getActor(Map<String, String> requestQuery) {
+    private static Map<String, Object> getActor(Map<String, String> requestQuery) {
         System.out.println("Called getActor");
+        if (requestQuery.size() != 1 || !requestQuery.containsKey("actorId")){
+            return null;
+        }
         return null;
     }
 
-    private static Map<String, String> getMovie(Map<String, String> requestQuery) {
+    private static Map<String, Object> getMovie(Map<String, String> requestQuery) {
         System.out.println("Called getMovie");
         return null;
     }
 
-    private static Map<String, String> hasRelationship(Map<String, String> requestQuery) {
+    private static Map<String, Object> hasRelationship(Map<String, String> requestQuery) {
         System.out.println("Called hasRelationship");
         return null;
     }
 
-    private static Map<String, String> computeBaconNumber(Map<String, String> requestQuery) {
+    private static Map<String, Object> computeBaconNumber(Map<String, String> requestQuery) {
         System.out.println("Called computeBaconNumber");
         return null;
     }
 
-    private static Map<String, String> computeBaconPath(Map<String, String> requestQuery) {
+    private static Map<String, String[]> computeBaconPath(Map<String, String> requestQuery) {
         System.out.println("Called computeBaconPath");
         return null;
     }
