@@ -4,14 +4,15 @@ import Session.Neo4jDriverSession;
 import ca.yorku.eecs.Utils;
 import com.sun.net.httpserver.HttpExchange;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import org.neo4j.driver.v1.*;
 import org.neo4j.driver.v1.Record;
-
-import javax.swing.plaf.nimbus.State;
+import org.json.*;
 
 class PUTRequest extends AbstractRequest {
     private interface EndpointHandler {
@@ -31,17 +32,30 @@ class PUTRequest extends AbstractRequest {
     @Override
     public void handleRequest(HttpExchange request) {
         System.out.println("Handling put request");
-        Map<String, String> getRequestQuery;
-        try { //getting the query of the json and putting it into the getRequestQuery map
-            String query = request.getRequestURI().getQuery();
-            if (query == null) { //if the query does not contain json data then throw exception
-                throw new UnsupportedEncodingException();
+
+
+        String getJsonBody;
+        try {
+            getJsonBody = Utils.getBody(request);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Map<String, String> getRequestQuery = new HashMap<>();
+
+
+
+        try {
+            JSONObject jsonBody = new JSONObject(getJsonBody);
+            Iterator iterator = jsonBody.keys();
+            while (iterator.hasNext()){
+                Object key = iterator.next();
+                getRequestQuery.put(key.toString(), jsonBody.get(key.toString()).toString());
             }
-            getRequestQuery = Utils.splitQuery(query);
-        } catch (UnsupportedEncodingException e) { //any exceptions thrown will just send a bad request back to client
+        } catch (JSONException e) { //the json body is not formatted properly
             sendBadRequestResponse(request);
             return;
         }
+
 
 
         String endPointFromURI = Utils.getEndpointFromPath(request); //here we will figure out which endpoint the user wants
