@@ -78,7 +78,7 @@ class GETRequest extends AbstractRequest {
         return null;
     }
 
-    private static Map<String, String[]> computeBaconPath(Map<String, String> requestQuery) {
+    private static Map<String, Object> computeBaconPath(Map<String, String> requestQuery) {
         System.out.println("Called computeBaconPath");
         return null;
     }
