@@ -96,7 +96,33 @@ class GETRequest extends AbstractRequest {
 
     private static Map<String, Object> getMovie(Map<String, String> requestQuery) {
         System.out.println("Called getMovie");
-        return null;
+        if (requestQuery.size() != 1 || !requestQuery.containsKey("movieId")) {//checking invalid inputs
+            return null;
+        }
+        String movieId = requestQuery.get("movieId");
+        Driver driver = Neo4jDriverSession.getDriverInstance();
+        try (Session session = driver.session()) { //checking if id already exists
+            String checkForExistingMovie = "MATCH (a:Movie {movieId: $movieId}) RETURN COUNT(a) AS count";
+            StatementResult result = session.run(checkForExistingMovie, Values.parameters("movieId", movieId));
+            if (result.hasNext()) {
+                Record record = result.next();
+                int count = record.get("count").asInt();
+                if (count == 0) {//if the count is 0 then the movie does not exist in the database
+                    return null;
+                }
+            }
+        }
+        Map<String, Object> returnJSONQuery = new HashMap<>();
+        Session queryMovieSession = driver.session();
+        String queryMovieAttributes = "MATCH (m: Movie {movieId: $movieId}) OPTIONAL MATCH (m)<-[:ACTED_IN]-(a:Actor) RETURN m.name as name, m.movieId as movieId, COLLECT(a.actorId) as actorId";
+        StatementResult result = queryMovieSession.run(queryMovieAttributes, Values.parameters("movieId", movieId));
+        if (result.hasNext()) {
+            Record record = result.next();
+            returnJSONQuery.put("movieId", movieId);
+            returnJSONQuery.put("name", record.get("name").toString().replace("\"", "")); //the name is being returning with "" so this workaround will fix it
+            returnJSONQuery.put("actors", record.get("actorId").asList(Value::asString));
+        }
+        return returnJSONQuery;
     }
 
     private static Map<String, Object> hasRelationship(Map<String, String> requestQuery) {
