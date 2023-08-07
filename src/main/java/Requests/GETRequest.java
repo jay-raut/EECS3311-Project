@@ -85,7 +85,7 @@ class GETRequest extends AbstractRequest {
         Session queryActorSession = driver.session();
         String queryActorAttributes = "MATCH (a: Actor {actorId: $actorId}) OPTIONAL MATCH (a)-[:ACTED_IN]->(m:Movie) RETURN a.name as name, a.actorId as actorId, COLLECT(m.movieId) as movieId";
         StatementResult result = queryActorSession.run(queryActorAttributes, Values.parameters("actorId", actorId));
-        if (result.hasNext()){
+        if (result.hasNext()) {
             Record record = result.next();
             returnJSONQuery.put("actorId", actorId);
             returnJSONQuery.put("name", record.get("name").toString().replace("\"", "")); //the name is being returning with "" so this workaround will fix it
