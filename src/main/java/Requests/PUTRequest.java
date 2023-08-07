@@ -16,7 +16,7 @@ import org.json.*;
 
 class PUTRequest extends AbstractRequest {
     private interface EndpointHandler {
-        boolean handleEndpoint(Map<String, String> requestQuery);
+        boolean handleEndpoint(Map<String, Object> requestQuery);
     }
 
     private static Map<String, EndpointHandler> endpointHandlers = new HashMap<>(); //map allows to add endpoints easier
@@ -35,27 +35,25 @@ class PUTRequest extends AbstractRequest {
 
 
         String getJsonBody;
-        try {
+        try {//using json body instead of params
             getJsonBody = Utils.getBody(request);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        Map<String, String> getRequestQuery = new HashMap<>();
-
+        Map<String, Object> getRequestQuery = new HashMap<>();
 
 
         try {
             JSONObject jsonBody = new JSONObject(getJsonBody);
             Iterator iterator = jsonBody.keys();
-            while (iterator.hasNext()){
+            while (iterator.hasNext()) {
                 Object key = iterator.next();
-                getRequestQuery.put(key.toString(), jsonBody.get(key.toString()).toString());
+                getRequestQuery.put(key.toString(), jsonBody.get(key.toString()));
             }
         } catch (JSONException e) { //the json body is not formatted properly
             sendBadRequestResponse(request);
             return;
         }
-
 
 
         String endPointFromURI = Utils.getEndpointFromPath(request); //here we will figure out which endpoint the user wants
@@ -71,14 +69,17 @@ class PUTRequest extends AbstractRequest {
         }
     }
 
-    private static boolean addActor(Map<String, String> requestQuery) {
+    private static boolean addActor(Map<String, Object> requestQuery) {
         System.out.println("Called addActor");
         if (requestQuery.size() != 2 || !requestQuery.containsKey("name") || !requestQuery.containsKey("actorId")) {
             return false; // Invalid input parameters
         }
+        if (requestQuery.get("name").getClass() != String.class || requestQuery.get("actorId").getClass() != String.class){
+            return false;
+        }
 
-        String name = requestQuery.get("name");
-        String actorId = requestQuery.get("actorId");
+        String name = requestQuery.get("name").toString();
+        String actorId = requestQuery.get("actorId").toString();
 
         Driver driver = Neo4jDriverSession.getDriverInstance();
         try (Session session = driver.session()) { //checking if id already exists
@@ -105,14 +106,16 @@ class PUTRequest extends AbstractRequest {
         return true; // Actor addition was successful
     }
 
-    private static boolean addMovie(Map<String, String> requestQuery) {
+    private static boolean addMovie(Map<String, Object> requestQuery) {
         System.out.println("Called addMovie");
         if (requestQuery.size() != 2 || !requestQuery.containsKey("name") || !requestQuery.containsKey("movieId")) {
             return false; // Invalid input parameters
         }
-
-        String name = requestQuery.get("name");
-        String movieId = requestQuery.get("movieId");
+        if (requestQuery.get("name").getClass() != String.class || requestQuery.get("movieId").getClass() != String.class){
+            return false;
+        }
+        String name = requestQuery.get("name").toString();
+        String movieId = requestQuery.get("movieId").toString();
 
         Driver driver = Neo4jDriverSession.getDriverInstance();
         try (Session session = driver.session()) { //checking if id already exists
@@ -139,14 +142,18 @@ class PUTRequest extends AbstractRequest {
         return true; // Movie addition was successful
     }
 
-    private static boolean addRelationship(Map<String, String> requestQuery) {
+    private static boolean addRelationship(Map<String, Object> requestQuery) {
         System.out.println("Called addRelationship");
         if (requestQuery.size() != 2 || !requestQuery.containsKey("actorId") || !requestQuery.containsKey("movieId")) {
             return false;
         }
+        if (requestQuery.get("actorId").getClass() != String.class || requestQuery.get("movieId").getClass() != String.class){
+            return false;
+        }
         Driver driver = Neo4jDriverSession.getDriverInstance();
-        String actorId = requestQuery.get("actorId");
-        String movieId = requestQuery.get("movieId");
+
+        String actorId = requestQuery.get("actorId").toString();
+        String movieId = requestQuery.get("movieId").toString();
         try (Session session = driver.session()) {
             String checkForExistingMovie = "MATCH (a:Movie {movieId: $movieId}) RETURN COUNT(a) AS count";
             String checkForExistingActor = "MATCH (a:Actor {actorId: $actorId}) RETURN COUNT(a) AS count";
