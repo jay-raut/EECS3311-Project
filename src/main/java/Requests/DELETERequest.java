@@ -51,12 +51,12 @@ public class DELETERequest extends AbstractRequest {
 
     }
 
-    public static boolean deleteActor(Map<String, String> requestQuery) { //arguments actorId: id
+    private static boolean deleteActor(Map<String, String> requestQuery) { //arguments actorId: id
         System.out.println("called delete actor");
         return true;
     }
 
-    public static boolean deleteMovie(Map<String, String> requestQuery) { //arguments movieId: id
+    private static boolean deleteMovie(Map<String, String> requestQuery) { //arguments movieId: id
         System.out.println("called delete movie");
         return true;
     }
