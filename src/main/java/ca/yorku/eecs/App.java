@@ -21,25 +21,4 @@ public class App
 
     }
 }
-/**
- * this is just ayse trying to figure sht outby thinking what request will loop like for some funtions
- * feel free to fix it or roast it, i didnt change any code yet.
- * 
- * addTwoNumbers?firstNumber=1&secondNumber=2
- * 
- * PUT addActor example
- * 	{
-	 	"name": "Denzel Washington",
-	 	"actorId": "nm1001213"
-	}
- * https://localhost:8080/api/v1/addActor?name=Denzel Washington&actorId=nm1001213
- * 
- * PUT addMovie example
- * 	{
- 		"name": "Parasite",
- 		"movieId": "nm7001453"
-	}
- * https://localhost:8080/api/v1/addMovie?name=Parasite&movieID=nm7001453
- * 
- *
- */
+
