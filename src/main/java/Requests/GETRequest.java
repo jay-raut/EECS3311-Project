@@ -5,6 +5,7 @@ import ca.yorku.eecs.Utils;
 import com.sun.net.httpserver.HttpExchange;
 import org.neo4j.driver.v1.*;
 import org.neo4j.driver.v1.types.Node;
+import org.neo4j.driver.v1.Record;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
