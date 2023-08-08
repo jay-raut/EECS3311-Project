@@ -16,6 +16,8 @@ public class Handler implements HttpHandler {//using façade design pattern for 
                 new GETRequest().handleRequest(exchange);
             } else if (exchange.getRequestMethod().equals("PUT")) {
                 new PUTRequest().handleRequest(exchange);
+            } else if (exchange.getRequestMethod().equals("DELETE")) {
+                new DELETERequest().handleRequest(exchange);
             } else {
                 sendString(exchange, "Method not implemented\n", 501);
                 System.out.printf("Request type '%s' has not been implemented%n", exchange.getRequestMethod());

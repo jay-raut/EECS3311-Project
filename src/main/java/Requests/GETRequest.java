@@ -36,9 +36,9 @@ class GETRequest extends AbstractRequest {
     public void handleRequest(HttpExchange request) {
         System.out.println("Handling get request");
         Map<String, String> getRequestQuery;
-        try { //getting the query of the json and putting it into the getRequestQuery map
+        try { //getting the query of the query and putting it into the getRequestQuery map
             String query = request.getRequestURI().getQuery();
-            if (query == null) {//if the query does not contain json data then throw exception
+            if (query == null) {//if the query does not contain query data then throw exception
                 throw new UnsupportedEncodingException();
             }
             getRequestQuery = Utils.splitQuery(query);
