@@ -26,7 +26,6 @@ class PUTRequest extends AbstractRequest {
         endpointHandlers.put("/addActor", PUTRequest::addActor);
         endpointHandlers.put("/addMovie", PUTRequest::addMovie);
         endpointHandlers.put("/addRelationship", PUTRequest::addRelationship);
-
     }
 
     @Override
