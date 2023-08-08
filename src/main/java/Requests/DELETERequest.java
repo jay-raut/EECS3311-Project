@@ -53,6 +53,9 @@ public class DELETERequest extends AbstractRequest {
 
     private static boolean deleteActor(Map<String, String> requestQuery) { //arguments actorId: id
         System.out.println("called delete actor");
+        if (requestQuery.size() != 1 || !requestQuery.containsKey("actorId")){
+            return false;
+        }
         return true;
     }
 
