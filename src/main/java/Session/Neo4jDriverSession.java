@@ -1,6 +1,7 @@
 package Session;
 
 import org.neo4j.driver.v1.*;
+import org.neo4j.driver.v1.Record;
 
 public final class Neo4jDriverSession {//using singleton design pattern to use the same driver instance
     private static final String uri = "bolt://localhost:7687";
