@@ -38,7 +38,7 @@ class GETRequest extends AbstractRequest {
         Map<String, String> getRequestQuery;
         try { //getting the query of the query and putting it into the getRequestQuery map
             String query = request.getRequestURI().getQuery();
-            if (query == null) {//if the query does not contain query data then throw exception
+            if (query == null) {//if the query does not contain query data then throw exception, this can be replaced with a table of content feature
                 throw new UnsupportedEncodingException();
             }
             getRequestQuery = Utils.splitQuery(query);
