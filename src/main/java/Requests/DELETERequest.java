@@ -86,7 +86,27 @@ public class DELETERequest extends AbstractRequest {
     }
 
     private static int deleteMovie(Map<String, String> requestQuery) { //arguments movieId: id
-        System.out.println("called delete movie");
+        if (requestQuery.size() != 1 || !requestQuery.containsKey("movieId")) {
+            return 400;
+        }
+
+        String movieId = requestQuery.get("movieId");
+        Driver driver = Neo4jDriverSession.getDriverInstance();
+        try (Session session = driver.session()) { //checking if id already exists
+            String checkForExistingMovie = "MATCH (m:Movie {movieId: $movieId}) RETURN COUNT(m) AS count";
+            StatementResult result = session.run(checkForExistingMovie, Values.parameters("movieId", movieId));
+            if (result.hasNext()) {
+                Record record = result.next();
+                int count = record.get("count").asInt();
+                if (count == 0) {//if the count is 0 then the actor does not exist in the database
+                    return 404;
+                }
+            }
+        }
+
+        Session deleteMovieSession = driver.session(); //deleting actor
+        String deleteMovieCommand = "MATCH (m:Movie {movieId: $movieId}) DETACH DELETE m";
+        deleteMovieSession.run(deleteMovieCommand, Values.parameters("movieId", movieId));
         return 200;
     }
 
