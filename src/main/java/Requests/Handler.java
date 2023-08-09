@@ -19,21 +19,13 @@ public class Handler implements HttpHandler {//using façade design pattern for 
             } else if (exchange.getRequestMethod().equals("DELETE")) {
                 new DELETERequest().handleRequest(exchange);
             } else {
-                sendString(exchange, "Method not implemented\n", 501);
+                AbstractRequest.sendStringRequest(exchange, "Method not implemented\n", 501);
                 System.out.printf("Request type '%s' has not been implemented%n", exchange.getRequestMethod());
             }
         } catch (Exception e) {
             e.printStackTrace();
-            sendString(exchange, "Internal Server Error\n", 500);
+            AbstractRequest.sendStringRequest(exchange, "Internal Server Error\n", 500);
         }
     }
 
-    @Deprecated
-    private void sendString(HttpExchange request, String data, int restCode)
-            throws IOException { //will fix later
-        request.sendResponseHeaders(restCode, data.length());
-        OutputStream os = request.getResponseBody();
-        os.write(data.getBytes());
-        os.close();
-    }
 }

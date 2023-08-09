@@ -1,7 +1,13 @@
 package Requests;
 
+import Session.Neo4jDriverSession;
 import ca.yorku.eecs.Utils;
 import com.sun.net.httpserver.HttpExchange;
+import org.neo4j.driver.v1.Driver;
+import org.neo4j.driver.v1.Record;
+import org.neo4j.driver.v1.Session;
+import org.neo4j.driver.v1.StatementResult;
+import org.neo4j.driver.v1.Values;
 
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
@@ -10,7 +16,7 @@ import java.util.Map;
 public class DELETERequest extends AbstractRequest {
 
     private interface EndpointHandler {
-        boolean handleEndpoint(Map<String, String> requestQuery);
+        int handleEndpoint(Map<String, String> requestQuery);
     }
 
     private static Map<String, DELETERequest.EndpointHandler> endpointHandlers = new HashMap<>(); //map allows to add endpoints easier
@@ -43,25 +49,43 @@ public class DELETERequest extends AbstractRequest {
             return;
         }
 
-        if (handleAPICall.handleEndpoint(getRequestQuery)) {//otherwise call the method from the map, if the method returns false then send bad request
+        int status = handleAPICall.handleEndpoint(getRequestQuery);
+        if (status == 200) {//otherwise call the method from the map, if the method returns false then send bad request
             sendOkResponse(request);
+        } else if (status == 404) {
+            sendNotFoundResponse(request);
         } else {
             sendBadRequestResponse(request);
         }
-
     }
 
-    private static boolean deleteActor(Map<String, String> requestQuery) { //arguments actorId: id
+    private static int deleteActor(Map<String, String> requestQuery) { //arguments actorId: id
         System.out.println("called delete actor");
-        if (requestQuery.size() != 1 || !requestQuery.containsKey("actorId")){
-            return false;
+        if (requestQuery.size() != 1 || !requestQuery.containsKey("actorId")) {
+            return 400;
         }
-        return true;
+
+        String actorId = requestQuery.get("actorId");
+        Driver driver = Neo4jDriverSession.getDriverInstance();
+        try (Session session = driver.session()) { //checking if id already exists
+            String checkForExistingActor = "MATCH (a:Actor {actorId: $actorId}) RETURN COUNT(a) AS count";
+            StatementResult result = session.run(checkForExistingActor, Values.parameters("actorId", actorId));
+            if (result.hasNext()) {
+                Record record = result.next();
+                int count = record.get("count").asInt();
+                if (count == 0) {//if the count is 0 then the actor does not exist in the database
+                    return 404;
+                }
+            }
+        }
+
+
+        return 200;
     }
 
-    private static boolean deleteMovie(Map<String, String> requestQuery) { //arguments movieId: id
+    private static int deleteMovie(Map<String, String> requestQuery) { //arguments movieId: id
         System.out.println("called delete movie");
-        return true;
+        return 200;
     }
 
 }
