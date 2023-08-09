@@ -79,7 +79,9 @@ public class DELETERequest extends AbstractRequest {
             }
         }
 
-
+        Session deleteActorSession = driver.session(); //deleting actor
+        String deleteActorCommand = "MATCH (a:Actor {actorId: $actorId}) DETACH DELETE a";
+        deleteActorSession.run(deleteActorCommand, Values.parameters("actorId", actorId));
         return 200;
     }
 
