@@ -1,6 +1,5 @@
 *** Settings ***
 Library           Collections
-Library           SeleniumLibrary
 Library           RequestsLibrary
 Test Timeout      30 seconds
 
