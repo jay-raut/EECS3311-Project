@@ -5,7 +5,6 @@ import ca.yorku.eecs.Utils;
 import com.sun.net.httpserver.HttpExchange;
 import org.neo4j.driver.v1.*;
 import org.neo4j.driver.v1.types.Node;
-import org.neo4j.driver.v1.Record;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -178,11 +177,16 @@ class GETRequest extends AbstractRequest {
             return null;
         }
         String actorId = requestQuery.get("actorId");
+        Map<String, Object> returnJSONQuery = new LinkedHashMap<>();
+
+        if (actorId.equals("nm0000102")) {
+            returnJSONQuery.put("baconNumber", 0);
+            return returnJSONQuery;
+        } 
 
         String baconNumberQuery = "MATCH p=shortestPath((bacon:Actor {name: 'Kevin Bacon'})-[*..6]-(actor:Actor {actorId: $actorId})) " +
                                   "RETURN length(p)/2 AS baconNumber";
 
-        Map<String, Object> returnJSONQuery = new LinkedHashMap<>();
         try (Session session = Neo4jDriverSession.getDriverInstance().session()) {
             StatementResult result = session.run(baconNumberQuery, Values.parameters("actorId", actorId));
             if (result.hasNext()) {
@@ -203,6 +207,13 @@ class GETRequest extends AbstractRequest {
 
         String actorId = requestQuery.get("actorId");
         Map<String, Object> returnJSONQuery = new LinkedHashMap<>();
+
+        if (actorId.equals("nm0000102")) {
+            List<String> path = new ArrayList<>(); path.add(actorId);
+            returnJSONQuery.put("baconPath", path);
+            return returnJSONQuery;
+        } 
+
         try (Session session = Neo4jDriverSession.getDriverInstance().session()) {
             String queryBaconPath = "MATCH p=shortestPath((b:Actor {name:'Kevin Bacon'})-[*]-(a:Actor {actorId: $actorId})) RETURN nodes(p) as path";
             StatementResult result = session.run(queryBaconPath, Values.parameters("actorId", actorId));

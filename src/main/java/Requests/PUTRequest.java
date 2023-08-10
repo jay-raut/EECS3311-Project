@@ -16,7 +16,7 @@ import org.json.*;
 
 class PUTRequest extends AbstractRequest {
     private interface EndpointHandler {
-        boolean handleEndpoint(Map<String, Object> requestQuery);
+        int handleEndpoint(Map<String, Object> requestQuery);
     }
 
     private static Map<String, EndpointHandler> endpointHandlers = new HashMap<>(); //map allows to add endpoints easier
@@ -37,6 +37,7 @@ class PUTRequest extends AbstractRequest {
         try {//getting json body from request
             getJsonBody = Utils.getBody(request);
         } catch (IOException e) {
+            sendBadRequestResponse(request);
             throw new RuntimeException(e);
         }
 
@@ -55,20 +56,23 @@ class PUTRequest extends AbstractRequest {
             sendNotFoundResponse(request);
             return;
         }
-        if (handleAPICall.handleEndpoint(getRequestQuery)) { //otherwise call the method from the map, if the method returns false then send bad request
+        if (handleAPICall.handleEndpoint(getRequestQuery) == 200) { //otherwise call the method from the map, if the method returns false then send bad request
             sendOkResponse(request);
-        } else {
+        } else if (handleAPICall.handleEndpoint(getRequestQuery) == 500) {
+            sendFailedServerResponse(request);
+        }
+        else {
             sendBadRequestResponse(request);
         }
     }
 
-    private static boolean addActor(Map<String, Object> requestQuery) {
+    private static int addActor(Map<String, Object> requestQuery) {
         System.out.println("Called addActor");
         if (requestQuery.size() != 2 || !requestQuery.containsKey("name") || !requestQuery.containsKey("actorId")) {
-            return false; // Invalid input parameters
+            return 400; // Invalid input parameters
         }
         if (requestQuery.get("name").getClass() != String.class || requestQuery.get("actorId").getClass() != String.class) { //check casting
-            return false;
+            return 400;
         }
 
         String name = requestQuery.get("name").toString();
@@ -82,7 +86,7 @@ class PUTRequest extends AbstractRequest {
                 Record record = result.next();
                 int count = record.get("count").asInt();
                 if (count != 0) {
-                    return false;
+                    return 500;
                 }
             }
 
@@ -96,16 +100,16 @@ class PUTRequest extends AbstractRequest {
             e.printStackTrace();
             throw e;
         }
-        return true; // Actor addition was successful
+        return 200; // Actor addition was successful
     }
 
-    private static boolean addMovie(Map<String, Object> requestQuery) {
+    private static int addMovie(Map<String, Object> requestQuery) {
         System.out.println("Called addMovie");
         if (requestQuery.size() != 2 || !requestQuery.containsKey("name") || !requestQuery.containsKey("movieId")) {
-            return false; // Invalid input parameters
+            return 400; // Invalid input parameters
         }
         if (requestQuery.get("name").getClass() != String.class || requestQuery.get("movieId").getClass() != String.class) { //check casting
-            return false;
+            return 400;
         }
         String name = requestQuery.get("name").toString();
         String movieId = requestQuery.get("movieId").toString();
@@ -118,7 +122,7 @@ class PUTRequest extends AbstractRequest {
                 Record record = result.next();
                 int count = record.get("count").asInt();
                 if (count != 0) {
-                    return false;
+                    return 500;
                 }
             }
 
@@ -132,16 +136,16 @@ class PUTRequest extends AbstractRequest {
             e.printStackTrace();
             throw e;
         }
-        return true; // Movie addition was successful
+        return 200; // Movie addition was successful
     }
 
-    private static boolean addRelationship(Map<String, Object> requestQuery) {
+    private static int addRelationship(Map<String, Object> requestQuery) {
         System.out.println("Called addRelationship");
         if (requestQuery.size() != 2 || !requestQuery.containsKey("actorId") || !requestQuery.containsKey("movieId")) {
-            return false;
+            return 400;
         }
         if (requestQuery.get("actorId").getClass() != String.class || requestQuery.get("movieId").getClass() != String.class) { //check casting
-            return false;
+            return 400;
         }
         Driver driver = Neo4jDriverSession.getDriverInstance();
 
@@ -155,7 +159,7 @@ class PUTRequest extends AbstractRequest {
                 Record record = databaseContainsMovie.next();
                 int count = record.get("count").asInt();
                 if (count != 1) {//must be 1 only
-                    return false;
+                    return 500;
                 }
             }
             Session newSession = driver.session();
@@ -164,7 +168,7 @@ class PUTRequest extends AbstractRequest {
                 Record record = databaseContainsActor.next();
                 int count = record.get("count").asInt();
                 if (count != 1) {//must be 1 only
-                    return false;
+                    return 500;
                 }
             }
 
@@ -173,7 +177,7 @@ class PUTRequest extends AbstractRequest {
             StatementResult result = checkIfRelationshipExists.run(checkRelationshipExists, Values.parameters("actorId", actorId, "movieId", movieId));
             if (result.hasNext()) {
                 if (result.next().get("relationshipExists").asBoolean()) {
-                    return false;
+                    return 500;
                 }
             }
 
@@ -181,6 +185,6 @@ class PUTRequest extends AbstractRequest {
             String createRelationship = "MATCH (a:Actor {actorId: $actorId}), (m: Movie {movieId: $movieId}) CREATE (a)-[:ACTED_IN]->(m)";
             connectNodesSession.run(createRelationship, Values.parameters("actorId", actorId, "movieId", movieId));
         }
-        return true;
+        return 200;
     }
 }
