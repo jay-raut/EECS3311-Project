@@ -5,6 +5,7 @@ import com.sun.net.httpserver.HttpExchange;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class OPTIONSRequest extends AbstractRequest {
@@ -35,7 +36,7 @@ public class OPTIONSRequest extends AbstractRequest {
         try {//if the JSON conversion fails (which it shouldn't but try catch statement just in case)
             sendStringRequest(request, Utils.MapToJSONBody(returnedHelp), 200); //returns the json data from map
         } catch (IOException e) {
-            sendBadRequestResponse(request);
+            sendFailedServerResponse(request);
         }
 
 
@@ -43,6 +44,17 @@ public class OPTIONSRequest extends AbstractRequest {
 
     private static Map<String, Object> help (){
         System.out.println("called help");
-        return new HashMap<>();
+        Map<String, Object> returnAvailableCommands = new LinkedHashMap<>();
+        returnAvailableCommands.put("/addActor (PUT)", "Adds a actor into the database using JSON body. Takes two keys and their respective values: name:actor_name, actorId:actor_id");
+        returnAvailableCommands.put("/addMovie (PUT)", "Adds a movie into the database using JSON body. Takes two keys and their respective values: name:movie_name, movieId:movie_id");
+        returnAvailableCommands.put("/addRelationship (PUT)", "Creates a relationship between a actor node and a movie node using JSON body. Takes two keys and values: actorId:actor_id, movieId:movie_id");
+        returnAvailableCommands.put("/getActor (GET)", "Returns a JSON response about a actor's name, id and relationships with movies using Params. actorId:actor_id");
+        returnAvailableCommands.put("/getMovie (GET)", "Returns a JSON response about a movie's name, id and relationships with movies using Params. movieId:movie_id");
+        returnAvailableCommands.put("/hasRelationship(GET)", "Returns a JSON response to check the relationship between a actor and movie using Params. actorId:actor_id, movieId:movie_id");
+        returnAvailableCommands.put("/computeBaconNumber (GET)", "Returns a JSON response about KevinBacon's bacon number using Params. actorId:nm0000102");
+        returnAvailableCommands.put("/computeBaconPath (GET)", " returns the shortest Bacon Path in order from the actor given to Kevin Bacon using Params. actorId:nm0000102");
+        returnAvailableCommands.put("/deleteActor (DELETE)", "(ADDED FEATURE) Removes a actor node from the database including its relationships using Params. actorId:actor_id");
+        returnAvailableCommands.put("/deleteMovie (DELETE)", "(ADDED FEATURE) Removes a movie node from the database including its relationships using Params. movieId:movie_id");
+        return returnAvailableCommands;
     }
 }
