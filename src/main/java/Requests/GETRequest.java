@@ -46,7 +46,6 @@ class GETRequest extends AbstractRequest {
             sendBadRequestResponse(request);
             return;
         }
-
         String endPointFromURI = Utils.getEndpointFromPath(request);//here we will figure out which endpoint the user wants
         GETRequest.EndpointHandler handleAPICall = endpointHandlers.get(endPointFromURI);
         if (handleAPICall == null) {// if the user asked for an endpoint which did not exist then send a badRequest response
@@ -184,10 +183,10 @@ class GETRequest extends AbstractRequest {
             return null;
         }
         String actorId = requestQuery.get("actorId");
-        
+
         String baconNumberQuery = "MATCH p=shortestPath((bacon:Actor {name: 'Kevin Bacon'})-[*..6]-(actor:Actor {actorId: $actorId})) " +
                                   "RETURN length(p)/2 AS baconNumber";
-        
+
         Map<String, Object> returnJSONQuery = new HashMap<>();
         try (Session session = Neo4jDriverSession.getDriverInstance().session()) {
             StatementResult result = session.run(baconNumberQuery, Values.parameters("actorId", actorId));
