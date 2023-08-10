@@ -4,7 +4,6 @@ Library           RequestsLibrary
 Test Timeout      30 seconds
 
 Suite Setup    Create Session    localhost    http://localhost:8080
-
 *** Test Cases ***
 addActorPass
     ${headers}=    Create Dictionary    Content-Type=application/json
