@@ -4,6 +4,7 @@ import Session.Neo4jDriverSession;
 import ca.yorku.eecs.Utils;
 import com.sun.net.httpserver.HttpExchange;
 import org.neo4j.driver.v1.*;
+import org.neo4j.driver.v1.Record;
 import org.neo4j.driver.v1.types.Node;
 
 import java.io.IOException;
