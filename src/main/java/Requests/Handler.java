@@ -25,8 +25,9 @@ public class Handler implements HttpHandler {//using façade design pattern for 
                 System.out.printf("Request type '%s' has not been implemented%n", exchange.getRequestMethod());
             }
         } catch (Exception e) {
+            System.out.println("exception at handler");
             e.printStackTrace();
-            AbstractRequest.sendStringRequest(exchange, "Internal Server Error\n", 500);
+            AbstractRequest.sendFailedServerResponse(exchange);
         }
     }
 

@@ -3,12 +3,13 @@ package Requests;
 import ca.yorku.eecs.Utils;
 import com.sun.net.httpserver.HttpExchange;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 public class OPTIONSRequest extends AbstractRequest {
     private interface EndpointHandler {
-        int handleEndpoint();
+        Map<String, Object> handleEndpoint();
     }
 
     private static Map<String, OPTIONSRequest.EndpointHandler> endpointHandlers = new HashMap<>(); //map allows to add endpoints easier
@@ -26,18 +27,22 @@ public class OPTIONSRequest extends AbstractRequest {
             sendBadRequestResponse(request);
             return;
         }
-        int status = handleAPICall.handleEndpoint();
-        if (status == 200) {//otherwise call the method from the map, if the method returns false then send bad request
-            sendOkResponse(request);
-        } else if (status == 404) {
-            sendNotFoundResponse(request);
-        } else {
+        Map<String, Object> returnedHelp = handleAPICall.handleEndpoint(); //get returned json object
+        if (returnedHelp == null){
+            sendBadRequestResponse(request); //if something failed (which it shouldn't since we are not querying the db) send a bad request response
+            return;
+        }
+        try {//if the JSON conversion fails (which it shouldn't but try catch statement just in case)
+            sendStringRequest(request, Utils.MapToJSONBody(returnedHelp), 200); //returns the json data from map
+        } catch (IOException e) {
             sendBadRequestResponse(request);
         }
+
+
     }
 
-    private static int help (){
+    private static Map<String, Object> help (){
         System.out.println("called help");
-        return 200;
+        return new HashMap<>();
     }
 }

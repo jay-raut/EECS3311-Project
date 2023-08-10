@@ -18,6 +18,7 @@ abstract class AbstractRequest implements Request {
         try {
             sendStringRequest(request, "INTERNAL SERVER ERROR", 500);
         } catch (IOException e) {
+            e.printStackTrace();
             System.out.println("Exception at sendFailedServerResponse");
         }
     }
@@ -26,6 +27,7 @@ abstract class AbstractRequest implements Request {
         try {
             sendStringRequest(request, "BAD REQUEST", 400);
         } catch (IOException e) {
+            e.printStackTrace();
             System.out.println("Exception at sendBadRequestResponse");
         }
     }
@@ -34,6 +36,7 @@ abstract class AbstractRequest implements Request {
         try {
             sendStringRequest(request, "OK", 200);
         } catch (IOException e) {
+            e.printStackTrace();
             System.out.println("Exception at sendOkResponse");
         }
     }
@@ -42,6 +45,7 @@ abstract class AbstractRequest implements Request {
         try {
             sendStringRequest(request, "NOT FOUND", 404);
         } catch (IOException e) {
+            e.printStackTrace();
             System.out.println("Exception at sendNotFoundResponse");
         }
     }
