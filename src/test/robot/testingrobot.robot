@@ -124,6 +124,14 @@ addRelationshipFail5
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary     actorId=kavinbacon   movieId=afewgoodmenid
     ${resp}=      PUT On Session    localhost    /api/v1/addRelationship    json=${params}    headers=${headers}    expected_status=400
+#######GET ACTOR#####################################################################
+getActorPass
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary     actorId=kavinbacon
+    ${resp}=    GET On Session    localhost    /api/v1/getActor    params=${params}    headers=${headers}    expected_status=200
+    #check if content of response is correct
+    Should Be Equal As Strings    ${resp.json()['actorId']}    kavinbacon
+    Should Be Equal As Strings    ${resp.json()['name']}    Kavin Bacon
+    List Should Contain Value    ${resp.json()['movies']}     afewgoodmenid
 
-
-
+#######GET RELATIONSHIP#############################################################################
