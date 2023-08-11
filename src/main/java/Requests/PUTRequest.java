@@ -158,8 +158,11 @@ class PUTRequest extends AbstractRequest {
             if (databaseContainsMovie.hasNext()) { //checking if the database contains the movie
                 Record record = databaseContainsMovie.next();
                 int count = record.get("count").asInt();
-                if (count != 1) {//must be 1 only
+                if (count > 1) {//must be 1 only
                     return 500;
+                }
+                else if (count == 0) {
+                    return 404;
                 }
             }
             Session newSession = driver.session();
@@ -167,8 +170,11 @@ class PUTRequest extends AbstractRequest {
             if (databaseContainsActor.hasNext()) {//checking if the database contains the actor
                 Record record = databaseContainsActor.next();
                 int count = record.get("count").asInt();
-                if (count != 1) {//must be 1 only
+                if (count > 1) {//must be 1 only
                     return 500;
+                }
+                else if (count == 0) {
+                    return 404;
                 }
             }
 
