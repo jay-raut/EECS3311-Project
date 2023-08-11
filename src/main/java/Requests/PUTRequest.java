@@ -60,7 +60,7 @@ class PUTRequest extends AbstractRequest {
             sendOkResponse(request);
         } else if (handleAPICall.handleEndpoint(getRequestQuery) == 500) {
             sendFailedServerResponse(request);
-        } else if (handleAPICall.handleEndpoint(getRequestQuery) == 500) {
+        } else if (handleAPICall.handleEndpoint(getRequestQuery) == 404) {
             sendNotFoundResponse(request);
         }
         else {
