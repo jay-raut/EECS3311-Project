@@ -86,7 +86,7 @@ class PUTRequest extends AbstractRequest {
                 Record record = result.next();
                 int count = record.get("count").asInt();
                 if (count != 0) {
-                    return 500;
+                    return 400;
                 }
             }
 
