@@ -12,12 +12,12 @@ addActorPass
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    name=Kavin Bacon   actorId=kavinbacon
     ${resp}=    PUT On Session    localhost    /api/v1/addActor    json=${params}    headers=${headers}    expected_status=200
-
+# unique id, altho actor exists it has diff name
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    name=Kavin Bacon   actorId=kavinbaconbutuniqueid
     ${resp}=    PUT On Session    localhost    /api/v1/addActor    json=${params}    headers=${headers}    expected_status=200
+# not necessary but sets up some environment ...
 
-    # not necessary but sets up some environment ...
 
 addActorFail
     #this needs to fail cuz it has "unique" name but id exists
@@ -25,9 +25,19 @@ addActorFail
     ${params}=    Create Dictionary    name=Kavin Bacon2   actorId=kavinbacon
     ${resp}=    PUT On Session    localhost    /api/v1/addActor    json=${params}    headers=${headers}    expected_status=400
 
-    #I expect this to fail cuz of bad formattiong
+    #I expect this to fail cuz of bad formattiong i wote actorID and NAME wrong
     ${headers}=    Create Dictionary    Content-Type=application/json
-    ${params}=    Create Dictionary    actorId=robertdowney    name=Robert Downey Jr.
+    ${params}=    Create Dictionary    Actorid=robertdowney    Name=Robert Downey Jr.
+    ${resp}=    PUT On Session    localhost    /api/v1/addActor    json=${params}    headers=${headers}    expected_status=400
+
+    #I expect this to fail cuz of nulls
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary    name=${null}   actorId=scarlettjohansson
+    ${resp}=    PUT On Session    localhost    /api/v1/addActor    json=${params}    headers=${headers}    expected_status=400
+
+    #I expect this to fail cuz of nulls
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary    name=Scarlett Johansson   actorId=${null}
     ${resp}=    PUT On Session    localhost    /api/v1/addActor    json=${params}    headers=${headers}    expected_status=400
 
 addMoviePass
@@ -46,7 +56,7 @@ addMovieFail
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    name=A_Few_Good_Men_butDifferentName   movieId=afewgoodmenid
     ${resp}=    PUT On Session    localhost    /api/v1/addMovie    json=${params}    headers=${headers}    expected_status=400
-
+addMovieFail2
     #fail cuz bad formatting
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    movieId=afewgoodmenid   name=A_Few_Good_Men_butDifferentName
