@@ -77,6 +77,10 @@ class PUTRequest extends AbstractRequest {
 
         String name = requestQuery.get("name").toString();
         String actorId = requestQuery.get("actorId").toString();
+        if (actorId == null || actorId.isEmpty() || name == null || name.isEmpty()){
+            return 400;
+        }
+
 
         Driver driver = Neo4jDriverSession.getDriverInstance();
         try (Session session = driver.session()) { //checking if id already exists
@@ -113,6 +117,9 @@ class PUTRequest extends AbstractRequest {
         }
         String name = requestQuery.get("name").toString();
         String movieId = requestQuery.get("movieId").toString();
+        if (movieId == null || movieId.isEmpty() || name == null || name.isEmpty()){
+            return 400;
+        }
 
         Driver driver = Neo4jDriverSession.getDriverInstance();
         try (Session session = driver.session()) { //checking if id already exists
