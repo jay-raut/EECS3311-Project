@@ -7,7 +7,7 @@ Suite Setup    Create Session    localhost    http://localhost:8080
 #the database needs to be reset and empty for the controlled test environment
 #othervise we will get unintended 400 and 500 everywhere
 *** Test Cases ***
-
+#####ADD ACTORS#########################################################################################
 addActorPass
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    name=Kavin Bacon   actorId=kavinbacon
@@ -45,6 +45,8 @@ addActorFail4
     ${params}=    Create Dictionary    name=Scarlett Johansson   actorId=${null}
     ${resp}=    PUT On Session    localhost    /api/v1/addActor    json=${params}    headers=${headers}    expected_status=400
 
+
+########ADD MOVIES##############################################################################################
 addMoviePass
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    name=A Few Good Men   movieId=afewgoodmenid
@@ -55,9 +57,11 @@ addMoviePass1
     ${params}=    Create Dictionary    name=A Few Good Men   movieId=afewgoodmenuniqueanddifferentid
     ${resp}=    PUT On Session    localhost    /api/v1/addMovie    json=${params}    headers=${headers}    expected_status=200
 
-     # not necessary but sets up some environment ....
+     # not necessary but sets up some environment .... (empty for now)
+
+
 addMovieFail
-    #fail cuz movieId exists
+    #fail cuz i already added exact same thing
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    name=A_Few_Good_Men_butDifferentName   movieId=afewgoodmenid
     ${resp}=    PUT On Session    localhost    /api/v1/addMovie    json=${params}    headers=${headers}    expected_status=400
@@ -67,12 +71,12 @@ addMovieFail1
     ${params}=    Create Dictionary    name=A_Few_Good_Men_butDifferentName   movieId=afewgoodmenid
     ${resp}=    PUT On Session    localhost    /api/v1/addMovie    json=${params}    headers=${headers}    expected_status=400
 addMovieFail2
-    #fail cuz bad formatting
+    #fail cuz bad formatting (wrote parameters name wrong Movie id and Name)
     ${headers}=    Create Dictionary    Content-Type=application/json
-    ${params}=    Create Dictionary    movieId=afewgoodmenid   name=A_Few_Good_Men_butDifferentName
+    ${params}=    Create Dictionary    MovieId=afewgoodmenid   Name=A_Few_Good_Men_butDifferentName
     ${resp}=    PUT On Session    localhost    /api/v1/addMovie    json=${params}    headers=${headers}    expected_status=400
 addMovieFail3
-    #fail cuz movieId exists
+    #fail cuz Nulls
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    name=A_Few_Good_Men_butDifferentName   movieId=afewgoodmenid
     ${resp}=    PUT On Session    localhost    /api/v1/addMovie    json=${params}    headers=${headers}    expected_status=400
@@ -81,3 +85,17 @@ addMovieFail4
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    name=A_Few_Good_Men_butDifferentName   movieId=afewgoodmenid
     ${resp}=    PUT On Session    localhost    /api/v1/addMovie    json=${params}    headers=${headers}    expected_status=400
+
+addMovieFail5
+    #fail cuz Nulls
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary    name=A_Few_Good_Men_butDifferentName   movieId=${null}
+    ${resp}=    PUT On Session    localhost    /api/v1/addMovie    json=${params}    headers=${headers}    expected_status=400
+addMovieFail6
+    #fail cuz Nulls again
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary    name=${null}   movieId=afewgoodmenid
+    ${resp}=    PUT On Session    localhost    /api/v1/addMovie    json=${params}    headers=${headers}    expected_status=400
+
+
+######ADD RLATIONSHIPS#########################################################################################
