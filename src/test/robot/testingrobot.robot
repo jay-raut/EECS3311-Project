@@ -75,6 +75,7 @@ addMovieFail2
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    MovieId=afewgoodmenid   Name=A_Few_Good_Men_butDifferentName
     ${resp}=    PUT On Session    localhost    /api/v1/addMovie    json=${params}    headers=${headers}    expected_status=400
+<<<<<<< Updated upstream
 addMovieFail3
     #fail cuz Nulls
     ${headers}=    Create Dictionary    Content-Type=application/json
@@ -99,3 +100,45 @@ addMovieFail6
 
 
 ######ADD RLATIONSHIPS#########################################################################################
+=======
+
+
+
+
+addRelationshipPass
+    #for unique actorID and movieID
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary    movieId=afewgoodmenid  ActorId=kavinbacon
+    ${resp}=      PUT On Session    localhost    /api/v1/addRelationship    json=${params}    headers=${headers}    expected_status=200
+
+addRelationshipFail
+    #for improper format // movieId is null
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary    movieId=${null}  ActorId=kavinbacon
+    ${resp}=      PUT On Session    localhost    /api/v1/addRelationship    json=${params}    headers=${headers}    expected_status=404
+
+addRelationshipFail2
+    #for improper format // actorId is null
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary    movieId=afewgoodmenid  ActorId=${null}
+    ${resp}=      PUT On Session    localhost    /api/v1/addRelationship    json=${params}    headers=${headers}    expected_status=404
+
+addRelationshipFail3
+    #for improper format // movieId is missingRequiredInfo
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary    movieId=afewgoodmenidMissing  ActorId=kavinbacon
+    ${resp}=      PUT On Session    localhost    /api/v1/addRelationship    json=${params}    headers=${headers}    expected_status=400
+
+addRelationshipFail4
+    #for improper format // actorId is missingRequiredInfo
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary    movieId=afewgoodmenid ActorId=kavinbaconMissing
+    ${resp}=      PUT On Session    localhost    /api/v1/addRelationship    json=${params}    headers=${headers}    expected_status=400
+
+addRelationshipFail5
+    #for improper format // actorId is missingRequiredInfo
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary    movieId=afewgoodmenid  ActorId=kavinbacon
+    ${resp}=      PUT On Session    localhost    /api/v1/addRelationship    json=${params}    headers=${headers}    expected_status=400
+
+>>>>>>> Stashed changes
