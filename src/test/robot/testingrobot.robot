@@ -7,5 +7,5 @@ Suite Setup    Create Session    localhost    http://localhost:8080
 *** Test Cases ***
 addActorPass
     ${headers}=    Create Dictionary    Content-Type=application/json
-    ${params}=    Create Dictionary    name=Danzel Washington    actorId=nm1001213
+    ${params}=    Create Dictionary    name=Arienne   actorId=myidthatis1
     ${resp}=    PUT On Session    localhost    /api/v1/addActor    json=${params}    headers=${headers}    expected_status=200

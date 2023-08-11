@@ -1,31 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.1.1 (Python 3.8.5 on darwin)" generated="20230810 19:23:16.816" rpa="false" schemaversion="4">
-<suite id="s1" name="EECS3311-Project" source="/Users/stemmingup/Documents/GitHub/EECS3311-Project">
-<suite id="s1-s1" name="Src" source="/Users/stemmingup/Documents/GitHub/EECS3311-Project/src">
-<suite id="s1-s1-s1" name="Test" source="/Users/stemmingup/Documents/GitHub/EECS3311-Project/src/test">
-<suite id="s1-s1-s1-s1" name="Robot" source="/Users/stemmingup/Documents/GitHub/EECS3311-Project/src/test/robot">
-<suite id="s1-s1-s1-s1-s1" name="Testingrobot" source="/Users/stemmingup/Documents/GitHub/EECS3311-Project/src/test/robot/testingrobot.robot">
-<kw name="Create Session" type="SETUP">
+<robot generator="Robot 6.1.1 (Python 3.11.4 on win32)" generated="20230810 20:16:21.523" rpa="false" schemaversion="4">
+<suite id="s1" name="EECS3311-Project" source="C:\Users\betul\Documents\GitHub\EECS3311-Project">
+<suite id="s1-s1" name="Src" source="C:\Users\betul\Documents\GitHub\EECS3311-Project\src">
+<suite id="s1-s1-s1" name="Test" source="C:\Users\betul\Documents\GitHub\EECS3311-Project\src\test">
+<suite id="s1-s1-s1-s1" name="Robot" source="C:\Users\betul\Documents\GitHub\EECS3311-Project\src\test\robot">
+<suite id="s1-s1-s1-s1-s1" name="Testingrobot" source="C:\Users\betul\Documents\GitHub\EECS3311-Project\src\test\robot\testingrobot.robot">
+<kw name="Create Session" library="RequestsLibrary" type="SETUP">
 <arg>localhost</arg>
 <arg>http://localhost:8080</arg>
-<msg timestamp="20230810 19:23:16.866" level="FAIL">No keyword with name 'Create Session' found.</msg>
-<status status="FAIL" starttime="20230810 19:23:16.866" endtime="20230810 19:23:16.866"/>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230810 20:16:21.717" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230810 20:16:21.717" endtime="20230810 20:16:21.717"/>
 </kw>
 <test id="s1-s1-s1-s1-s1-t1" name="addActorPass" line="8">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230810 20:16:21.719" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230810 20:16:21.718" endtime="20230810 20:16:21.719"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${params}</var>
+<arg>name=Arienne</arg>
+<arg>actorId=myidthatis1</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230810 20:16:21.719" level="INFO">${params} = {'name': 'Arienne', 'actorId': 'myidthatis1'}</msg>
+<status status="PASS" starttime="20230810 20:16:21.719" endtime="20230810 20:16:21.719"/>
+</kw>
+<kw name="PUT On Session" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>localhost</arg>
+<arg>/api/v1/addActor</arg>
+<arg>json=${params}</arg>
+<arg>headers=${headers}</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<msg timestamp="20230810 20:16:21.748" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addActor 
+ path_url=/api/v1/addActor 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '45'} 
+ body=b'{"name": "Arienne", "actorId": "myidthatis1"}' 
+ </msg>
+<msg timestamp="20230810 20:16:21.751" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addActor 
+ status=500, reason=Internal Server Error 
+ headers={'Date': 'Fri, 11 Aug 2023 00:16:21 GMT', 'Content-length': '21'} 
+ body=INTERNAL SERVER ERROR 
+ </msg>
+<msg timestamp="20230810 20:16:21.752" level="FAIL">Url: http://localhost:8080/api/v1/addActor Expected status: 500 != 200</msg>
+<status status="FAIL" starttime="20230810 20:16:21.720" endtime="20230810 20:16:21.755"/>
+</kw>
 <timeout value="30 seconds"/>
-<status status="FAIL" starttime="20230810 19:23:16.867" endtime="20230810 19:23:16.867">Parent suite setup failed:
-No keyword with name 'Create Session' found.</status>
+<status status="FAIL" starttime="20230810 20:16:21.718" endtime="20230810 20:16:21.755">Url: http://localhost:8080/api/v1/addActor Expected status: 500 != 200</status>
 </test>
-<status status="FAIL" starttime="20230810 19:23:16.851" endtime="20230810 19:23:16.868">Suite setup failed:
-No keyword with name 'Create Session' found.</status>
+<status status="FAIL" starttime="20230810 20:16:21.565" endtime="20230810 20:16:21.758"/>
 </suite>
-<status status="FAIL" starttime="20230810 19:23:16.849" endtime="20230810 19:23:16.870"/>
+<status status="FAIL" starttime="20230810 20:16:21.563" endtime="20230810 20:16:21.759"/>
 </suite>
-<status status="FAIL" starttime="20230810 19:23:16.846" endtime="20230810 19:23:16.871"/>
+<status status="FAIL" starttime="20230810 20:16:21.561" endtime="20230810 20:16:21.760"/>
 </suite>
-<status status="FAIL" starttime="20230810 19:23:16.844" endtime="20230810 19:23:16.872"/>
+<status status="FAIL" starttime="20230810 20:16:21.559" endtime="20230810 20:16:21.761"/>
 </suite>
-<status status="FAIL" starttime="20230810 19:23:16.819" endtime="20230810 19:23:16.872"/>
+<status status="FAIL" starttime="20230810 20:16:21.526" endtime="20230810 20:16:21.762"/>
 </suite>
 <statistics>
 <total>
@@ -42,15 +77,5 @@ No keyword with name 'Create Session' found.</status>
 </suite>
 </statistics>
 <errors>
-<msg timestamp="20230810 19:23:16.862" level="ERROR">Error in file '/Users/stemmingup/Documents/GitHub/EECS3311-Project/src/test/robot/testingrobot.robot' on line 3: Importing library 'RequestsLibrary' failed: ModuleNotFoundError: No module named 'RequestsLibrary'
-Traceback (most recent call last):
-  None
-PYTHONPATH:
-  /Users/stemmingup/Documents/GitHub/EECS3311-Project
-  /Users/stemmingup/Documents/GitHub/EECS3311-Project
-  /Library/Frameworks/Python.framework/Versions/3.8/lib/python38.zip
-  /Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8
-  /Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/lib-dynload
-  /Users/stemmingup/Documents/GitHub/EECS3311-Project/venv/lib/python3.8/site-packages</msg>
 </errors>
 </robot>
