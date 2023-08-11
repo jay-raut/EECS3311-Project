@@ -56,29 +56,27 @@ addMovieFail
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    name=A_Few_Good_Men_butDifferentName   movieId=afewgoodmenid
     ${resp}=    PUT On Session    localhost    /api/v1/addMovie    json=${params}    headers=${headers}    expected_status=400
-addMovieFail2
+
     #fail cuz bad formatting
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    movieId=afewgoodmenid   name=A_Few_Good_Men_butDifferentName
     ${resp}=    PUT On Session    localhost    /api/v1/addMovie    json=${params}    headers=${headers}    expected_status=400
 
-addMovieFail3
     #fail cuz Nulls
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    name=A_Few_Good_Men_butDifferentName   movieId=afewgoodmenid
     ${resp}=    PUT On Session    localhost    /api/v1/addMovie    json=${params}    headers=${headers}    expected_status=400
-addMovieFail4
+
     #fail cuz movieId exists
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    name=A_Few_Good_Men_butDifferentName   movieId=afewgoodmenid
     ${resp}=    PUT On Session    localhost    /api/v1/addMovie    json=${params}    headers=${headers}    expected_status=400
 
-addMovieFail5
     #fail cuz Nulls
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    name=A_Few_Good_Men_butDifferentName   movieId=${null}
     ${resp}=    PUT On Session    localhost    /api/v1/addMovie    json=${params}    headers=${headers}    expected_status=400
-addMovieFail6
+
     #fail cuz Nulls again
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    name=${null}   movieId=afewgoodmenid
@@ -101,25 +99,21 @@ addRelationshipFail
     ${params}=    Create Dictionary     actorId=kavinbacon   movieId=${null}
     ${resp}=      PUT On Session    localhost    /api/v1/addRelationship    json=${params}    headers=${headers}    expected_status=400
 
-addRelationshipFail2
     #for improper format // actorId is null
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary     actorId=${null}   movieId=afewgoodmenid
     ${resp}=      PUT On Session    localhost    /api/v1/addRelationship    json=${params}    headers=${headers}    expected_status=400
 
-addRelationshipFail3
     #for improper format // movieId is missingRequiredInfo
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary     actorId=kavinbacon   movieId=nonexistentID
     ${resp}=      PUT On Session    localhost    /api/v1/addRelationship    json=${params}    headers=${headers}    expected_status=404
 
-addRelationshipFail4
     #for improper format // actorId is missingRequiredInfo
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary     actorId=nonexistingActorID   movieId=afewgoodmenid
     ${resp}=      PUT On Session    localhost    /api/v1/addRelationship    json=${params}    headers=${headers}    expected_status=404
 
-addRelationshipFail5
     #relationship already exixts
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary     actorId=kavinbacon   movieId=afewgoodmenid
@@ -134,6 +128,7 @@ getActorPass
     Should Be Equal As Strings    ${resp.json()['name']}    Kavin Bacon
     List Should Contain Value    ${resp.json()['movies']}     afewgoodmenid
 
+<<<<<<< Updated upstream
 #######GET MOVIE#############################################################################
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary     movieId=afewgoodmenid
@@ -154,3 +149,23 @@ getActorPass
     Should Be Equal As Strings    ${resp.json()['name']}    A Few Good Men
     List Should Contain Value    ${resp.json()['actors']}     kavinbacon
 
+=======
+getActorFail
+    #fail cuz bad formatting
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary     Nonexistentparameter=kavinbacon
+    ${resp}=    GET On Session    localhost    /api/v1/getActor    params=${params}    headers=${headers}    expected_status=400
+getActorFail1
+    #fail cuz nullz
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary     actorId=${null}
+    ${resp}=    GET On Session    localhost    /api/v1/getActor    params=${params}    headers=${headers}    expected_status=400
+getActorFail2
+    #fail cuz not found
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary     actorId=nonexistentId
+    ${resp}=    GET On Session    localhost    /api/v1/getActor    params=${params}    headers=${headers}    expected_status=404
+
+
+#######GET RELATIONSHIP#############################################################################
+>>>>>>> Stashed changes
