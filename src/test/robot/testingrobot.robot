@@ -146,10 +146,9 @@ getActorPass
     ${resp}=    GET On Session    localhost    /api/v1/getActor    params=${params}    headers=${headers}    expected_status=200
     #check if content of response is correct
     Should Be Equal As Strings    ${resp.json()['movieId']}    afewgoodmenid
-    Should Be Equal As Strings    ${resp.json()['name']}    A Few Good Men
-    List Should Contain Value    ${resp.json()['actors']}     kavinbacon
+    Should Be Equal As Strings    ${resp.json()['actorId']}    kavinbacon
+    Should Be Equal As Boolean    ${resp.json()['hasRelationship']}    True
 
-=======
 getActorFail
     #fail cuz bad formatting
     ${headers}=    Create Dictionary    Content-Type=application/json
@@ -168,4 +167,3 @@ getActorFail2
 
 
 #######GET RELATIONSHIP#############################################################################
->>>>>>> Stashed changes
