@@ -90,7 +90,7 @@ class PUTRequest extends AbstractRequest {
                 Record record = result.next();
                 int count = record.get("count").asInt();
                 if (count != 0) {
-                    return 400;
+                    return 500;
                 }
             }
 
@@ -129,7 +129,7 @@ class PUTRequest extends AbstractRequest {
                 Record record = result.next();
                 int count = record.get("count").asInt();
                 if (count != 0) {
-                    return 400;
+                    return 500;
                 }
             }
 
@@ -184,7 +184,7 @@ class PUTRequest extends AbstractRequest {
             StatementResult result = checkIfRelationshipExists.run(checkRelationshipExists, Values.parameters("actorId", actorId, "movieId", movieId));
             if (result.hasNext()) {
                 if (result.next().get("relationshipExists").asBoolean()) {
-                    return 400;
+                    return 500;
                 }
             }
 
