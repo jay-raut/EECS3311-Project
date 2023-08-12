@@ -328,7 +328,7 @@ computeBaconNumberFail
 
 deleteActorPass
     ${headers}=    Create Dictionary    Content-Type=application/json
-    ${params}=    Create Dictionary    actorId=nm0000102
+    ${params}=    Create Dictionary    actorId=angelinajolie
     ${resp}=    DELETE On Session    localhost    /api/v1/deleteActor    json=${params}    headers=${headers}    expected_status=200
-   
+
 
