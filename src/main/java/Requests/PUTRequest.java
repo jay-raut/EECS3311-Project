@@ -56,14 +56,14 @@ class PUTRequest extends AbstractRequest {
             sendNotFoundResponse(request);
             return;
         }
-        if (handleAPICall.handleEndpoint(getRequestQuery) == 200) { //otherwise call the method from the map, if the method returns false then send bad request
+        int statusCode = handleAPICall.handleEndpoint(getRequestQuery);
+        if (statusCode == 200) { //otherwise call the method from the map, if the method returns false then send bad request
             sendOkResponse(request);
-        } else if (handleAPICall.handleEndpoint(getRequestQuery) == 500) {
+        } else if (statusCode == 500) {
             sendFailedServerResponse(request);
-        } else if (handleAPICall.handleEndpoint(getRequestQuery) == 404) {
+        } else if (statusCode == 404) {
             sendNotFoundResponse(request);
-        }
-        else {
+        } else {
             sendBadRequestResponse(request);
         }
     }
@@ -162,8 +162,7 @@ class PUTRequest extends AbstractRequest {
                 int count = record.get("count").asInt();
                 if (count > 1) {//must be 1 only
                     return 500;
-                }
-                else if (count == 0) {
+                } else if (count == 0) {
                     return 404;
                 }
             }
@@ -174,8 +173,7 @@ class PUTRequest extends AbstractRequest {
                 int count = record.get("count").asInt();
                 if (count > 1) {//must be 1 only
                     return 500;
-                }
-                else if (count == 0) {
+                } else if (count == 0) {
                     return 404;
                 }
             }
