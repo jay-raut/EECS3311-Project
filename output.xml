@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.1.1 (Python 3.11.4 on win32)" generated="20230811 23:34:39.333" rpa="false" schemaversion="4">
+<robot generator="Robot 6.1.1 (Python 3.11.4 on win32)" generated="20230812 00:01:41.562" rpa="false" schemaversion="4">
 <suite id="s1" name="EECS3311-Project" source="C:\Users\betul\Documents\GitHub\EECS3311-Project">
 <suite id="s1-s1" name="Src" source="C:\Users\betul\Documents\GitHub\EECS3311-Project\src">
 <suite id="s1-s1-s1" name="Test" source="C:\Users\betul\Documents\GitHub\EECS3311-Project\src\test">
@@ -9,24 +9,24 @@
 <arg>localhost</arg>
 <arg>http://localhost:8080</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20230811 23:34:39.508" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20230811 23:34:39.508" endtime="20230811 23:34:39.508"/>
+<msg timestamp="20230812 00:01:41.760" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230812 00:01:41.753" endtime="20230812 00:01:41.760"/>
 </kw>
 <test id="s1-s1-s1-s1-s1-t1" name="addActorPass" line="11">
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.508" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.508" endtime="20230811 23:34:39.508"/>
+<msg timestamp="20230812 00:01:41.761" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:41.760" endtime="20230812 00:01:41.761"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>name=Kavin Bacon</arg>
 <arg>actorId=nm0000102</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.508" level="INFO">${params} = {'name': 'Kavin Bacon', 'actorId': 'nm0000102'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.508" endtime="20230811 23:34:39.508"/>
+<msg timestamp="20230812 00:01:41.761" level="INFO">${params} = {'name': 'Kavin Bacon', 'actorId': 'nm0000102'}</msg>
+<status status="PASS" starttime="20230812 00:01:41.761" endtime="20230812 00:01:41.761"/>
 </kw>
 <kw name="PUT On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -36,33 +36,33 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=200</arg>
 <doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:39.524" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addActor 
+<msg timestamp="20230812 00:01:41.818" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addActor 
  path_url=/api/v1/addActor 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '47'} 
  body=b'{"name": "Kavin Bacon", "actorId": "nm0000102"}' 
  </msg>
-<msg timestamp="20230811 23:34:39.524" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addActor 
+<msg timestamp="20230812 00:01:41.818" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addActor 
  status=200, reason=OK 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:39 GMT', 'Content-length': '2'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:41 GMT', 'Content-length': '2'} 
  body=OK 
  </msg>
-<msg timestamp="20230811 23:34:39.524" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:39.508" endtime="20230811 23:34:39.524"/>
+<msg timestamp="20230812 00:01:41.818" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:41.761" endtime="20230812 00:01:41.818"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.533" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.524" endtime="20230811 23:34:39.533"/>
+<msg timestamp="20230812 00:01:41.829" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:41.829" endtime="20230812 00:01:41.830"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>name=Kavin Bacon</arg>
 <arg>actorId=nm0000102butuniqueid</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.535" level="INFO">${params} = {'name': 'Kavin Bacon', 'actorId': 'nm0000102butuniqueid'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.533" endtime="20230811 23:34:39.535"/>
+<msg timestamp="20230812 00:01:41.830" level="INFO">${params} = {'name': 'Kavin Bacon', 'actorId': 'nm0000102butuniqueid'}</msg>
+<status status="PASS" starttime="20230812 00:01:41.830" endtime="20230812 00:01:41.830"/>
 </kw>
 <kw name="PUT On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -72,33 +72,33 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=200</arg>
 <doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:39.547" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addActor 
+<msg timestamp="20230812 00:01:41.840" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addActor 
  path_url=/api/v1/addActor 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '58'} 
  body=b'{"name": "Kavin Bacon", "actorId": "nm0000102butuniqueid"}' 
  </msg>
-<msg timestamp="20230811 23:34:39.547" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addActor 
+<msg timestamp="20230812 00:01:41.840" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addActor 
  status=200, reason=OK 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:39 GMT', 'Content-length': '2'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:41 GMT', 'Content-length': '2'} 
  body=OK 
  </msg>
-<msg timestamp="20230811 23:34:39.547" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:39.535" endtime="20230811 23:34:39.547"/>
+<msg timestamp="20230812 00:01:41.840" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:41.831" endtime="20230812 00:01:41.840"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.549" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.549" endtime="20230811 23:34:39.549"/>
+<msg timestamp="20230812 00:01:41.840" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:41.840" endtime="20230812 00:01:41.840"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>name=Johnny Depp</arg>
 <arg>actorId=johnnydepp</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.549" level="INFO">${params} = {'name': 'Johnny Depp', 'actorId': 'johnnydepp'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.549" endtime="20230811 23:34:39.549"/>
+<msg timestamp="20230812 00:01:41.846" level="INFO">${params} = {'name': 'Johnny Depp', 'actorId': 'johnnydepp'}</msg>
+<status status="PASS" starttime="20230812 00:01:41.845" endtime="20230812 00:01:41.846"/>
 </kw>
 <kw name="PUT On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -108,33 +108,33 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=200</arg>
 <doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:39.557" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addActor 
+<msg timestamp="20230812 00:01:41.846" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addActor 
  path_url=/api/v1/addActor 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '48'} 
  body=b'{"name": "Johnny Depp", "actorId": "johnnydepp"}' 
  </msg>
-<msg timestamp="20230811 23:34:39.557" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addActor 
+<msg timestamp="20230812 00:01:41.846" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addActor 
  status=200, reason=OK 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:39 GMT', 'Content-length': '2'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:41 GMT', 'Content-length': '2'} 
  body=OK 
  </msg>
-<msg timestamp="20230811 23:34:39.557" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:39.549" endtime="20230811 23:34:39.557"/>
+<msg timestamp="20230812 00:01:41.860" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:41.846" endtime="20230812 00:01:41.860"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.557" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.557" endtime="20230811 23:34:39.557"/>
+<msg timestamp="20230812 00:01:41.862" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:41.862" endtime="20230812 00:01:41.862"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>name=Actor A</arg>
 <arg>actorId=actora</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.557" level="INFO">${params} = {'name': 'Actor A', 'actorId': 'actora'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.557" endtime="20230811 23:34:39.557"/>
+<msg timestamp="20230812 00:01:41.862" level="INFO">${params} = {'name': 'Actor A', 'actorId': 'actora'}</msg>
+<status status="PASS" starttime="20230812 00:01:41.862" endtime="20230812 00:01:41.862"/>
 </kw>
 <kw name="PUT On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -144,33 +144,33 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=200</arg>
 <doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:39.572" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addActor 
+<msg timestamp="20230812 00:01:41.864" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addActor 
  path_url=/api/v1/addActor 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '40'} 
  body=b'{"name": "Actor A", "actorId": "actora"}' 
  </msg>
-<msg timestamp="20230811 23:34:39.572" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addActor 
+<msg timestamp="20230812 00:01:41.864" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addActor 
  status=200, reason=OK 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:39 GMT', 'Content-length': '2'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:41 GMT', 'Content-length': '2'} 
  body=OK 
  </msg>
-<msg timestamp="20230811 23:34:39.572" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:39.557" endtime="20230811 23:34:39.572"/>
+<msg timestamp="20230812 00:01:41.864" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:41.864" endtime="20230812 00:01:41.864"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.572" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.572" endtime="20230811 23:34:39.572"/>
+<msg timestamp="20230812 00:01:41.864" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:41.864" endtime="20230812 00:01:41.864"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>name=Actor B</arg>
 <arg>actorId=actorb</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.578" level="INFO">${params} = {'name': 'Actor B', 'actorId': 'actorb'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.578" endtime="20230811 23:34:39.578"/>
+<msg timestamp="20230812 00:01:41.875" level="INFO">${params} = {'name': 'Actor B', 'actorId': 'actorb'}</msg>
+<status status="PASS" starttime="20230812 00:01:41.875" endtime="20230812 00:01:41.875"/>
 </kw>
 <kw name="PUT On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -180,33 +180,33 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=200</arg>
 <doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:39.589" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addActor 
+<msg timestamp="20230812 00:01:41.877" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addActor 
  path_url=/api/v1/addActor 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '40'} 
  body=b'{"name": "Actor B", "actorId": "actorb"}' 
  </msg>
-<msg timestamp="20230811 23:34:39.589" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addActor 
+<msg timestamp="20230812 00:01:41.877" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addActor 
  status=200, reason=OK 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:39 GMT', 'Content-length': '2'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:41 GMT', 'Content-length': '2'} 
  body=OK 
  </msg>
-<msg timestamp="20230811 23:34:39.589" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:39.578" endtime="20230811 23:34:39.589"/>
+<msg timestamp="20230812 00:01:41.877" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:41.875" endtime="20230812 00:01:41.877"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.589" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.589" endtime="20230811 23:34:39.589"/>
+<msg timestamp="20230812 00:01:41.877" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:41.877" endtime="20230812 00:01:41.877"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>name=Actor OUT OF REACH</arg>
 <arg>actorId=outOfReachID</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.591" level="INFO">${params} = {'name': 'Actor OUT OF REACH', 'actorId': 'outOfReachID'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.591" endtime="20230811 23:34:39.591"/>
+<msg timestamp="20230812 00:01:41.877" level="INFO">${params} = {'name': 'Actor OUT OF REACH', 'actorId': 'outOfReachID'}</msg>
+<status status="PASS" starttime="20230812 00:01:41.877" endtime="20230812 00:01:41.877"/>
 </kw>
 <kw name="PUT On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -216,37 +216,37 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=200</arg>
 <doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:39.602" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addActor 
+<msg timestamp="20230812 00:01:41.894" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addActor 
  path_url=/api/v1/addActor 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '57'} 
  body=b'{"name": "Actor OUT OF REACH", "actorId": "outOfReachID"}' 
  </msg>
-<msg timestamp="20230811 23:34:39.602" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addActor 
+<msg timestamp="20230812 00:01:41.894" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addActor 
  status=200, reason=OK 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:39 GMT', 'Content-length': '2'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:41 GMT', 'Content-length': '2'} 
  body=OK 
  </msg>
-<msg timestamp="20230811 23:34:39.602" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:39.592" endtime="20230811 23:34:39.602"/>
+<msg timestamp="20230812 00:01:41.894" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:41.877" endtime="20230812 00:01:41.894"/>
 </kw>
 <timeout value="30 seconds"/>
-<status status="PASS" starttime="20230811 23:34:39.508" endtime="20230811 23:34:39.602"/>
+<status status="PASS" starttime="20230812 00:01:41.760" endtime="20230812 00:01:41.894"/>
 </test>
 <test id="s1-s1-s1-s1-s1-t2" name="addActorFail" line="37">
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.602" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.602" endtime="20230811 23:34:39.602"/>
+<msg timestamp="20230812 00:01:41.904" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:41.904" endtime="20230812 00:01:41.904"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>name=Kavin Bacon2</arg>
 <arg>actorId=nm0000102</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.602" level="INFO">${params} = {'name': 'Kavin Bacon2', 'actorId': 'nm0000102'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.602" endtime="20230811 23:34:39.602"/>
+<msg timestamp="20230812 00:01:41.904" level="INFO">${params} = {'name': 'Kavin Bacon2', 'actorId': 'nm0000102'}</msg>
+<status status="PASS" starttime="20230812 00:01:41.904" endtime="20230812 00:01:41.904"/>
 </kw>
 <kw name="PUT On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -256,33 +256,33 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=400</arg>
 <doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:39.616" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addActor 
+<msg timestamp="20230812 00:01:41.910" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addActor 
  path_url=/api/v1/addActor 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '48'} 
  body=b'{"name": "Kavin Bacon2", "actorId": "nm0000102"}' 
  </msg>
-<msg timestamp="20230811 23:34:39.616" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addActor 
+<msg timestamp="20230812 00:01:41.910" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addActor 
  status=400, reason=Bad Request 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:39 GMT', 'Content-length': '11'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:41 GMT', 'Content-length': '11'} 
  body=BAD REQUEST 
  </msg>
-<msg timestamp="20230811 23:34:39.616" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:39.608" endtime="20230811 23:34:39.616"/>
+<msg timestamp="20230812 00:01:41.910" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:41.904" endtime="20230812 00:01:41.910"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.618" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.618" endtime="20230811 23:34:39.618"/>
+<msg timestamp="20230812 00:01:41.910" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:41.910" endtime="20230812 00:01:41.910"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>Actorid=robertdowney</arg>
 <arg>Name=Robert Downey Jr.</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.619" level="INFO">${params} = {'Actorid': 'robertdowney', 'Name': 'Robert Downey Jr.'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.619" endtime="20230811 23:34:39.619"/>
+<msg timestamp="20230812 00:01:41.918" level="INFO">${params} = {'Actorid': 'robertdowney', 'Name': 'Robert Downey Jr.'}</msg>
+<status status="PASS" starttime="20230812 00:01:41.918" endtime="20230812 00:01:41.918"/>
 </kw>
 <kw name="PUT On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -292,33 +292,33 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=400</arg>
 <doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:39.622" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addActor 
+<msg timestamp="20230812 00:01:41.921" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addActor 
  path_url=/api/v1/addActor 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '56'} 
  body=b'{"Actorid": "robertdowney", "Name": "Robert Downey Jr."}' 
  </msg>
-<msg timestamp="20230811 23:34:39.622" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addActor 
+<msg timestamp="20230812 00:01:41.921" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addActor 
  status=400, reason=Bad Request 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:39 GMT', 'Content-length': '11'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:41 GMT', 'Content-length': '11'} 
  body=BAD REQUEST 
  </msg>
-<msg timestamp="20230811 23:34:39.622" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:39.619" endtime="20230811 23:34:39.622"/>
+<msg timestamp="20230812 00:01:41.923" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:41.918" endtime="20230812 00:01:41.923"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.626" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.626" endtime="20230811 23:34:39.626"/>
+<msg timestamp="20230812 00:01:41.923" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:41.923" endtime="20230812 00:01:41.923"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>name=${null}</arg>
 <arg>actorId=scarlettjohansson</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.626" level="INFO">${params} = {'name': None, 'actorId': 'scarlettjohansson'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.626" endtime="20230811 23:34:39.626"/>
+<msg timestamp="20230812 00:01:41.924" level="INFO">${params} = {'name': None, 'actorId': 'scarlettjohansson'}</msg>
+<status status="PASS" starttime="20230812 00:01:41.924" endtime="20230812 00:01:41.924"/>
 </kw>
 <kw name="PUT On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -328,33 +328,33 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=400</arg>
 <doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:39.626" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addActor 
+<msg timestamp="20230812 00:01:41.925" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addActor 
  path_url=/api/v1/addActor 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '46'} 
  body=b'{"name": null, "actorId": "scarlettjohansson"}' 
  </msg>
-<msg timestamp="20230811 23:34:39.626" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addActor 
+<msg timestamp="20230812 00:01:41.925" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addActor 
  status=400, reason=Bad Request 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:39 GMT', 'Content-length': '11'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:41 GMT', 'Content-length': '11'} 
  body=BAD REQUEST 
  </msg>
-<msg timestamp="20230811 23:34:39.626" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:39.626" endtime="20230811 23:34:39.626"/>
+<msg timestamp="20230812 00:01:41.925" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:41.925" endtime="20230812 00:01:41.925"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.626" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.626" endtime="20230811 23:34:39.626"/>
+<msg timestamp="20230812 00:01:41.925" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:41.925" endtime="20230812 00:01:41.925"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>name=Scarlett Johansson</arg>
 <arg>actorId=${null}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.634" level="INFO">${params} = {'name': 'Scarlett Johansson', 'actorId': None}</msg>
-<status status="PASS" starttime="20230811 23:34:39.626" endtime="20230811 23:34:39.634"/>
+<msg timestamp="20230812 00:01:41.932" level="INFO">${params} = {'name': 'Scarlett Johansson', 'actorId': None}</msg>
+<status status="PASS" starttime="20230812 00:01:41.931" endtime="20230812 00:01:41.932"/>
 </kw>
 <kw name="PUT On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -364,37 +364,37 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=400</arg>
 <doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:39.634" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addActor 
+<msg timestamp="20230812 00:01:41.933" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addActor 
  path_url=/api/v1/addActor 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '47'} 
  body=b'{"name": "Scarlett Johansson", "actorId": null}' 
  </msg>
-<msg timestamp="20230811 23:34:39.634" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addActor 
+<msg timestamp="20230812 00:01:41.933" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addActor 
  status=400, reason=Bad Request 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:39 GMT', 'Content-length': '11'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:41 GMT', 'Content-length': '11'} 
  body=BAD REQUEST 
  </msg>
-<msg timestamp="20230811 23:34:39.634" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:39.634" endtime="20230811 23:34:39.634"/>
+<msg timestamp="20230812 00:01:41.933" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:41.932" endtime="20230812 00:01:41.933"/>
 </kw>
 <timeout value="30 seconds"/>
-<status status="PASS" starttime="20230811 23:34:39.602" endtime="20230811 23:34:39.634"/>
+<status status="PASS" starttime="20230812 00:01:41.903" endtime="20230812 00:01:41.933"/>
 </test>
 <test id="s1-s1-s1-s1-s1-t3" name="addMoviePass" line="58">
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.634" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.634" endtime="20230811 23:34:39.634"/>
+<msg timestamp="20230812 00:01:41.938" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:41.937" endtime="20230812 00:01:41.938"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>name=A Few Good Men</arg>
 <arg>movieId=afewgoodmenid</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.634" level="INFO">${params} = {'name': 'A Few Good Men', 'movieId': 'afewgoodmenid'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.634" endtime="20230811 23:34:39.634"/>
+<msg timestamp="20230812 00:01:41.938" level="INFO">${params} = {'name': 'A Few Good Men', 'movieId': 'afewgoodmenid'}</msg>
+<status status="PASS" starttime="20230812 00:01:41.938" endtime="20230812 00:01:41.938"/>
 </kw>
 <kw name="PUT On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -404,33 +404,33 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=200</arg>
 <doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:39.654" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addMovie 
+<msg timestamp="20230812 00:01:41.957" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addMovie 
  path_url=/api/v1/addMovie 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '54'} 
  body=b'{"name": "A Few Good Men", "movieId": "afewgoodmenid"}' 
  </msg>
-<msg timestamp="20230811 23:34:39.654" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addMovie 
+<msg timestamp="20230812 00:01:41.957" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addMovie 
  status=200, reason=OK 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:39 GMT', 'Content-length': '2'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:41 GMT', 'Content-length': '2'} 
  body=OK 
  </msg>
-<msg timestamp="20230811 23:34:39.654" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:39.634" endtime="20230811 23:34:39.654"/>
+<msg timestamp="20230812 00:01:41.957" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:41.940" endtime="20230812 00:01:41.957"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.654" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.654" endtime="20230811 23:34:39.654"/>
+<msg timestamp="20230812 00:01:41.957" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:41.957" endtime="20230812 00:01:41.957"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>name=A Few Good Men</arg>
 <arg>movieId=afewgoodmenuniqueanddifferentid</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.654" level="INFO">${params} = {'name': 'A Few Good Men', 'movieId': 'afewgoodmenuniqueanddifferentid'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.654" endtime="20230811 23:34:39.654"/>
+<msg timestamp="20230812 00:01:41.973" level="INFO">${params} = {'name': 'A Few Good Men', 'movieId': 'afewgoodmenuniqueanddifferentid'}</msg>
+<status status="PASS" starttime="20230812 00:01:41.972" endtime="20230812 00:01:41.973"/>
 </kw>
 <kw name="PUT On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -440,33 +440,33 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=200</arg>
 <doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:39.665" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addMovie 
+<msg timestamp="20230812 00:01:41.974" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addMovie 
  path_url=/api/v1/addMovie 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '72'} 
  body=b'{"name": "A Few Good Men", "movieId": "afewgoodmenuniqueanddifferentid"}' 
  </msg>
-<msg timestamp="20230811 23:34:39.665" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addMovie 
+<msg timestamp="20230812 00:01:41.974" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addMovie 
  status=200, reason=OK 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:39 GMT', 'Content-length': '2'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:41 GMT', 'Content-length': '2'} 
  body=OK 
  </msg>
-<msg timestamp="20230811 23:34:39.665" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:39.654" endtime="20230811 23:34:39.665"/>
+<msg timestamp="20230812 00:01:41.974" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:41.973" endtime="20230812 00:01:41.974"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.665" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.665" endtime="20230811 23:34:39.665"/>
+<msg timestamp="20230812 00:01:41.974" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:41.974" endtime="20230812 00:01:41.974"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>name=Movie 1</arg>
 <arg>movieId=movie1id</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.665" level="INFO">${params} = {'name': 'Movie 1', 'movieId': 'movie1id'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.665" endtime="20230811 23:34:39.665"/>
+<msg timestamp="20230812 00:01:41.974" level="INFO">${params} = {'name': 'Movie 1', 'movieId': 'movie1id'}</msg>
+<status status="PASS" starttime="20230812 00:01:41.974" endtime="20230812 00:01:41.974"/>
 </kw>
 <kw name="PUT On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -476,33 +476,33 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=200</arg>
 <doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:39.665" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addMovie 
+<msg timestamp="20230812 00:01:41.987" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addMovie 
  path_url=/api/v1/addMovie 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '42'} 
  body=b'{"name": "Movie 1", "movieId": "movie1id"}' 
  </msg>
-<msg timestamp="20230811 23:34:39.665" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addMovie 
+<msg timestamp="20230812 00:01:41.987" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addMovie 
  status=200, reason=OK 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:39 GMT', 'Content-length': '2'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:41 GMT', 'Content-length': '2'} 
  body=OK 
  </msg>
-<msg timestamp="20230811 23:34:39.665" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:39.665" endtime="20230811 23:34:39.665"/>
+<msg timestamp="20230812 00:01:41.987" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:41.974" endtime="20230812 00:01:41.987"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.665" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.665" endtime="20230811 23:34:39.665"/>
+<msg timestamp="20230812 00:01:41.996" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:41.987" endtime="20230812 00:01:41.996"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>name=Movie 2</arg>
 <arg>movieId=movie2id</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.665" level="INFO">${params} = {'name': 'Movie 2', 'movieId': 'movie2id'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.665" endtime="20230811 23:34:39.665"/>
+<msg timestamp="20230812 00:01:41.997" level="INFO">${params} = {'name': 'Movie 2', 'movieId': 'movie2id'}</msg>
+<status status="PASS" starttime="20230812 00:01:41.997" endtime="20230812 00:01:41.997"/>
 </kw>
 <kw name="PUT On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -512,33 +512,33 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=200</arg>
 <doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:39.690" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addMovie 
+<msg timestamp="20230812 00:01:42.007" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addMovie 
  path_url=/api/v1/addMovie 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '42'} 
  body=b'{"name": "Movie 2", "movieId": "movie2id"}' 
  </msg>
-<msg timestamp="20230811 23:34:39.690" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addMovie 
+<msg timestamp="20230812 00:01:42.007" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addMovie 
  status=200, reason=OK 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:39 GMT', 'Content-length': '2'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:42 GMT', 'Content-length': '2'} 
  body=OK 
  </msg>
-<msg timestamp="20230811 23:34:39.690" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:39.681" endtime="20230811 23:34:39.690"/>
+<msg timestamp="20230812 00:01:42.007" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:41.997" endtime="20230812 00:01:42.007"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.690" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.690" endtime="20230811 23:34:39.695"/>
+<msg timestamp="20230812 00:01:42.007" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.007" endtime="20230812 00:01:42.007"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>name=Movie 3</arg>
 <arg>movieId=movie3id</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.695" level="INFO">${params} = {'name': 'Movie 3', 'movieId': 'movie3id'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.695" endtime="20230811 23:34:39.695"/>
+<msg timestamp="20230812 00:01:42.012" level="INFO">${params} = {'name': 'Movie 3', 'movieId': 'movie3id'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.012" endtime="20230812 00:01:42.012"/>
 </kw>
 <kw name="PUT On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -548,33 +548,33 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=200</arg>
 <doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:39.706" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addMovie 
+<msg timestamp="20230812 00:01:42.019" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addMovie 
  path_url=/api/v1/addMovie 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '42'} 
  body=b'{"name": "Movie 3", "movieId": "movie3id"}' 
  </msg>
-<msg timestamp="20230811 23:34:39.706" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addMovie 
+<msg timestamp="20230812 00:01:42.019" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addMovie 
  status=200, reason=OK 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:39 GMT', 'Content-length': '2'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:42 GMT', 'Content-length': '2'} 
  body=OK 
  </msg>
-<msg timestamp="20230811 23:34:39.706" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:39.695" endtime="20230811 23:34:39.706"/>
+<msg timestamp="20230812 00:01:42.019" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:42.012" endtime="20230812 00:01:42.019"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.706" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.706" endtime="20230811 23:34:39.706"/>
+<msg timestamp="20230812 00:01:42.024" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.024" endtime="20230812 00:01:42.024"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>name=UnBoundedMovie</arg>
 <arg>movieId=unboundMovieID</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.706" level="INFO">${params} = {'name': 'UnBoundedMovie', 'movieId': 'unboundMovieID'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.706" endtime="20230811 23:34:39.706"/>
+<msg timestamp="20230812 00:01:42.024" level="INFO">${params} = {'name': 'UnBoundedMovie', 'movieId': 'unboundMovieID'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.024" endtime="20230812 00:01:42.024"/>
 </kw>
 <kw name="PUT On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -584,37 +584,37 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=200</arg>
 <doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:39.717" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addMovie 
+<msg timestamp="20230812 00:01:42.037" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addMovie 
  path_url=/api/v1/addMovie 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '55'} 
  body=b'{"name": "UnBoundedMovie", "movieId": "unboundMovieID"}' 
  </msg>
-<msg timestamp="20230811 23:34:39.722" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addMovie 
+<msg timestamp="20230812 00:01:42.037" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addMovie 
  status=200, reason=OK 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:39 GMT', 'Content-length': '2'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:42 GMT', 'Content-length': '2'} 
  body=OK 
  </msg>
-<msg timestamp="20230811 23:34:39.722" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:39.711" endtime="20230811 23:34:39.722"/>
+<msg timestamp="20230812 00:01:42.038" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:42.024" endtime="20230812 00:01:42.038"/>
 </kw>
 <timeout value="30 seconds"/>
-<status status="PASS" starttime="20230811 23:34:39.634" endtime="20230811 23:34:39.722"/>
+<status status="PASS" starttime="20230812 00:01:41.937" endtime="20230812 00:01:42.038"/>
 </test>
 <test id="s1-s1-s1-s1-s1-t4" name="addMovieFail" line="86">
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.726" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.726" endtime="20230811 23:34:39.726"/>
+<msg timestamp="20230812 00:01:42.038" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.038" endtime="20230812 00:01:42.038"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>name=A_Few_Good_Men_butDifferentName</arg>
 <arg>movieId=afewgoodmenid</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.726" level="INFO">${params} = {'name': 'A_Few_Good_Men_butDifferentName', 'movieId': 'afewgoodmenid'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.726" endtime="20230811 23:34:39.726"/>
+<msg timestamp="20230812 00:01:42.038" level="INFO">${params} = {'name': 'A_Few_Good_Men_butDifferentName', 'movieId': 'afewgoodmenid'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.038" endtime="20230812 00:01:42.038"/>
 </kw>
 <kw name="PUT On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -624,33 +624,33 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=400</arg>
 <doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:39.738" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addMovie 
+<msg timestamp="20230812 00:01:42.050" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addMovie 
  path_url=/api/v1/addMovie 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '71'} 
  body=b'{"name": "A_Few_Good_Men_butDifferentName", "movieId": "afewgoodmenid"}' 
  </msg>
-<msg timestamp="20230811 23:34:39.738" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addMovie 
+<msg timestamp="20230812 00:01:42.050" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addMovie 
  status=400, reason=Bad Request 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:39 GMT', 'Content-length': '11'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:42 GMT', 'Content-length': '11'} 
  body=BAD REQUEST 
  </msg>
-<msg timestamp="20230811 23:34:39.738" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:39.726" endtime="20230811 23:34:39.738"/>
+<msg timestamp="20230812 00:01:42.050" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:42.038" endtime="20230812 00:01:42.050"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.740" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.738" endtime="20230811 23:34:39.740"/>
+<msg timestamp="20230812 00:01:42.050" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.050" endtime="20230812 00:01:42.050"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>movieId=afewgoodmenid</arg>
 <arg>name=A_Few_Good_Men_butDifferentName</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.740" level="INFO">${params} = {'movieId': 'afewgoodmenid', 'name': 'A_Few_Good_Men_butDifferentName'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.740" endtime="20230811 23:34:39.740"/>
+<msg timestamp="20230812 00:01:42.053" level="INFO">${params} = {'movieId': 'afewgoodmenid', 'name': 'A_Few_Good_Men_butDifferentName'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.053" endtime="20230812 00:01:42.053"/>
 </kw>
 <kw name="PUT On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -660,33 +660,33 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=400</arg>
 <doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:39.740" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addMovie 
+<msg timestamp="20230812 00:01:42.056" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addMovie 
  path_url=/api/v1/addMovie 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '71'} 
  body=b'{"movieId": "afewgoodmenid", "name": "A_Few_Good_Men_butDifferentName"}' 
  </msg>
-<msg timestamp="20230811 23:34:39.740" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addMovie 
+<msg timestamp="20230812 00:01:42.056" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addMovie 
  status=400, reason=Bad Request 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:39 GMT', 'Content-length': '11'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:42 GMT', 'Content-length': '11'} 
  body=BAD REQUEST 
  </msg>
-<msg timestamp="20230811 23:34:39.740" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:39.740" endtime="20230811 23:34:39.740"/>
+<msg timestamp="20230812 00:01:42.056" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:42.053" endtime="20230812 00:01:42.056"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.740" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.740" endtime="20230811 23:34:39.740"/>
+<msg timestamp="20230812 00:01:42.056" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.056" endtime="20230812 00:01:42.056"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>name=A_Few_Good_Men_butDifferentName</arg>
 <arg>movieId=afewgoodmenid</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.740" level="INFO">${params} = {'name': 'A_Few_Good_Men_butDifferentName', 'movieId': 'afewgoodmenid'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.740" endtime="20230811 23:34:39.740"/>
+<msg timestamp="20230812 00:01:42.064" level="INFO">${params} = {'name': 'A_Few_Good_Men_butDifferentName', 'movieId': 'afewgoodmenid'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.064" endtime="20230812 00:01:42.064"/>
 </kw>
 <kw name="PUT On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -696,33 +696,33 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=400</arg>
 <doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:39.764" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addMovie 
+<msg timestamp="20230812 00:01:42.070" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addMovie 
  path_url=/api/v1/addMovie 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '71'} 
  body=b'{"name": "A_Few_Good_Men_butDifferentName", "movieId": "afewgoodmenid"}' 
  </msg>
-<msg timestamp="20230811 23:34:39.764" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addMovie 
+<msg timestamp="20230812 00:01:42.070" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addMovie 
  status=400, reason=Bad Request 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:39 GMT', 'Content-length': '11'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:42 GMT', 'Content-length': '11'} 
  body=BAD REQUEST 
  </msg>
-<msg timestamp="20230811 23:34:39.764" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:39.740" endtime="20230811 23:34:39.764"/>
+<msg timestamp="20230812 00:01:42.070" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:42.066" endtime="20230812 00:01:42.070"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.764" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.764" endtime="20230811 23:34:39.767"/>
+<msg timestamp="20230812 00:01:42.070" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.070" endtime="20230812 00:01:42.070"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>name=A_Few_Good_Men_butDifferentName</arg>
 <arg>movieId=afewgoodmenid</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.768" level="INFO">${params} = {'name': 'A_Few_Good_Men_butDifferentName', 'movieId': 'afewgoodmenid'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.767" endtime="20230811 23:34:39.768"/>
+<msg timestamp="20230812 00:01:42.070" level="INFO">${params} = {'name': 'A_Few_Good_Men_butDifferentName', 'movieId': 'afewgoodmenid'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.070" endtime="20230812 00:01:42.070"/>
 </kw>
 <kw name="PUT On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -732,33 +732,33 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=400</arg>
 <doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:39.780" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addMovie 
+<msg timestamp="20230812 00:01:42.083" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addMovie 
  path_url=/api/v1/addMovie 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '71'} 
  body=b'{"name": "A_Few_Good_Men_butDifferentName", "movieId": "afewgoodmenid"}' 
  </msg>
-<msg timestamp="20230811 23:34:39.780" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addMovie 
+<msg timestamp="20230812 00:01:42.083" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addMovie 
  status=400, reason=Bad Request 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:39 GMT', 'Content-length': '11'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:42 GMT', 'Content-length': '11'} 
  body=BAD REQUEST 
  </msg>
-<msg timestamp="20230811 23:34:39.781" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:39.768" endtime="20230811 23:34:39.781"/>
+<msg timestamp="20230812 00:01:42.083" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:42.081" endtime="20230812 00:01:42.083"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.782" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.781" endtime="20230811 23:34:39.782"/>
+<msg timestamp="20230812 00:01:42.083" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.083" endtime="20230812 00:01:42.083"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>name=A_Few_Good_Men_butDifferentName</arg>
 <arg>movieId=${null}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.782" level="INFO">${params} = {'name': 'A_Few_Good_Men_butDifferentName', 'movieId': None}</msg>
-<status status="PASS" starttime="20230811 23:34:39.782" endtime="20230811 23:34:39.782"/>
+<msg timestamp="20230812 00:01:42.083" level="INFO">${params} = {'name': 'A_Few_Good_Men_butDifferentName', 'movieId': None}</msg>
+<status status="PASS" starttime="20230812 00:01:42.083" endtime="20230812 00:01:42.083"/>
 </kw>
 <kw name="PUT On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -768,33 +768,33 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=400</arg>
 <doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:39.782" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addMovie 
+<msg timestamp="20230812 00:01:42.098" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addMovie 
  path_url=/api/v1/addMovie 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '60'} 
  body=b'{"name": "A_Few_Good_Men_butDifferentName", "movieId": null}' 
  </msg>
-<msg timestamp="20230811 23:34:39.782" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addMovie 
+<msg timestamp="20230812 00:01:42.098" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addMovie 
  status=400, reason=Bad Request 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:39 GMT', 'Content-length': '11'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:42 GMT', 'Content-length': '11'} 
  body=BAD REQUEST 
  </msg>
-<msg timestamp="20230811 23:34:39.782" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:39.782" endtime="20230811 23:34:39.782"/>
+<msg timestamp="20230812 00:01:42.098" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:42.083" endtime="20230812 00:01:42.098"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.782" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.782" endtime="20230811 23:34:39.782"/>
+<msg timestamp="20230812 00:01:42.098" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.098" endtime="20230812 00:01:42.098"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>name=${null}</arg>
 <arg>movieId=afewgoodmenid</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.789" level="INFO">${params} = {'name': None, 'movieId': 'afewgoodmenid'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.789" endtime="20230811 23:34:39.789"/>
+<msg timestamp="20230812 00:01:42.098" level="INFO">${params} = {'name': None, 'movieId': 'afewgoodmenid'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.098" endtime="20230812 00:01:42.098"/>
 </kw>
 <kw name="PUT On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -804,37 +804,37 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=400</arg>
 <doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:39.789" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addMovie 
+<msg timestamp="20230812 00:01:42.106" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addMovie 
  path_url=/api/v1/addMovie 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '42'} 
  body=b'{"name": null, "movieId": "afewgoodmenid"}' 
  </msg>
-<msg timestamp="20230811 23:34:39.789" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addMovie 
+<msg timestamp="20230812 00:01:42.106" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addMovie 
  status=400, reason=Bad Request 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:39 GMT', 'Content-length': '11'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:42 GMT', 'Content-length': '11'} 
  body=BAD REQUEST 
  </msg>
-<msg timestamp="20230811 23:34:39.789" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:39.789" endtime="20230811 23:34:39.789"/>
+<msg timestamp="20230812 00:01:42.106" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:42.098" endtime="20230812 00:01:42.106"/>
 </kw>
 <timeout value="30 seconds"/>
-<status status="PASS" starttime="20230811 23:34:39.722" endtime="20230811 23:34:39.796"/>
+<status status="PASS" starttime="20230812 00:01:42.038" endtime="20230812 00:01:42.106"/>
 </test>
 <test id="s1-s1-s1-s1-s1-t5" name="addRelationshipPass" line="120">
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.796" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.796" endtime="20230811 23:34:39.796"/>
+<msg timestamp="20230812 00:01:42.113" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.113" endtime="20230812 00:01:42.113"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>actorId=nm0000102</arg>
 <arg>movieId=afewgoodmenid</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.796" level="INFO">${params} = {'actorId': 'nm0000102', 'movieId': 'afewgoodmenid'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.796" endtime="20230811 23:34:39.796"/>
+<msg timestamp="20230812 00:01:42.114" level="INFO">${params} = {'actorId': 'nm0000102', 'movieId': 'afewgoodmenid'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.113" endtime="20230812 00:01:42.114"/>
 </kw>
 <kw name="PUT On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -844,37 +844,33 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=200</arg>
 <doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:39.874" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addRelationship 
+<msg timestamp="20230812 00:01:42.177" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addRelationship 
  path_url=/api/v1/addRelationship 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '52'} 
  body=b'{"actorId": "nm0000102", "movieId": "afewgoodmenid"}' 
  </msg>
-<msg timestamp="20230811 23:34:39.874" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addRelationship 
+<msg timestamp="20230812 00:01:42.177" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addRelationship 
  status=200, reason=OK 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:39 GMT', 'Content-length': '2'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:42 GMT', 'Content-length': '2'} 
  body=OK 
  </msg>
-<msg timestamp="20230811 23:34:39.874" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:39.796" endtime="20230811 23:34:39.874"/>
+<msg timestamp="20230812 00:01:42.177" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:42.114" endtime="20230812 00:01:42.177"/>
 </kw>
-<timeout value="30 seconds"/>
-<status status="PASS" starttime="20230811 23:34:39.796" endtime="20230811 23:34:39.874"/>
-</test>
-<test id="s1-s1-s1-s1-s1-t6" name="addRelationshipPass1" line="126">
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.874" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.874" endtime="20230811 23:34:39.874"/>
+<msg timestamp="20230812 00:01:42.177" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.177" endtime="20230812 00:01:42.177"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>actorId=actora</arg>
 <arg>movieId=movie1id</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.874" level="INFO">${params} = {'actorId': 'actora', 'movieId': 'movie1id'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.874" endtime="20230811 23:34:39.874"/>
+<msg timestamp="20230812 00:01:42.192" level="INFO">${params} = {'actorId': 'actora', 'movieId': 'movie1id'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.192" endtime="20230812 00:01:42.192"/>
 </kw>
 <kw name="PUT On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -884,37 +880,33 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=200</arg>
 <doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:39.904" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addRelationship 
+<msg timestamp="20230812 00:01:42.208" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addRelationship 
  path_url=/api/v1/addRelationship 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '44'} 
  body=b'{"actorId": "actora", "movieId": "movie1id"}' 
  </msg>
-<msg timestamp="20230811 23:34:39.904" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addRelationship 
+<msg timestamp="20230812 00:01:42.208" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addRelationship 
  status=200, reason=OK 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:39 GMT', 'Content-length': '2'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:42 GMT', 'Content-length': '2'} 
  body=OK 
  </msg>
-<msg timestamp="20230811 23:34:39.904" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:39.874" endtime="20230811 23:34:39.904"/>
+<msg timestamp="20230812 00:01:42.209" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:42.192" endtime="20230812 00:01:42.209"/>
 </kw>
-<timeout value="30 seconds"/>
-<status status="PASS" starttime="20230811 23:34:39.874" endtime="20230811 23:34:39.904"/>
-</test>
-<test id="s1-s1-s1-s1-s1-t7" name="addRelationshipPass1.1" line="130">
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.904" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.904" endtime="20230811 23:34:39.904"/>
+<msg timestamp="20230812 00:01:42.209" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.209" endtime="20230812 00:01:42.209"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>actorId=actora</arg>
 <arg>movieId=afewgoodmenid</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.904" level="INFO">${params} = {'actorId': 'actora', 'movieId': 'afewgoodmenid'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.904" endtime="20230811 23:34:39.904"/>
+<msg timestamp="20230812 00:01:42.209" level="INFO">${params} = {'actorId': 'actora', 'movieId': 'afewgoodmenid'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.209" endtime="20230812 00:01:42.209"/>
 </kw>
 <kw name="PUT On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -924,37 +916,33 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=200</arg>
 <doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:39.919" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addRelationship 
+<msg timestamp="20230812 00:01:42.225" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addRelationship 
  path_url=/api/v1/addRelationship 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '49'} 
  body=b'{"actorId": "actora", "movieId": "afewgoodmenid"}' 
  </msg>
-<msg timestamp="20230811 23:34:39.919" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addRelationship 
+<msg timestamp="20230812 00:01:42.225" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addRelationship 
  status=200, reason=OK 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:39 GMT', 'Content-length': '2'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:42 GMT', 'Content-length': '2'} 
  body=OK 
  </msg>
-<msg timestamp="20230811 23:34:39.919" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:39.904" endtime="20230811 23:34:39.919"/>
+<msg timestamp="20230812 00:01:42.225" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:42.209" endtime="20230812 00:01:42.225"/>
 </kw>
-<timeout value="30 seconds"/>
-<status status="PASS" starttime="20230811 23:34:39.904" endtime="20230811 23:34:39.919"/>
-</test>
-<test id="s1-s1-s1-s1-s1-t8" name="addRelationshipPass3" line="134">
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.930" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.919" endtime="20230811 23:34:39.930"/>
+<msg timestamp="20230812 00:01:42.229" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.225" endtime="20230812 00:01:42.229"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>actorId=actorb</arg>
 <arg>movieId=movie2id</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.930" level="INFO">${params} = {'actorId': 'actorb', 'movieId': 'movie2id'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.930" endtime="20230811 23:34:39.930"/>
+<msg timestamp="20230812 00:01:42.229" level="INFO">${params} = {'actorId': 'actorb', 'movieId': 'movie2id'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.229" endtime="20230812 00:01:42.229"/>
 </kw>
 <kw name="PUT On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -964,37 +952,33 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=200</arg>
 <doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:39.941" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addRelationship 
+<msg timestamp="20230812 00:01:42.240" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addRelationship 
  path_url=/api/v1/addRelationship 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '44'} 
  body=b'{"actorId": "actorb", "movieId": "movie2id"}' 
  </msg>
-<msg timestamp="20230811 23:34:39.941" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addRelationship 
+<msg timestamp="20230812 00:01:42.240" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addRelationship 
  status=200, reason=OK 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:39 GMT', 'Content-length': '2'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:42 GMT', 'Content-length': '2'} 
  body=OK 
  </msg>
-<msg timestamp="20230811 23:34:39.941" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:39.931" endtime="20230811 23:34:39.941"/>
+<msg timestamp="20230812 00:01:42.240" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:42.230" endtime="20230812 00:01:42.240"/>
 </kw>
-<timeout value="30 seconds"/>
-<status status="PASS" starttime="20230811 23:34:39.919" endtime="20230811 23:34:39.941"/>
-</test>
-<test id="s1-s1-s1-s1-s1-t9" name="addRelationshipPass3.4" line="138">
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.941" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.941" endtime="20230811 23:34:39.941"/>
+<msg timestamp="20230812 00:01:42.253" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.240" endtime="20230812 00:01:42.253"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>actorId=actorb</arg>
 <arg>movieId=movie1id</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.941" level="INFO">${params} = {'actorId': 'actorb', 'movieId': 'movie1id'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.941" endtime="20230811 23:34:39.941"/>
+<msg timestamp="20230812 00:01:42.253" level="INFO">${params} = {'actorId': 'actorb', 'movieId': 'movie1id'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.253" endtime="20230812 00:01:42.253"/>
 </kw>
 <kw name="PUT On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -1004,37 +988,33 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=200</arg>
 <doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:39.973" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addRelationship 
+<msg timestamp="20230812 00:01:42.271" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addRelationship 
  path_url=/api/v1/addRelationship 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '44'} 
  body=b'{"actorId": "actorb", "movieId": "movie1id"}' 
  </msg>
-<msg timestamp="20230811 23:34:39.973" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addRelationship 
+<msg timestamp="20230812 00:01:42.271" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addRelationship 
  status=200, reason=OK 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:39 GMT', 'Content-length': '2'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:42 GMT', 'Content-length': '2'} 
  body=OK 
  </msg>
-<msg timestamp="20230811 23:34:39.973" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:39.941" endtime="20230811 23:34:39.973"/>
+<msg timestamp="20230812 00:01:42.271" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:42.254" endtime="20230812 00:01:42.271"/>
 </kw>
-<timeout value="30 seconds"/>
-<status status="PASS" starttime="20230811 23:34:39.941" endtime="20230811 23:34:39.975"/>
-</test>
-<test id="s1-s1-s1-s1-s1-t10" name="addRelationshipPass5" line="143">
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.976" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.976" endtime="20230811 23:34:39.976"/>
+<msg timestamp="20230812 00:01:42.275" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.271" endtime="20230812 00:01:42.275"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>actorId=johnnydepp</arg>
 <arg>movieId=movie2id</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:39.976" level="INFO">${params} = {'actorId': 'johnnydepp', 'movieId': 'movie2id'}</msg>
-<status status="PASS" starttime="20230811 23:34:39.976" endtime="20230811 23:34:39.976"/>
+<msg timestamp="20230812 00:01:42.275" level="INFO">${params} = {'actorId': 'johnnydepp', 'movieId': 'movie2id'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.275" endtime="20230812 00:01:42.275"/>
 </kw>
 <kw name="PUT On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -1044,37 +1024,33 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=200</arg>
 <doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:39.999" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addRelationship 
+<msg timestamp="20230812 00:01:42.291" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addRelationship 
  path_url=/api/v1/addRelationship 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '48'} 
  body=b'{"actorId": "johnnydepp", "movieId": "movie2id"}' 
  </msg>
-<msg timestamp="20230811 23:34:39.999" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addRelationship 
+<msg timestamp="20230812 00:01:42.291" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addRelationship 
  status=200, reason=OK 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:39 GMT', 'Content-length': '2'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:42 GMT', 'Content-length': '2'} 
  body=OK 
  </msg>
-<msg timestamp="20230811 23:34:39.999" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:39.976" endtime="20230811 23:34:39.999"/>
+<msg timestamp="20230812 00:01:42.291" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:42.276" endtime="20230812 00:01:42.291"/>
 </kw>
-<timeout value="30 seconds"/>
-<status status="PASS" starttime="20230811 23:34:39.976" endtime="20230811 23:34:39.999"/>
-</test>
-<test id="s1-s1-s1-s1-s1-t11" name="addRelationshipPass4" line="149">
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.003" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:40.003" endtime="20230811 23:34:40.003"/>
+<msg timestamp="20230812 00:01:42.291" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.291" endtime="20230812 00:01:42.291"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>actorId=outOfReachID</arg>
 <arg>movieId=unboundMovieID</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.005" level="INFO">${params} = {'actorId': 'outOfReachID', 'movieId': 'unboundMovieID'}</msg>
-<status status="PASS" starttime="20230811 23:34:40.003" endtime="20230811 23:34:40.005"/>
+<msg timestamp="20230812 00:01:42.291" level="INFO">${params} = {'actorId': 'outOfReachID', 'movieId': 'unboundMovieID'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.291" endtime="20230812 00:01:42.291"/>
 </kw>
 <kw name="PUT On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -1084,37 +1060,37 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=200</arg>
 <doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:40.032" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addRelationship 
+<msg timestamp="20230812 00:01:42.311" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addRelationship 
  path_url=/api/v1/addRelationship 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '56'} 
  body=b'{"actorId": "outOfReachID", "movieId": "unboundMovieID"}' 
  </msg>
-<msg timestamp="20230811 23:34:40.032" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addRelationship 
+<msg timestamp="20230812 00:01:42.311" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addRelationship 
  status=200, reason=OK 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:40 GMT', 'Content-length': '2'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:42 GMT', 'Content-length': '2'} 
  body=OK 
  </msg>
-<msg timestamp="20230811 23:34:40.032" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:40.005" endtime="20230811 23:34:40.032"/>
+<msg timestamp="20230812 00:01:42.311" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:42.291" endtime="20230812 00:01:42.311"/>
 </kw>
 <timeout value="30 seconds"/>
-<status status="PASS" starttime="20230811 23:34:40.001" endtime="20230811 23:34:40.032"/>
+<status status="PASS" starttime="20230812 00:01:42.112" endtime="20230812 00:01:42.311"/>
 </test>
-<test id="s1-s1-s1-s1-s1-t12" name="addRelationshipFail" line="155">
+<test id="s1-s1-s1-s1-s1-t6" name="addRelationshipFail" line="152">
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.035" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:40.035" endtime="20230811 23:34:40.035"/>
+<msg timestamp="20230812 00:01:42.318" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.318" endtime="20230812 00:01:42.318"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>actorId=nm0000102</arg>
 <arg>movieId=afewgoodmenid</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.035" level="INFO">${params} = {'actorId': 'nm0000102', 'movieId': 'afewgoodmenid'}</msg>
-<status status="PASS" starttime="20230811 23:34:40.035" endtime="20230811 23:34:40.035"/>
+<msg timestamp="20230812 00:01:42.319" level="INFO">${params} = {'actorId': 'nm0000102', 'movieId': 'afewgoodmenid'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.319" endtime="20230812 00:01:42.319"/>
 </kw>
 <kw name="PUT On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -1124,33 +1100,33 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=400</arg>
 <doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:40.054" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addRelationship 
+<msg timestamp="20230812 00:01:42.337" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addRelationship 
  path_url=/api/v1/addRelationship 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '52'} 
  body=b'{"actorId": "nm0000102", "movieId": "afewgoodmenid"}' 
  </msg>
-<msg timestamp="20230811 23:34:40.054" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addRelationship 
+<msg timestamp="20230812 00:01:42.337" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addRelationship 
  status=400, reason=Bad Request 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:40 GMT', 'Content-length': '11'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:42 GMT', 'Content-length': '11'} 
  body=BAD REQUEST 
  </msg>
-<msg timestamp="20230811 23:34:40.054" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:40.035" endtime="20230811 23:34:40.054"/>
+<msg timestamp="20230812 00:01:42.337" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:42.319" endtime="20230812 00:01:42.337"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.054" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:40.054" endtime="20230811 23:34:40.054"/>
+<msg timestamp="20230812 00:01:42.337" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.337" endtime="20230812 00:01:42.337"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>actorId=nm0000102</arg>
 <arg>movieId=${null}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.061" level="INFO">${params} = {'actorId': 'nm0000102', 'movieId': None}</msg>
-<status status="PASS" starttime="20230811 23:34:40.054" endtime="20230811 23:34:40.061"/>
+<msg timestamp="20230812 00:01:42.337" level="INFO">${params} = {'actorId': 'nm0000102', 'movieId': None}</msg>
+<status status="PASS" starttime="20230812 00:01:42.337" endtime="20230812 00:01:42.337"/>
 </kw>
 <kw name="PUT On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -1160,33 +1136,33 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=400</arg>
 <doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:40.061" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addRelationship 
+<msg timestamp="20230812 00:01:42.345" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addRelationship 
  path_url=/api/v1/addRelationship 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '41'} 
  body=b'{"actorId": "nm0000102", "movieId": null}' 
  </msg>
-<msg timestamp="20230811 23:34:40.061" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addRelationship 
+<msg timestamp="20230812 00:01:42.345" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addRelationship 
  status=400, reason=Bad Request 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:40 GMT', 'Content-length': '11'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:42 GMT', 'Content-length': '11'} 
  body=BAD REQUEST 
  </msg>
-<msg timestamp="20230811 23:34:40.061" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:40.061" endtime="20230811 23:34:40.067"/>
+<msg timestamp="20230812 00:01:42.345" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:42.342" endtime="20230812 00:01:42.345"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.068" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:40.067" endtime="20230811 23:34:40.068"/>
+<msg timestamp="20230812 00:01:42.345" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.345" endtime="20230812 00:01:42.345"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>actorId=${null}</arg>
 <arg>movieId=afewgoodmenid</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.070" level="INFO">${params} = {'actorId': None, 'movieId': 'afewgoodmenid'}</msg>
-<status status="PASS" starttime="20230811 23:34:40.068" endtime="20230811 23:34:40.070"/>
+<msg timestamp="20230812 00:01:42.350" level="INFO">${params} = {'actorId': None, 'movieId': 'afewgoodmenid'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.350" endtime="20230812 00:01:42.351"/>
 </kw>
 <kw name="PUT On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -1196,33 +1172,33 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=400</arg>
 <doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:40.070" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addRelationship 
+<msg timestamp="20230812 00:01:42.355" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addRelationship 
  path_url=/api/v1/addRelationship 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '45'} 
  body=b'{"actorId": null, "movieId": "afewgoodmenid"}' 
  </msg>
-<msg timestamp="20230811 23:34:40.070" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addRelationship 
+<msg timestamp="20230812 00:01:42.355" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addRelationship 
  status=400, reason=Bad Request 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:40 GMT', 'Content-length': '11'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:42 GMT', 'Content-length': '11'} 
  body=BAD REQUEST 
  </msg>
-<msg timestamp="20230811 23:34:40.070" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:40.070" endtime="20230811 23:34:40.070"/>
+<msg timestamp="20230812 00:01:42.355" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:42.351" endtime="20230812 00:01:42.355"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.070" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:40.070" endtime="20230811 23:34:40.070"/>
+<msg timestamp="20230812 00:01:42.355" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.355" endtime="20230812 00:01:42.355"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>actorId=nm0000102</arg>
 <arg>movieId=nonexistentID</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.079" level="INFO">${params} = {'actorId': 'nm0000102', 'movieId': 'nonexistentID'}</msg>
-<status status="PASS" starttime="20230811 23:34:40.079" endtime="20230811 23:34:40.079"/>
+<msg timestamp="20230812 00:01:42.361" level="INFO">${params} = {'actorId': 'nm0000102', 'movieId': 'nonexistentID'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.355" endtime="20230812 00:01:42.361"/>
 </kw>
 <kw name="PUT On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -1232,33 +1208,33 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=404</arg>
 <doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:40.091" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addRelationship 
+<msg timestamp="20230812 00:01:42.366" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addRelationship 
  path_url=/api/v1/addRelationship 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '52'} 
  body=b'{"actorId": "nm0000102", "movieId": "nonexistentID"}' 
  </msg>
-<msg timestamp="20230811 23:34:40.091" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addRelationship 
+<msg timestamp="20230812 00:01:42.366" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addRelationship 
  status=404, reason=Not Found 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:40 GMT', 'Content-length': '9'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:42 GMT', 'Content-length': '9'} 
  body=NOT FOUND 
  </msg>
-<msg timestamp="20230811 23:34:40.091" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:40.079" endtime="20230811 23:34:40.091"/>
+<msg timestamp="20230812 00:01:42.366" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:42.361" endtime="20230812 00:01:42.366"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.091" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:40.091" endtime="20230811 23:34:40.091"/>
+<msg timestamp="20230812 00:01:42.366" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.366" endtime="20230812 00:01:42.366"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>actorId=nonexistingActorID</arg>
 <arg>movieId=afewgoodmenid</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.094" level="INFO">${params} = {'actorId': 'nonexistingActorID', 'movieId': 'afewgoodmenid'}</msg>
-<status status="PASS" starttime="20230811 23:34:40.094" endtime="20230811 23:34:40.094"/>
+<msg timestamp="20230812 00:01:42.366" level="INFO">${params} = {'actorId': 'nonexistingActorID', 'movieId': 'afewgoodmenid'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.366" endtime="20230812 00:01:42.366"/>
 </kw>
 <kw name="PUT On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -1268,33 +1244,33 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=404</arg>
 <doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:40.109" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addRelationship 
+<msg timestamp="20230812 00:01:42.382" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addRelationship 
  path_url=/api/v1/addRelationship 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '61'} 
  body=b'{"actorId": "nonexistingActorID", "movieId": "afewgoodmenid"}' 
  </msg>
-<msg timestamp="20230811 23:34:40.109" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addRelationship 
+<msg timestamp="20230812 00:01:42.382" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addRelationship 
  status=404, reason=Not Found 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:40 GMT', 'Content-length': '9'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:42 GMT', 'Content-length': '9'} 
  body=NOT FOUND 
  </msg>
-<msg timestamp="20230811 23:34:40.109" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:40.095" endtime="20230811 23:34:40.109"/>
+<msg timestamp="20230812 00:01:42.382" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:42.375" endtime="20230812 00:01:42.382"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.109" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:40.109" endtime="20230811 23:34:40.109"/>
+<msg timestamp="20230812 00:01:42.382" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.382" endtime="20230812 00:01:42.382"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>actorId=nm0000102</arg>
 <arg>movieId=afewgoodmenid</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.112" level="INFO">${params} = {'actorId': 'nm0000102', 'movieId': 'afewgoodmenid'}</msg>
-<status status="PASS" starttime="20230811 23:34:40.112" endtime="20230811 23:34:40.112"/>
+<msg timestamp="20230812 00:01:42.388" level="INFO">${params} = {'actorId': 'nm0000102', 'movieId': 'afewgoodmenid'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.388" endtime="20230812 00:01:42.389"/>
 </kw>
 <kw name="PUT On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -1304,36 +1280,36 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=400</arg>
 <doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:40.129" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addRelationship 
+<msg timestamp="20230812 00:01:42.400" level="INFO">PUT Request : url=http://localhost:8080/api/v1/addRelationship 
  path_url=/api/v1/addRelationship 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '52'} 
  body=b'{"actorId": "nm0000102", "movieId": "afewgoodmenid"}' 
  </msg>
-<msg timestamp="20230811 23:34:40.129" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addRelationship 
+<msg timestamp="20230812 00:01:42.400" level="INFO">PUT Response : url=http://localhost:8080/api/v1/addRelationship 
  status=400, reason=Bad Request 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:40 GMT', 'Content-length': '11'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:42 GMT', 'Content-length': '11'} 
  body=BAD REQUEST 
  </msg>
-<msg timestamp="20230811 23:34:40.129" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:40.112" endtime="20230811 23:34:40.129"/>
+<msg timestamp="20230812 00:01:42.400" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:42.389" endtime="20230812 00:01:42.400"/>
 </kw>
 <timeout value="30 seconds"/>
-<status status="PASS" starttime="20230811 23:34:40.035" endtime="20230811 23:34:40.129"/>
+<status status="PASS" starttime="20230812 00:01:42.317" endtime="20230812 00:01:42.400"/>
 </test>
-<test id="s1-s1-s1-s1-s1-t13" name="getActorPass" line="186">
+<test id="s1-s1-s1-s1-s1-t7" name="getActorPass" line="183">
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.129" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:40.129" endtime="20230811 23:34:40.129"/>
+<msg timestamp="20230812 00:01:42.411" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.411" endtime="20230812 00:01:42.411"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>actorId=nm0000102</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.129" level="INFO">${params} = {'actorId': 'nm0000102'}</msg>
-<status status="PASS" starttime="20230811 23:34:40.129" endtime="20230811 23:34:40.129"/>
+<msg timestamp="20230812 00:01:42.411" level="INFO">${params} = {'actorId': 'nm0000102'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.411" endtime="20230812 00:01:42.411"/>
 </kw>
 <kw name="GET On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -1343,54 +1319,54 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=200</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:40.214" level="INFO">GET Request : url=http://localhost:8080/api/v1/getActor?actorId=nm0000102 
+<msg timestamp="20230812 00:01:42.416" level="INFO">GET Request : url=http://localhost:8080/api/v1/getActor?actorId=nm0000102 
  path_url=/api/v1/getActor?actorId=nm0000102 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
  body=None 
  </msg>
-<msg timestamp="20230811 23:34:40.214" level="INFO">GET Response : url=http://localhost:8080/api/v1/getActor?actorId=nm0000102 
+<msg timestamp="20230812 00:01:42.416" level="INFO">GET Response : url=http://localhost:8080/api/v1/getActor?actorId=nm0000102 
  status=200, reason=OK 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:40 GMT', 'Content-length': '71'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:42 GMT', 'Content-length': '71'} 
  body={"actorId":"nm0000102","name":"Kavin Bacon","movies":["afewgoodmenid"]} 
  </msg>
-<msg timestamp="20230811 23:34:40.214" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:40.129" endtime="20230811 23:34:40.214"/>
+<msg timestamp="20230812 00:01:42.416" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:42.414" endtime="20230812 00:01:42.416"/>
 </kw>
 <kw name="Should Be Equal As Strings" library="BuiltIn">
 <arg>${resp.json()['actorId']}</arg>
 <arg>nm0000102</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" starttime="20230811 23:34:40.214" endtime="20230811 23:34:40.214"/>
+<status status="PASS" starttime="20230812 00:01:42.429" endtime="20230812 00:01:42.431"/>
 </kw>
 <kw name="Should Be Equal As Strings" library="BuiltIn">
 <arg>${resp.json()['name']}</arg>
 <arg>Kavin Bacon</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" starttime="20230811 23:34:40.214" endtime="20230811 23:34:40.214"/>
+<status status="PASS" starttime="20230812 00:01:42.431" endtime="20230812 00:01:42.433"/>
 </kw>
 <kw name="List Should Contain Value" library="Collections">
 <arg>${resp.json()['movies']}</arg>
 <arg>afewgoodmenid</arg>
 <doc>Fails if the ``value`` is not found from ``list``.</doc>
-<status status="PASS" starttime="20230811 23:34:40.214" endtime="20230811 23:34:40.222"/>
+<status status="PASS" starttime="20230812 00:01:42.433" endtime="20230812 00:01:42.436"/>
 </kw>
 <timeout value="30 seconds"/>
-<status status="PASS" starttime="20230811 23:34:40.129" endtime="20230811 23:34:40.222"/>
+<status status="PASS" starttime="20230812 00:01:42.410" endtime="20230812 00:01:42.436"/>
 </test>
-<test id="s1-s1-s1-s1-s1-t14" name="getActorFail" line="195">
+<test id="s1-s1-s1-s1-s1-t8" name="getActorFail" line="192">
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.224" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:40.224" endtime="20230811 23:34:40.224"/>
+<msg timestamp="20230812 00:01:42.440" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.440" endtime="20230812 00:01:42.440"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>Nonexistentparameter=nm0000102</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.224" level="INFO">${params} = {'Nonexistentparameter': 'nm0000102'}</msg>
-<status status="PASS" starttime="20230811 23:34:40.224" endtime="20230811 23:34:40.224"/>
+<msg timestamp="20230812 00:01:42.440" level="INFO">${params} = {'Nonexistentparameter': 'nm0000102'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.440" endtime="20230812 00:01:42.440"/>
 </kw>
 <kw name="GET On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -1400,32 +1376,32 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=400</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:40.227" level="INFO">GET Request : url=http://localhost:8080/api/v1/getActor?Nonexistentparameter=nm0000102 
+<msg timestamp="20230812 00:01:42.449" level="INFO">GET Request : url=http://localhost:8080/api/v1/getActor?Nonexistentparameter=nm0000102 
  path_url=/api/v1/getActor?Nonexistentparameter=nm0000102 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
  body=None 
  </msg>
-<msg timestamp="20230811 23:34:40.227" level="INFO">GET Response : url=http://localhost:8080/api/v1/getActor?Nonexistentparameter=nm0000102 
+<msg timestamp="20230812 00:01:42.449" level="INFO">GET Response : url=http://localhost:8080/api/v1/getActor?Nonexistentparameter=nm0000102 
  status=400, reason=Bad Request 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:40 GMT', 'Content-length': '11'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:42 GMT', 'Content-length': '11'} 
  body=BAD REQUEST 
  </msg>
-<msg timestamp="20230811 23:34:40.227" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:40.224" endtime="20230811 23:34:40.227"/>
+<msg timestamp="20230812 00:01:42.449" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:42.443" endtime="20230812 00:01:42.449"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.230" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:40.230" endtime="20230811 23:34:40.230"/>
+<msg timestamp="20230812 00:01:42.449" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.449" endtime="20230812 00:01:42.449"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>actorId=${null}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.230" level="INFO">${params} = {'actorId': None}</msg>
-<status status="PASS" starttime="20230811 23:34:40.230" endtime="20230811 23:34:40.230"/>
+<msg timestamp="20230812 00:01:42.453" level="INFO">${params} = {'actorId': None}</msg>
+<status status="PASS" starttime="20230812 00:01:42.451" endtime="20230812 00:01:42.453"/>
 </kw>
 <kw name="GET On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -1435,32 +1411,32 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=400</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:40.232" level="INFO">GET Request : url=http://localhost:8080/api/v1/getActor 
+<msg timestamp="20230812 00:01:42.457" level="INFO">GET Request : url=http://localhost:8080/api/v1/getActor 
  path_url=/api/v1/getActor 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
  body=None 
  </msg>
-<msg timestamp="20230811 23:34:40.232" level="INFO">GET Response : url=http://localhost:8080/api/v1/getActor 
+<msg timestamp="20230812 00:01:42.457" level="INFO">GET Response : url=http://localhost:8080/api/v1/getActor 
  status=400, reason=Bad Request 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:40 GMT', 'Content-length': '11'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:42 GMT', 'Content-length': '11'} 
  body=BAD REQUEST 
  </msg>
-<msg timestamp="20230811 23:34:40.232" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:40.230" endtime="20230811 23:34:40.232"/>
+<msg timestamp="20230812 00:01:42.457" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:42.453" endtime="20230812 00:01:42.457"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.232" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:40.232" endtime="20230811 23:34:40.232"/>
+<msg timestamp="20230812 00:01:42.457" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.457" endtime="20230812 00:01:42.457"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>actorId=nonexistentId</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.232" level="INFO">${params} = {'actorId': 'nonexistentId'}</msg>
-<status status="PASS" starttime="20230811 23:34:40.232" endtime="20230811 23:34:40.232"/>
+<msg timestamp="20230812 00:01:42.461" level="INFO">${params} = {'actorId': 'nonexistentId'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.460" endtime="20230812 00:01:42.461"/>
 </kw>
 <kw name="GET On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -1470,36 +1446,36 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=404</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:40.244" level="INFO">GET Request : url=http://localhost:8080/api/v1/getActor?actorId=nonexistentId 
+<msg timestamp="20230812 00:01:42.469" level="INFO">GET Request : url=http://localhost:8080/api/v1/getActor?actorId=nonexistentId 
  path_url=/api/v1/getActor?actorId=nonexistentId 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
  body=None 
  </msg>
-<msg timestamp="20230811 23:34:40.244" level="INFO">GET Response : url=http://localhost:8080/api/v1/getActor?actorId=nonexistentId 
+<msg timestamp="20230812 00:01:42.469" level="INFO">GET Response : url=http://localhost:8080/api/v1/getActor?actorId=nonexistentId 
  status=404, reason=Not Found 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:40 GMT', 'Content-length': '9'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:42 GMT', 'Content-length': '9'} 
  body=NOT FOUND 
  </msg>
-<msg timestamp="20230811 23:34:40.244" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:40.232" endtime="20230811 23:34:40.244"/>
+<msg timestamp="20230812 00:01:42.469" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:42.461" endtime="20230812 00:01:42.469"/>
 </kw>
 <timeout value="30 seconds"/>
-<status status="PASS" starttime="20230811 23:34:40.224" endtime="20230811 23:34:40.244"/>
+<status status="PASS" starttime="20230812 00:01:42.440" endtime="20230812 00:01:42.469"/>
 </test>
-<test id="s1-s1-s1-s1-s1-t15" name="getMoviePass" line="212">
+<test id="s1-s1-s1-s1-s1-t9" name="getMoviePass" line="209">
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.244" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:40.244" endtime="20230811 23:34:40.244"/>
+<msg timestamp="20230812 00:01:42.477" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.477" endtime="20230812 00:01:42.479"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>movieId=afewgoodmenid</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.244" level="INFO">${params} = {'movieId': 'afewgoodmenid'}</msg>
-<status status="PASS" starttime="20230811 23:34:40.244" endtime="20230811 23:34:40.244"/>
+<msg timestamp="20230812 00:01:42.479" level="INFO">${params} = {'movieId': 'afewgoodmenid'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.479" endtime="20230812 00:01:42.479"/>
 </kw>
 <kw name="GET On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -1509,54 +1485,54 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=200</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:40.322" level="INFO">GET Request : url=http://localhost:8080/api/v1/getMovie?movieId=afewgoodmenid 
+<msg timestamp="20230812 00:01:42.497" level="INFO">GET Request : url=http://localhost:8080/api/v1/getMovie?movieId=afewgoodmenid 
  path_url=/api/v1/getMovie?movieId=afewgoodmenid 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
  body=None 
  </msg>
-<msg timestamp="20230811 23:34:40.322" level="INFO">GET Response : url=http://localhost:8080/api/v1/getMovie?movieId=afewgoodmenid 
+<msg timestamp="20230812 00:01:42.498" level="INFO">GET Response : url=http://localhost:8080/api/v1/getMovie?movieId=afewgoodmenid 
  status=200, reason=OK 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:40 GMT', 'Content-length': '83'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:42 GMT', 'Content-length': '83'} 
  body={"movieId":"afewgoodmenid","name":"A Few Good Men","actors":["actora","nm0000102"]} 
  </msg>
-<msg timestamp="20230811 23:34:40.322" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:40.244" endtime="20230811 23:34:40.322"/>
+<msg timestamp="20230812 00:01:42.498" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:42.480" endtime="20230812 00:01:42.498"/>
 </kw>
 <kw name="Should Be Equal As Strings" library="BuiltIn">
 <arg>${resp.json()['movieId']}</arg>
 <arg>afewgoodmenid</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" starttime="20230811 23:34:40.322" endtime="20230811 23:34:40.322"/>
+<status status="PASS" starttime="20230812 00:01:42.498" endtime="20230812 00:01:42.500"/>
 </kw>
 <kw name="Should Be Equal As Strings" library="BuiltIn">
 <arg>${resp.json()['name']}</arg>
 <arg>A Few Good Men</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" starttime="20230811 23:34:40.322" endtime="20230811 23:34:40.322"/>
+<status status="PASS" starttime="20230812 00:01:42.502" endtime="20230812 00:01:42.502"/>
 </kw>
 <kw name="List Should Contain Value" library="Collections">
 <arg>${resp.json()['actors']}</arg>
 <arg>nm0000102</arg>
 <doc>Fails if the ``value`` is not found from ``list``.</doc>
-<status status="PASS" starttime="20230811 23:34:40.322" endtime="20230811 23:34:40.322"/>
+<status status="PASS" starttime="20230812 00:01:42.504" endtime="20230812 00:01:42.504"/>
 </kw>
 <timeout value="30 seconds"/>
-<status status="PASS" starttime="20230811 23:34:40.244" endtime="20230811 23:34:40.322"/>
+<status status="PASS" starttime="20230812 00:01:42.476" endtime="20230812 00:01:42.504"/>
 </test>
-<test id="s1-s1-s1-s1-s1-t16" name="getMovieFail" line="221">
+<test id="s1-s1-s1-s1-s1-t10" name="getMovieFail" line="218">
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.337" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:40.337" endtime="20230811 23:34:40.337"/>
+<msg timestamp="20230812 00:01:42.509" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.509" endtime="20230812 00:01:42.509"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>NotARealParameter=afewgoodmenid</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.337" level="INFO">${params} = {'NotARealParameter': 'afewgoodmenid'}</msg>
-<status status="PASS" starttime="20230811 23:34:40.337" endtime="20230811 23:34:40.337"/>
+<msg timestamp="20230812 00:01:42.509" level="INFO">${params} = {'NotARealParameter': 'afewgoodmenid'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.509" endtime="20230812 00:01:42.509"/>
 </kw>
 <kw name="GET On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -1566,32 +1542,32 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=400</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:40.337" level="INFO">GET Request : url=http://localhost:8080/api/v1/getMovie?NotARealParameter=afewgoodmenid 
+<msg timestamp="20230812 00:01:42.513" level="INFO">GET Request : url=http://localhost:8080/api/v1/getMovie?NotARealParameter=afewgoodmenid 
  path_url=/api/v1/getMovie?NotARealParameter=afewgoodmenid 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
  body=None 
  </msg>
-<msg timestamp="20230811 23:34:40.337" level="INFO">GET Response : url=http://localhost:8080/api/v1/getMovie?NotARealParameter=afewgoodmenid 
+<msg timestamp="20230812 00:01:42.513" level="INFO">GET Response : url=http://localhost:8080/api/v1/getMovie?NotARealParameter=afewgoodmenid 
  status=400, reason=Bad Request 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:40 GMT', 'Content-length': '11'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:42 GMT', 'Content-length': '11'} 
  body=BAD REQUEST 
  </msg>
-<msg timestamp="20230811 23:34:40.337" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:40.337" endtime="20230811 23:34:40.337"/>
+<msg timestamp="20230812 00:01:42.513" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:42.511" endtime="20230812 00:01:42.513"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.337" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:40.337" endtime="20230811 23:34:40.337"/>
+<msg timestamp="20230812 00:01:42.513" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.513" endtime="20230812 00:01:42.513"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>movieId=${null}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.337" level="INFO">${params} = {'movieId': None}</msg>
-<status status="PASS" starttime="20230811 23:34:40.337" endtime="20230811 23:34:40.337"/>
+<msg timestamp="20230812 00:01:42.518" level="INFO">${params} = {'movieId': None}</msg>
+<status status="PASS" starttime="20230812 00:01:42.518" endtime="20230812 00:01:42.518"/>
 </kw>
 <kw name="GET On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -1601,32 +1577,32 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=400</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:40.337" level="INFO">GET Request : url=http://localhost:8080/api/v1/getMovie 
+<msg timestamp="20230812 00:01:42.521" level="INFO">GET Request : url=http://localhost:8080/api/v1/getMovie 
  path_url=/api/v1/getMovie 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
  body=None 
  </msg>
-<msg timestamp="20230811 23:34:40.337" level="INFO">GET Response : url=http://localhost:8080/api/v1/getMovie 
+<msg timestamp="20230812 00:01:42.523" level="INFO">GET Response : url=http://localhost:8080/api/v1/getMovie 
  status=400, reason=Bad Request 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:40 GMT', 'Content-length': '11'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:42 GMT', 'Content-length': '11'} 
  body=BAD REQUEST 
  </msg>
-<msg timestamp="20230811 23:34:40.337" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:40.337" endtime="20230811 23:34:40.337"/>
+<msg timestamp="20230812 00:01:42.523" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:42.518" endtime="20230812 00:01:42.523"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.352" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:40.337" endtime="20230811 23:34:40.352"/>
+<msg timestamp="20230812 00:01:42.523" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.523" endtime="20230812 00:01:42.523"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>movieId=NotARealMovieID</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.353" level="INFO">${params} = {'movieId': 'NotARealMovieID'}</msg>
-<status status="PASS" starttime="20230811 23:34:40.352" endtime="20230811 23:34:40.353"/>
+<msg timestamp="20230812 00:01:42.525" level="INFO">${params} = {'movieId': 'NotARealMovieID'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.523" endtime="20230812 00:01:42.525"/>
 </kw>
 <kw name="GET On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -1636,37 +1612,37 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=404</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:40.363" level="INFO">GET Request : url=http://localhost:8080/api/v1/getMovie?movieId=NotARealMovieID 
+<msg timestamp="20230812 00:01:42.525" level="INFO">GET Request : url=http://localhost:8080/api/v1/getMovie?movieId=NotARealMovieID 
  path_url=/api/v1/getMovie?movieId=NotARealMovieID 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
  body=None 
  </msg>
-<msg timestamp="20230811 23:34:40.363" level="INFO">GET Response : url=http://localhost:8080/api/v1/getMovie?movieId=NotARealMovieID 
+<msg timestamp="20230812 00:01:42.525" level="INFO">GET Response : url=http://localhost:8080/api/v1/getMovie?movieId=NotARealMovieID 
  status=404, reason=Not Found 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:40 GMT', 'Content-length': '9'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:42 GMT', 'Content-length': '9'} 
  body=NOT FOUND 
  </msg>
-<msg timestamp="20230811 23:34:40.363" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:40.354" endtime="20230811 23:34:40.363"/>
+<msg timestamp="20230812 00:01:42.525" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:42.525" endtime="20230812 00:01:42.525"/>
 </kw>
 <timeout value="30 seconds"/>
-<status status="PASS" starttime="20230811 23:34:40.337" endtime="20230811 23:34:40.363"/>
+<status status="PASS" starttime="20230812 00:01:42.508" endtime="20230812 00:01:42.525"/>
 </test>
-<test id="s1-s1-s1-s1-s1-t17" name="getRelationshipPass" line="239">
+<test id="s1-s1-s1-s1-s1-t11" name="getRelationshipPass" line="236">
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.363" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:40.363" endtime="20230811 23:34:40.363"/>
+<msg timestamp="20230812 00:01:42.537" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.537" endtime="20230812 00:01:42.537"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>movieId=afewgoodmenid</arg>
 <arg>actorId=nm0000102</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.369" level="INFO">${params} = {'movieId': 'afewgoodmenid', 'actorId': 'nm0000102'}</msg>
-<status status="PASS" starttime="20230811 23:34:40.369" endtime="20230811 23:34:40.369"/>
+<msg timestamp="20230812 00:01:42.540" level="INFO">${params} = {'movieId': 'afewgoodmenid', 'actorId': 'nm0000102'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.540" endtime="20230812 00:01:42.540"/>
 </kw>
 <kw name="GET On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -1676,54 +1652,54 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=200</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:40.443" level="INFO">GET Request : url=http://localhost:8080/api/v1/hasRelationship?movieId=afewgoodmenid&amp;actorId=nm0000102 
+<msg timestamp="20230812 00:01:42.544" level="INFO">GET Request : url=http://localhost:8080/api/v1/hasRelationship?movieId=afewgoodmenid&amp;actorId=nm0000102 
  path_url=/api/v1/hasRelationship?movieId=afewgoodmenid&amp;actorId=nm0000102 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
  body=None 
  </msg>
-<msg timestamp="20230811 23:34:40.443" level="INFO">GET Response : url=http://localhost:8080/api/v1/hasRelationship?movieId=afewgoodmenid&amp;actorId=nm0000102 
+<msg timestamp="20230812 00:01:42.556" level="INFO">GET Response : url=http://localhost:8080/api/v1/hasRelationship?movieId=afewgoodmenid&amp;actorId=nm0000102 
  status=200, reason=OK 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:40 GMT', 'Content-length': '72'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:42 GMT', 'Content-length': '72'} 
  body={"actorId":"nm0000102","movieId":"afewgoodmenid","hasRelationship":true} 
  </msg>
-<msg timestamp="20230811 23:34:40.443" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:40.370" endtime="20230811 23:34:40.443"/>
+<msg timestamp="20230812 00:01:42.556" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:42.541" endtime="20230812 00:01:42.556"/>
 </kw>
 <kw name="Should Be Equal As Strings" library="BuiltIn">
 <arg>${resp.json()['movieId']}</arg>
 <arg>afewgoodmenid</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" starttime="20230811 23:34:40.443" endtime="20230811 23:34:40.443"/>
+<status status="PASS" starttime="20230812 00:01:42.557" endtime="20230812 00:01:42.558"/>
 </kw>
 <kw name="Should Be Equal As Strings" library="BuiltIn">
 <arg>${resp.json()['actorId']}</arg>
 <arg>nm0000102</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" starttime="20230811 23:34:40.443" endtime="20230811 23:34:40.443"/>
+<status status="PASS" starttime="20230812 00:01:42.558" endtime="20230812 00:01:42.561"/>
 </kw>
 <kw name="Should Be True" library="BuiltIn">
 <arg>${resp.json()['hasRelationship']}</arg>
 <doc>Fails if the given condition is not true.</doc>
-<status status="PASS" starttime="20230811 23:34:40.443" endtime="20230811 23:34:40.443"/>
+<status status="PASS" starttime="20230812 00:01:42.561" endtime="20230812 00:01:42.562"/>
 </kw>
 <timeout value="30 seconds"/>
-<status status="PASS" starttime="20230811 23:34:40.363" endtime="20230811 23:34:40.443"/>
+<status status="PASS" starttime="20230812 00:01:42.537" endtime="20230812 00:01:42.562"/>
 </test>
-<test id="s1-s1-s1-s1-s1-t18" name="getRelationshipFail1" line="248">
+<test id="s1-s1-s1-s1-s1-t12" name="getRelationshipFail1" line="245">
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.456" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:40.456" endtime="20230811 23:34:40.456"/>
+<msg timestamp="20230812 00:01:42.565" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.565" endtime="20230812 00:01:42.565"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>Nonexistentparameter=afewgoodmenid</arg>
 <arg>actorId=nm0000102</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.456" level="INFO">${params} = {'Nonexistentparameter': 'afewgoodmenid', 'actorId': 'nm0000102'}</msg>
-<status status="PASS" starttime="20230811 23:34:40.456" endtime="20230811 23:34:40.456"/>
+<msg timestamp="20230812 00:01:42.565" level="INFO">${params} = {'Nonexistentparameter': 'afewgoodmenid', 'actorId': 'nm0000102'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.565" endtime="20230812 00:01:42.565"/>
 </kw>
 <kw name="GET On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -1733,37 +1709,37 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=400</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:40.456" level="INFO">GET Request : url=http://localhost:8080/api/v1/hasRelationship?Nonexistentparameter=afewgoodmenid&amp;actorId=nm0000102 
+<msg timestamp="20230812 00:01:42.573" level="INFO">GET Request : url=http://localhost:8080/api/v1/hasRelationship?Nonexistentparameter=afewgoodmenid&amp;actorId=nm0000102 
  path_url=/api/v1/hasRelationship?Nonexistentparameter=afewgoodmenid&amp;actorId=nm0000102 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
  body=None 
  </msg>
-<msg timestamp="20230811 23:34:40.456" level="INFO">GET Response : url=http://localhost:8080/api/v1/hasRelationship?Nonexistentparameter=afewgoodmenid&amp;actorId=nm0000102 
+<msg timestamp="20230812 00:01:42.573" level="INFO">GET Response : url=http://localhost:8080/api/v1/hasRelationship?Nonexistentparameter=afewgoodmenid&amp;actorId=nm0000102 
  status=400, reason=Bad Request 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:40 GMT', 'Content-length': '11'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:42 GMT', 'Content-length': '11'} 
  body=BAD REQUEST 
  </msg>
-<msg timestamp="20230811 23:34:40.456" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:40.456" endtime="20230811 23:34:40.456"/>
+<msg timestamp="20230812 00:01:42.575" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:42.568" endtime="20230812 00:01:42.575"/>
 </kw>
 <timeout value="30 seconds"/>
-<status status="PASS" starttime="20230811 23:34:40.443" endtime="20230811 23:34:40.456"/>
+<status status="PASS" starttime="20230812 00:01:42.564" endtime="20230812 00:01:42.575"/>
 </test>
-<test id="s1-s1-s1-s1-s1-t19" name="getRelationshipFail2" line="254">
+<test id="s1-s1-s1-s1-s1-t13" name="getRelationshipFail2" line="251">
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.456" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:40.456" endtime="20230811 23:34:40.456"/>
+<msg timestamp="20230812 00:01:42.577" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.577" endtime="20230812 00:01:42.577"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>movieId=afewgoodmenid</arg>
 <arg>Nonexistentparameter=nm0000102</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.456" level="INFO">${params} = {'movieId': 'afewgoodmenid', 'Nonexistentparameter': 'nm0000102'}</msg>
-<status status="PASS" starttime="20230811 23:34:40.456" endtime="20230811 23:34:40.456"/>
+<msg timestamp="20230812 00:01:42.577" level="INFO">${params} = {'movieId': 'afewgoodmenid', 'Nonexistentparameter': 'nm0000102'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.577" endtime="20230812 00:01:42.577"/>
 </kw>
 <kw name="GET On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -1773,37 +1749,37 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=400</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:40.475" level="INFO">GET Request : url=http://localhost:8080/api/v1/hasRelationship?movieId=afewgoodmenid&amp;Nonexistentparameter=nm0000102 
+<msg timestamp="20230812 00:01:42.581" level="INFO">GET Request : url=http://localhost:8080/api/v1/hasRelationship?movieId=afewgoodmenid&amp;Nonexistentparameter=nm0000102 
  path_url=/api/v1/hasRelationship?movieId=afewgoodmenid&amp;Nonexistentparameter=nm0000102 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
  body=None 
  </msg>
-<msg timestamp="20230811 23:34:40.475" level="INFO">GET Response : url=http://localhost:8080/api/v1/hasRelationship?movieId=afewgoodmenid&amp;Nonexistentparameter=nm0000102 
+<msg timestamp="20230812 00:01:42.581" level="INFO">GET Response : url=http://localhost:8080/api/v1/hasRelationship?movieId=afewgoodmenid&amp;Nonexistentparameter=nm0000102 
  status=400, reason=Bad Request 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:40 GMT', 'Content-length': '11'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:42 GMT', 'Content-length': '11'} 
  body=BAD REQUEST 
  </msg>
-<msg timestamp="20230811 23:34:40.475" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:40.472" endtime="20230811 23:34:40.475"/>
+<msg timestamp="20230812 00:01:42.581" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:42.580" endtime="20230812 00:01:42.581"/>
 </kw>
 <timeout value="30 seconds"/>
-<status status="PASS" starttime="20230811 23:34:40.456" endtime="20230811 23:34:40.479"/>
+<status status="PASS" starttime="20230812 00:01:42.577" endtime="20230812 00:01:42.581"/>
 </test>
-<test id="s1-s1-s1-s1-s1-t20" name="getRelationshipFail3" line="260">
+<test id="s1-s1-s1-s1-s1-t14" name="getRelationshipFail3" line="257">
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.480" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:40.480" endtime="20230811 23:34:40.480"/>
+<msg timestamp="20230812 00:01:42.587" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.587" endtime="20230812 00:01:42.587"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>movieId=${null}</arg>
 <arg>actorId=nm0000102</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.480" level="INFO">${params} = {'movieId': None, 'actorId': 'nm0000102'}</msg>
-<status status="PASS" starttime="20230811 23:34:40.480" endtime="20230811 23:34:40.480"/>
+<msg timestamp="20230812 00:01:42.587" level="INFO">${params} = {'movieId': None, 'actorId': 'nm0000102'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.587" endtime="20230812 00:01:42.587"/>
 </kw>
 <kw name="GET On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -1813,37 +1789,37 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=400</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:40.480" level="INFO">GET Request : url=http://localhost:8080/api/v1/hasRelationship?actorId=nm0000102 
+<msg timestamp="20230812 00:01:42.590" level="INFO">GET Request : url=http://localhost:8080/api/v1/hasRelationship?actorId=nm0000102 
  path_url=/api/v1/hasRelationship?actorId=nm0000102 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
  body=None 
  </msg>
-<msg timestamp="20230811 23:34:40.480" level="INFO">GET Response : url=http://localhost:8080/api/v1/hasRelationship?actorId=nm0000102 
+<msg timestamp="20230812 00:01:42.590" level="INFO">GET Response : url=http://localhost:8080/api/v1/hasRelationship?actorId=nm0000102 
  status=400, reason=Bad Request 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:40 GMT', 'Content-length': '11'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:42 GMT', 'Content-length': '11'} 
  body=BAD REQUEST 
  </msg>
-<msg timestamp="20230811 23:34:40.480" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:40.480" endtime="20230811 23:34:40.480"/>
+<msg timestamp="20230812 00:01:42.590" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:42.587" endtime="20230812 00:01:42.590"/>
 </kw>
 <timeout value="30 seconds"/>
-<status status="PASS" starttime="20230811 23:34:40.479" endtime="20230811 23:34:40.480"/>
+<status status="PASS" starttime="20230812 00:01:42.581" endtime="20230812 00:01:42.590"/>
 </test>
-<test id="s1-s1-s1-s1-s1-t21" name="getRelationshipFail4" line="266">
+<test id="s1-s1-s1-s1-s1-t15" name="getRelationshipFail4" line="263">
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.487" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:40.487" endtime="20230811 23:34:40.487"/>
+<msg timestamp="20230812 00:01:42.598" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.597" endtime="20230812 00:01:42.598"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>movieId=afewgoodmenid</arg>
 <arg>actorId=${null}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.489" level="INFO">${params} = {'movieId': 'afewgoodmenid', 'actorId': None}</msg>
-<status status="PASS" starttime="20230811 23:34:40.488" endtime="20230811 23:34:40.489"/>
+<msg timestamp="20230812 00:01:42.598" level="INFO">${params} = {'movieId': 'afewgoodmenid', 'actorId': None}</msg>
+<status status="PASS" starttime="20230812 00:01:42.598" endtime="20230812 00:01:42.598"/>
 </kw>
 <kw name="GET On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -1853,37 +1829,37 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=400</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:40.493" level="INFO">GET Request : url=http://localhost:8080/api/v1/hasRelationship?movieId=afewgoodmenid 
+<msg timestamp="20230812 00:01:42.599" level="INFO">GET Request : url=http://localhost:8080/api/v1/hasRelationship?movieId=afewgoodmenid 
  path_url=/api/v1/hasRelationship?movieId=afewgoodmenid 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
  body=None 
  </msg>
-<msg timestamp="20230811 23:34:40.493" level="INFO">GET Response : url=http://localhost:8080/api/v1/hasRelationship?movieId=afewgoodmenid 
+<msg timestamp="20230812 00:01:42.599" level="INFO">GET Response : url=http://localhost:8080/api/v1/hasRelationship?movieId=afewgoodmenid 
  status=400, reason=Bad Request 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:40 GMT', 'Content-length': '11'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:42 GMT', 'Content-length': '11'} 
  body=BAD REQUEST 
  </msg>
-<msg timestamp="20230811 23:34:40.493" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:40.489" endtime="20230811 23:34:40.493"/>
+<msg timestamp="20230812 00:01:42.599" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:42.599" endtime="20230812 00:01:42.599"/>
 </kw>
 <timeout value="30 seconds"/>
-<status status="PASS" starttime="20230811 23:34:40.487" endtime="20230811 23:34:40.493"/>
+<status status="PASS" starttime="20230812 00:01:42.590" endtime="20230812 00:01:42.603"/>
 </test>
-<test id="s1-s1-s1-s1-s1-t22" name="getRelationshipFail5" line="272">
+<test id="s1-s1-s1-s1-s1-t16" name="getRelationshipFail5" line="269">
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.493" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:40.493" endtime="20230811 23:34:40.493"/>
+<msg timestamp="20230812 00:01:42.607" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.606" endtime="20230812 00:01:42.607"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>movieId=nonexistentId</arg>
 <arg>actorId=nm0000102</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.493" level="INFO">${params} = {'movieId': 'nonexistentId', 'actorId': 'nm0000102'}</msg>
-<status status="PASS" starttime="20230811 23:34:40.493" endtime="20230811 23:34:40.493"/>
+<msg timestamp="20230812 00:01:42.607" level="INFO">${params} = {'movieId': 'nonexistentId', 'actorId': 'nm0000102'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.607" endtime="20230812 00:01:42.607"/>
 </kw>
 <kw name="GET On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -1893,37 +1869,37 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=404</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:40.514" level="INFO">GET Request : url=http://localhost:8080/api/v1/hasRelationship?movieId=nonexistentId&amp;actorId=nm0000102 
+<msg timestamp="20230812 00:01:42.608" level="INFO">GET Request : url=http://localhost:8080/api/v1/hasRelationship?movieId=nonexistentId&amp;actorId=nm0000102 
  path_url=/api/v1/hasRelationship?movieId=nonexistentId&amp;actorId=nm0000102 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
  body=None 
  </msg>
-<msg timestamp="20230811 23:34:40.514" level="INFO">GET Response : url=http://localhost:8080/api/v1/hasRelationship?movieId=nonexistentId&amp;actorId=nm0000102 
+<msg timestamp="20230812 00:01:42.608" level="INFO">GET Response : url=http://localhost:8080/api/v1/hasRelationship?movieId=nonexistentId&amp;actorId=nm0000102 
  status=404, reason=Not Found 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:40 GMT', 'Content-length': '9'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:42 GMT', 'Content-length': '9'} 
  body=NOT FOUND 
  </msg>
-<msg timestamp="20230811 23:34:40.514" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:40.493" endtime="20230811 23:34:40.514"/>
+<msg timestamp="20230812 00:01:42.608" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:42.608" endtime="20230812 00:01:42.608"/>
 </kw>
 <timeout value="30 seconds"/>
-<status status="PASS" starttime="20230811 23:34:40.493" endtime="20230811 23:34:40.516"/>
+<status status="PASS" starttime="20230812 00:01:42.604" endtime="20230812 00:01:42.608"/>
 </test>
-<test id="s1-s1-s1-s1-s1-t23" name="getRelationshipFail6" line="277">
+<test id="s1-s1-s1-s1-s1-t17" name="getRelationshipFail6" line="274">
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.516" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230811 23:34:40.516" endtime="20230811 23:34:40.516"/>
+<msg timestamp="20230812 00:01:42.619" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.619" endtime="20230812 00:01:42.619"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${params}</var>
 <arg>movieId=afewgoodmenid</arg>
 <arg>actorId=nonexistentId</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230811 23:34:40.520" level="INFO">${params} = {'movieId': 'afewgoodmenid', 'actorId': 'nonexistentId'}</msg>
-<status status="PASS" starttime="20230811 23:34:40.520" endtime="20230811 23:34:40.520"/>
+<msg timestamp="20230812 00:01:42.619" level="INFO">${params} = {'movieId': 'afewgoodmenid', 'actorId': 'nonexistentId'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.619" endtime="20230812 00:01:42.619"/>
 </kw>
 <kw name="GET On Session" library="RequestsLibrary">
 <var>${resp}</var>
@@ -1933,44 +1909,182 @@
 <arg>headers=${headers}</arg>
 <arg>expected_status=404</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20230811 23:34:40.529" level="INFO">GET Request : url=http://localhost:8080/api/v1/hasRelationship?movieId=afewgoodmenid&amp;actorId=nonexistentId 
+<msg timestamp="20230812 00:01:42.627" level="INFO">GET Request : url=http://localhost:8080/api/v1/hasRelationship?movieId=afewgoodmenid&amp;actorId=nonexistentId 
  path_url=/api/v1/hasRelationship?movieId=afewgoodmenid&amp;actorId=nonexistentId 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
  body=None 
  </msg>
-<msg timestamp="20230811 23:34:40.531" level="INFO">GET Response : url=http://localhost:8080/api/v1/hasRelationship?movieId=afewgoodmenid&amp;actorId=nonexistentId 
+<msg timestamp="20230812 00:01:42.627" level="INFO">GET Response : url=http://localhost:8080/api/v1/hasRelationship?movieId=afewgoodmenid&amp;actorId=nonexistentId 
  status=404, reason=Not Found 
- headers={'Date': 'Sat, 12 Aug 2023 03:34:40 GMT', 'Content-length': '9'} 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:42 GMT', 'Content-length': '9'} 
  body=NOT FOUND 
  </msg>
-<msg timestamp="20230811 23:34:40.531" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
-<status status="PASS" starttime="20230811 23:34:40.520" endtime="20230811 23:34:40.531"/>
+<msg timestamp="20230812 00:01:42.627" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:42.619" endtime="20230812 00:01:42.627"/>
 </kw>
 <timeout value="30 seconds"/>
-<status status="PASS" starttime="20230811 23:34:40.516" endtime="20230811 23:34:40.531"/>
+<status status="PASS" starttime="20230812 00:01:42.618" endtime="20230812 00:01:42.627"/>
 </test>
-<status status="PASS" starttime="20230811 23:34:39.371" endtime="20230811 23:34:40.533"/>
+<test id="s1-s1-s1-s1-s1-t18" name="computeBaconNumberPass" line="282">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230812 00:01:42.635" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.635" endtime="20230812 00:01:42.637"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${params}</var>
+<arg>actorId=nm0000102</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230812 00:01:42.637" level="INFO">${params} = {'actorId': 'nm0000102'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.637" endtime="20230812 00:01:42.637"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>localhost</arg>
+<arg>/api/v1/computeBaconNumber</arg>
+<arg>params=${params}</arg>
+<arg>headers=${headers}</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230812 00:01:42.640" level="INFO">GET Request : url=http://localhost:8080/api/v1/computeBaconNumber?actorId=nm0000102 
+ path_url=/api/v1/computeBaconNumber?actorId=nm0000102 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg timestamp="20230812 00:01:42.640" level="INFO">GET Response : url=http://localhost:8080/api/v1/computeBaconNumber?actorId=nm0000102 
+ status=200, reason=OK 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:42 GMT', 'Content-length': '17'} 
+ body={"baconNumber":0} 
+ </msg>
+<msg timestamp="20230812 00:01:42.640" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:42.638" endtime="20230812 00:01:42.640"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${resp.json()['baconNumber']}</arg>
+<arg>0</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20230812 00:01:42.645" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20230812 00:01:42.640" endtime="20230812 00:01:42.645"/>
+</kw>
+<timeout value="30 seconds"/>
+<status status="PASS" starttime="20230812 00:01:42.633" endtime="20230812 00:01:42.647"/>
+</test>
+<test id="s1-s1-s1-s1-s1-t19" name="computeBaconNumberPass2" line="288">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230812 00:01:42.648" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.648" endtime="20230812 00:01:42.648"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${params}</var>
+<arg>actorId=actorb</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230812 00:01:42.651" level="INFO">${params} = {'actorId': 'actorb'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.648" endtime="20230812 00:01:42.651"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>localhost</arg>
+<arg>/api/v1/computeBaconNumber</arg>
+<arg>params=${params}</arg>
+<arg>headers=${headers}</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230812 00:01:42.652" level="INFO">GET Request : url=http://localhost:8080/api/v1/computeBaconNumber?actorId=actorb 
+ path_url=/api/v1/computeBaconNumber?actorId=actorb 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg timestamp="20230812 00:01:42.652" level="INFO">GET Response : url=http://localhost:8080/api/v1/computeBaconNumber?actorId=actorb 
+ status=404, reason=Not Found 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:42 GMT', 'Content-length': '9'} 
+ body=NOT FOUND 
+ </msg>
+<msg timestamp="20230812 00:01:42.652" level="FAIL">Url: http://localhost:8080/api/v1/computeBaconNumber?actorId=actorb Expected status: 404 != 200</msg>
+<status status="FAIL" starttime="20230812 00:01:42.652" endtime="20230812 00:01:42.652"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${resp.json()['baconNumber']}</arg>
+<arg>4</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" starttime="20230812 00:01:42.652" endtime="20230812 00:01:42.667"/>
+</kw>
+<timeout value="30 seconds"/>
+<status status="FAIL" starttime="20230812 00:01:42.648" endtime="20230812 00:01:42.667">Url: http://localhost:8080/api/v1/computeBaconNumber?actorId=actorb Expected status: 404 != 200</status>
+</test>
+<test id="s1-s1-s1-s1-s1-t20" name="computeBaconNumberPass3" line="294">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230812 00:01:42.670" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.669" endtime="20230812 00:01:42.670"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${params}</var>
+<arg>actorId=johnnydepp</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230812 00:01:42.670" level="INFO">${params} = {'actorId': 'johnnydepp'}</msg>
+<status status="PASS" starttime="20230812 00:01:42.670" endtime="20230812 00:01:42.670"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>localhost</arg>
+<arg>/api/v1/computeBaconNumber</arg>
+<arg>params=${params}</arg>
+<arg>headers=${headers}</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230812 00:01:42.674" level="INFO">GET Request : url=http://localhost:8080/api/v1/computeBaconNumber?actorId=johnnydepp 
+ path_url=/api/v1/computeBaconNumber?actorId=johnnydepp 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg timestamp="20230812 00:01:42.674" level="INFO">GET Response : url=http://localhost:8080/api/v1/computeBaconNumber?actorId=johnnydepp 
+ status=404, reason=Not Found 
+ headers={'Date': 'Sat, 12 Aug 2023 04:01:42 GMT', 'Content-length': '9'} 
+ body=NOT FOUND 
+ </msg>
+<msg timestamp="20230812 00:01:42.674" level="FAIL">Url: http://localhost:8080/api/v1/computeBaconNumber?actorId=johnnydepp Expected status: 404 != 200</msg>
+<status status="FAIL" starttime="20230812 00:01:42.672" endtime="20230812 00:01:42.674"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${resp.json()['baconNumber']}</arg>
+<arg>6</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" starttime="20230812 00:01:42.674" endtime="20230812 00:01:42.674"/>
+</kw>
+<timeout value="30 seconds"/>
+<status status="FAIL" starttime="20230812 00:01:42.669" endtime="20230812 00:01:42.674">Url: http://localhost:8080/api/v1/computeBaconNumber?actorId=johnnydepp Expected status: 404 != 200</status>
+</test>
+<status status="FAIL" starttime="20230812 00:01:41.621" endtime="20230812 00:01:42.685"/>
 </suite>
-<status status="PASS" starttime="20230811 23:34:39.364" endtime="20230811 23:34:40.537"/>
+<status status="FAIL" starttime="20230812 00:01:41.616" endtime="20230812 00:01:42.688"/>
 </suite>
-<status status="PASS" starttime="20230811 23:34:39.364" endtime="20230811 23:34:40.539"/>
+<status status="FAIL" starttime="20230812 00:01:41.616" endtime="20230812 00:01:42.692"/>
 </suite>
-<status status="PASS" starttime="20230811 23:34:39.363" endtime="20230811 23:34:40.544"/>
+<status status="FAIL" starttime="20230812 00:01:41.611" endtime="20230812 00:01:42.694"/>
 </suite>
-<status status="PASS" starttime="20230811 23:34:39.335" endtime="20230811 23:34:40.544"/>
+<status status="FAIL" starttime="20230812 00:01:41.570" endtime="20230812 00:01:42.697"/>
 </suite>
 <statistics>
 <total>
-<stat pass="23" fail="0" skip="0">All Tests</stat>
+<stat pass="18" fail="2" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="23" fail="0" skip="0" id="s1" name="EECS3311-Project">EECS3311-Project</stat>
-<stat pass="23" fail="0" skip="0" id="s1-s1" name="Src">EECS3311-Project.Src</stat>
-<stat pass="23" fail="0" skip="0" id="s1-s1-s1" name="Test">EECS3311-Project.Src.Test</stat>
-<stat pass="23" fail="0" skip="0" id="s1-s1-s1-s1" name="Robot">EECS3311-Project.Src.Test.Robot</stat>
-<stat pass="23" fail="0" skip="0" id="s1-s1-s1-s1-s1" name="Testingrobot">EECS3311-Project.Src.Test.Robot.Testingrobot</stat>
+<stat pass="18" fail="2" skip="0" id="s1" name="EECS3311-Project">EECS3311-Project</stat>
+<stat pass="18" fail="2" skip="0" id="s1-s1" name="Src">EECS3311-Project.Src</stat>
+<stat pass="18" fail="2" skip="0" id="s1-s1-s1" name="Test">EECS3311-Project.Src.Test</stat>
+<stat pass="18" fail="2" skip="0" id="s1-s1-s1-s1" name="Robot">EECS3311-Project.Src.Test.Robot</stat>
+<stat pass="18" fail="2" skip="0" id="s1-s1-s1-s1-s1" name="Testingrobot">EECS3311-Project.Src.Test.Robot.Testingrobot</stat>
 </suite>
 </statistics>
 <errors>
