@@ -322,6 +322,13 @@ computeBaconNumberFail
     ${params}=    Create Dictionary     wrongParameter=someid
     ${resp}=    GET On Session    localhost    /api/v1/computeBaconNumber    params=${params}    headers=${headers}    expected_status=400
 
+###############BACON PATH TESTS###############################
+#@Arienne got this ^^
+###############EXTENDED OPTION (DELETE) TESTS###############################
 
+deleteActorPass
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary    actorId=nm0000102
+    ${resp}=    DELETE On Session    localhost    /api/v1/deleteActor    json=${params}    headers=${headers}    expected_status=200
+   
 
-    ##############################################
