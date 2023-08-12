@@ -171,8 +171,6 @@ getMovieFail
     ${resp}=    GET On Session    localhost    /api/v1/getMovie    params=${params}    headers=${headers}    expected_status=404
 
 
-
-
 #######GET RELATIONSHIP#############################################################################
 getRelationshipPass
     ${headers}=    Create Dictionary    Content-Type=application/json
@@ -207,16 +205,16 @@ getRelationshipFail4
     ${params}=    Create Dictionary     movieId=afewgoodmenid         actorId=${null}
     ${resp}=    GET On Session    localhost    /api/v1/hasRelationship    params=${params}    headers=${headers}    expected_status=400
 
-getRelationshipFail4
-    #fail cuz actorId is null
+getRelationshipFail5
+    #fail cuz not found
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary     movieId=nonexistentId         actorId=kavinbacon
     ${resp}=    GET On Session    localhost    /api/v1/hasRelationship    params=${params}    headers=${headers}    expected_status=404
-
+getRelationshipFail6
     #fail cuz not found
     ${headers}=    Create Dictionary    Content-Type=application/json
-    ${params}=    Create Dictionary     movieId=afewgoodmenid actorId=nonexistentId
-    ${resp}=    GET On Session    localhost    /api/v1/getActor    params=${params}    headers=${headers}    expected_status=404
+    ${params}=    Create Dictionary     movieId=afewgoodmenid         actorId=nonexistentId
+    ${resp}=    GET On Session    localhost    /api/v1/hasRelationship    params=${params}    headers=${headers}    expected_status=404
 
 
 
