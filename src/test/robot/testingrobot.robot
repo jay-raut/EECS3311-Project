@@ -123,30 +123,27 @@ addRelationshipPass
     ${params}=    Create Dictionary    actorId=nm0000102   movieId=afewgoodmenid
     ${resp}=      PUT On Session    localhost    /api/v1/addRelationship    json=${params}    headers=${headers}    expected_status=200
 #######not necessary for test but for set up later tests (empty for now)...
-addRelationshipPass1
+
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    actorId=actora   movieId=movie1id
     ${resp}=      PUT On Session    localhost    /api/v1/addRelationship    json=${params}    headers=${headers}    expected_status=200
-addRelationshipPass1.1
+
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    actorId=actora   movieId=afewgoodmenid
     ${resp}=      PUT On Session    localhost    /api/v1/addRelationship    json=${params}    headers=${headers}    expected_status=200
-addRelationshipPass3
+
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    actorId=actorb   movieId=movie2id
     ${resp}=      PUT On Session    localhost    /api/v1/addRelationship    json=${params}    headers=${headers}    expected_status=200
-addRelationshipPass3.4
+
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    actorId=actorb   movieId=movie1id
     ${resp}=      PUT On Session    localhost    /api/v1/addRelationship    json=${params}    headers=${headers}    expected_status=200
 
-addRelationshipPass5
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    actorId=johnnydepp   movieId=movie2id
     ${resp}=      PUT On Session    localhost    /api/v1/addRelationship    json=${params}    headers=${headers}    expected_status=200
 
-
-addRelationshipPass4
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    actorId=outOfReachID   movieId=unboundMovieID
     ${resp}=      PUT On Session    localhost    /api/v1/addRelationship    json=${params}    headers=${headers}    expected_status=200
@@ -280,8 +277,26 @@ getRelationshipFail6
     ${params}=    Create Dictionary     movieId=afewgoodmenid         actorId=nonexistentId
     ${resp}=    GET On Session    localhost    /api/v1/hasRelationship    params=${params}    headers=${headers}    expected_status=404
 
-#######GET BACON NUMBER#################################################################################################
+####### GET BACON NUMBER #################################################################################################
 
+computeBaconNumberPass
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary     actorId=nm0000102
+    ${resp}=    GET On Session    localhost    /api/v1/computeBaconNumber    params=${params}    headers=${headers}    expected_status=200
+    #check if content of response is correct
+    Should Be Equal As Integers    ${resp.json()['baconNumber']}    0
+computeBaconNumberPass2
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary     actorId=actorb
+    ${resp}=    GET On Session    localhost    /api/v1/computeBaconNumber    params=${params}    headers=${headers}    expected_status=200
+    #check if content of response is correct
+    Should Be Equal As Integers    ${resp.json()['baconNumber']}    4
+computeBaconNumberPass3
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary     actorId=johnnydepp
+    ${resp}=    GET On Session    localhost    /api/v1/computeBaconNumber    params=${params}    headers=${headers}    expected_status=200
+    #check if content of response is correct
+    Should Be Equal As Integers    ${resp.json()['baconNumber']}    6
 
 
 
