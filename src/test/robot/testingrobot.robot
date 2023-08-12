@@ -156,16 +156,15 @@ getMoviePass
 
 
 #######GET RELATIONSHIP#############################################################################
+getRelationshipPass
     ${headers}=    Create Dictionary    Content-Type=application/json
-    ${params}=    Create Dictionary     movieId=afewgoodmenid      actorId=kavinbacon
-
-    ${resp}=    GET On Session    localhost    /api/v1/getActor    params=${params}    headers=${headers}    expected_status=200
+    ${params}=    Create Dictionary     movieId=afewgoodmenid    actorId=kavinbacon
+    ${resp}=    GET On Session    localhost    /api/v1/hasRelationship    params=${params}    headers=${headers}    expected_status=200
     #check if content of response is correct
     Should Be Equal As Strings    ${resp.json()['movieId']}    afewgoodmenid
-    Should Be Equal As Strings    ${resp.json()['name']}    A Few Good Men
-    List Should Contain Value    ${resp.json()['actors']}     kavinbacon
+    Should Be Equal As Strings    ${resp.json()['actorId']}    kavinbacon
+    Should Be True    ${resp.json()['hasRelationship']}
 
 
 
-#######GET RELATIONSHIP#############################################################################
 
