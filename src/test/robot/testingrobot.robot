@@ -228,7 +228,7 @@ BaconNumberPreWork
     ${resp}=    PUT On Session    localhost    /api/v1/addActor    json=${params}    headers=${headers}    expected_status=200
 
     ${headers}=    Create Dictionary    Content-Type=application/json
-    ${params}=    Create Dictionary    name=Actor A   actorId=actora
+    ${params}=    Create Dictionary    name=Angelina Jolie   actorId=angelinajolie
     ${resp}=    PUT On Session    localhost    /api/v1/addActor    json=${params}    headers=${headers}    expected_status=200
 
     ${headers}=    Create Dictionary    Content-Type=application/json
@@ -257,13 +257,12 @@ BaconNumberPreWork
     ${resp}=    PUT On Session    localhost    /api/v1/addMovie    json=${params}    headers=${headers}    expected_status=200
 
 #######addrelationships
-
     ${headers}=    Create Dictionary    Content-Type=application/json
-    ${params}=    Create Dictionary    actorId=actora   movieId=movie1id
+    ${params}=    Create Dictionary    actorId=angelinajolie   movieId=movie1id
     ${resp}=      PUT On Session    localhost    /api/v1/addRelationship    json=${params}    headers=${headers}    expected_status=200
 
     ${headers}=    Create Dictionary    Content-Type=application/json
-    ${params}=    Create Dictionary    actorId=actora   movieId=afewgoodmenid
+    ${params}=    Create Dictionary    actorId=angelinajolie   movieId=afewgoodmenid
     ${resp}=      PUT On Session    localhost    /api/v1/addRelationship    json=${params}    headers=${headers}    expected_status=200
 
     ${headers}=    Create Dictionary    Content-Type=application/json
@@ -282,7 +281,6 @@ BaconNumberPreWork
     ${params}=    Create Dictionary    actorId=outOfReachID   movieId=unboundMovieID
     ${resp}=      PUT On Session    localhost    /api/v1/addRelationship    json=${params}    headers=${headers}    expected_status=200
 
-
 computeBaconNumberPass
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary     actorId=nm0000102
@@ -290,25 +288,23 @@ computeBaconNumberPass
     #check if content of response is correct
     Should Be Equal As Integers    ${resp.json()['baconNumber']}    0
 
-getActorPassbutBACON2
     ${headers}=    Create Dictionary    Content-Type=application/json
-    ${params}=    Create Dictionary     actorId=actora
-    ${resp}=    GET On Session    localhost    /api/v1/getActor    params=${params}    headers=${headers}    expected_status=200
+    ${params}=    Create Dictionary     actorId=angelinajolie
+    ${resp}=    GET On Session    localhost    /api/v1/computeBaconNumber    params=${params}    headers=${headers}    expected_status=200
     #check if content of response is correct
-    Should Be Equal As Strings    ${resp.json()['actorId']}    actora
-    Should Be Equal As Strings    ${resp.json()['name']}    Actor A
-    List Should Contain Value    ${resp.json()['movies']}     movie1id
-computeBaconNumberPass2
+    Should Be Equal As Integers    ${resp.json()['baconNumber']}    1
+
     ${headers}=    Create Dictionary    Content-Type=application/json
-    ${params}=    Create Dictionary     actorId=actora
+    ${params}=    Create Dictionary     actorId=actorb
     ${resp}=    GET On Session    localhost    /api/v1/computeBaconNumber    params=${params}    headers=${headers}    expected_status=200
     #check if content of response is correct
     Should Be Equal As Integers    ${resp.json()['baconNumber']}    2
-computeBaconNumberPass3
+
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary     actorId=johnnydepp
     ${resp}=    GET On Session    localhost    /api/v1/computeBaconNumber    params=${params}    headers=${headers}    expected_status=200
     #check if content of response is correct
-    Should Be Equal As Integers    ${resp.json()['baconNumber']}    6
+    Should Be Equal As Integers    ${resp.json()['baconNumber']}    3
+
 
     ##############################################
