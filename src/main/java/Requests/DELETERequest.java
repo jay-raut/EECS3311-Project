@@ -24,6 +24,8 @@ public class DELETERequest extends AbstractRequest {
     public DELETERequest() {
         endpointHandlers.put("/deleteActor", DELETERequest::deleteActor);
         endpointHandlers.put("/deleteMovie", DELETERequest::deleteMovie);
+        endpointHandlers.put("/deleteRelationship", DELETERequest::deleteRelationship);
+
 
     }
 
@@ -107,6 +109,51 @@ public class DELETERequest extends AbstractRequest {
         Session deleteMovieSession = driver.session(); //deleting actor
         String deleteMovieCommand = "MATCH (m:Movie {movieId: $movieId}) DETACH DELETE m";
         deleteMovieSession.run(deleteMovieCommand, Values.parameters("movieId", movieId));
+        return 200;
+    }
+
+    private static int deleteRelationship(Map<String, String> requestQuery) {
+        System.out.println("called deleteRelationship");
+        if (requestQuery.size() != 2 || !requestQuery.containsKey("movieId") || !requestQuery.containsKey("actorId")) {
+            return 400;
+        }
+        String movieId = requestQuery.get("movieId");
+        String actorId = requestQuery.get("actorId");
+        Driver driver = Neo4jDriverSession.getDriverInstance();
+        try (Session session = driver.session()) {
+            String checkForExistingMovie = "MATCH (m:Movie {movieId: $movieId}) RETURN COUNT(m) AS count";
+            StatementResult resultMovie = session.run(checkForExistingMovie, Values.parameters("movieId", movieId));
+            if (resultMovie.hasNext()) {
+                Record record = resultMovie.next();
+                int count = record.get("count").asInt();
+                if (count == 0) {//if the count is 0 then the actor does not exist in the database
+                    return 404;
+                }
+            }
+            Session actorSession = driver.session();
+            String checkForExistingActor = "MATCH (a:Actor {actorId: $actorId}) RETURN COUNT(a) AS count";
+            StatementResult resultActor = actorSession.run(checkForExistingActor, Values.parameters("actorId", actorId));
+            if (resultActor.hasNext()) {
+                Record record = resultActor.next();
+                int count = record.get("count").asInt();
+                if (count == 0) {//if the count is 0 then the actor does not exist in the database
+                    return 404;
+                }
+            }
+
+            Session checkIfRelationshipExists = driver.session(); //check if the relationship already exists
+            String checkRelationshipExists = "MATCH (a:Actor {actorId: $actorId}), (m: Movie {movieId: $movieId}) RETURN EXISTS ((a)-[:ACTED_IN]->(m)) AS relationshipExists";
+            StatementResult result = checkIfRelationshipExists.run(checkRelationshipExists, Values.parameters("actorId", actorId, "movieId", movieId));
+            if (result.hasNext()) {
+                if (!result.next().get("relationshipExists").asBoolean()) { //if the relationship doesn't exist
+                    return 400;
+                }
+            }
+
+            Session DeleteNodesSession = driver.session(); //create the relationship
+            String DeleteRelationship = "MATCH (a:Actor {actorId: $actorId})-[r:ACTED_IN]->(m:Movie {movieId: $movieId}) DELETE r";
+            DeleteNodesSession.run(DeleteRelationship, Values.parameters("actorId", actorId, "movieId", movieId));
+        }
         return 200;
     }
 
