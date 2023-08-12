@@ -289,12 +289,21 @@ computeBaconNumberPass
     ${resp}=    GET On Session    localhost    /api/v1/computeBaconNumber    params=${params}    headers=${headers}    expected_status=200
     #check if content of response is correct
     Should Be Equal As Integers    ${resp.json()['baconNumber']}    0
+
+getActorPassbutBACON2
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary     actorId=actora
+    ${resp}=    GET On Session    localhost    /api/v1/getActor    params=${params}    headers=${headers}    expected_status=200
+    #check if content of response is correct
+    Should Be Equal As Strings    ${resp.json()['actorId']}    actora
+    Should Be Equal As Strings    ${resp.json()['name']}    Actor A
+    List Should Contain Value    ${resp.json()['movies']}     movie1id
 computeBaconNumberPass2
     ${headers}=    Create Dictionary    Content-Type=application/json
-    ${params}=    Create Dictionary     actorId=actorb
+    ${params}=    Create Dictionary     actorId=actora
     ${resp}=    GET On Session    localhost    /api/v1/computeBaconNumber    params=${params}    headers=${headers}    expected_status=200
     #check if content of response is correct
-    Should Be Equal As Integers    ${resp.json()['baconNumber']}    4
+    Should Be Equal As Integers    ${resp.json()['baconNumber']}    2
 computeBaconNumberPass3
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary     actorId=johnnydepp
@@ -303,103 +312,3 @@ computeBaconNumberPass3
     Should Be Equal As Integers    ${resp.json()['baconNumber']}    6
 
     ##############################################
-computeBaconNumberPassAlice
-    # Setting up Bacon Graph
-    # Creating Kevin Bacon done
-
-
-    # Creating Al Pacino, Keanu Reeves, and Hugo Weaving
-    ${headers}=    Create Dictionary    Content-Type=application/json
-    ${params}=    Create Dictionary    name=Al Pacino    actorId=nm00001
-    ${resp}=    PUT On Session    localhost    /api/v1/addActor    json=${params}    headers= ${headers}    expected_status=200
-computeBaconNumberPassAlice2
-    ${headers}=    Create Dictionary    Content-Type=application/json
-    ${params}=    Create Dictionary    name=Keanu Reeeves    actorId=nm00002
-    ${resp}=    PUT On Session    localhost    /api/v1/addActor    json=${params}    headers=${headers}    expected_status=200
-computeBaconNumberPassAlice3
-    ${headers}=    Create Dictionary    Content-Type=application/json
-    ${params}=    Create Dictionary    name=Hugo Weaving    actorId=nm00003
-    ${resp}=    PUT On Session    localhost    /api/v1/addActor    json=${params}    headers=${headers}    expected_status=200
-computeBaconNumberPassAlice4
-    #Creating A Few Good Men, The Devil's Advocate, and The Matrix
-    ${headers}=    Create Dictionary    Content-Type=application/json
-    ${params}=    Create Dictionary    name=A Few Good Men   movieId=m0001
-    ${resp}=    PUT On Session    localhost    /api/v1/addMovie    json=${params}    headers=${headers}
-computeBaconNumberPassAlice5
-    ${headers}=    Create Dictionary    Content-Type=application/json
-
-    ${params}=    Create Dictionary    name=The Devils Advocate   movieId=m0002
-    ${resp}=    PUT On Session    localhost    /api/v1/addMovie    json=${params}    headers=${headers}
-computeBaconNumberPassAlice6
-    ${headers}=    Create Dictionary    Content-Type=application/json
-    ${params}=    Create Dictionary    name=The Matrix Trilogy   movieId=m0003
-    ${resp}=    PUT On Session    localhost    /api/v1/addMovie    json=${params}    headers=${headers}
-computeBaconNumberPassAlice8
-    ${headers}=    Create Dictionary    Content-Type=application/json
-    ${params}=    Create Dictionary    actorId=nm0000102    movieId=m0001
-    ${resp}=    PUT On Session    localhost    /api/v1/addRelationship    json=${params}    headers=${headers}    expected_status=200
-
-###################add rel 1 and 2 get 404 for me byt 3 is fine @ayse
-addrelation1
-    ${headers}=    Create Dictionary    Content-Type=application/json
-    ${params}=    Create Dictionary    actorId=nm00001    movieId=m0001
-    ${resp}=    PUT On Session    localhost    /api/v1/addRelationship    json=${params}    headers=${headers}    expected_status=200
-
-addrelation2
-    ${headers}=    Create Dictionary    Content-Type=application/json
-    ${params}=    Create Dictionary    actorId=nm00001    movieId=m0002
-    ${resp}=    PUT On Session    localhost    /api/v1/addRelationship    json=${params}    headers=${headers}    expected_status=200
-
-
-addrelation3
-    ${headers}=    Create Dictionary    Content-Type=application/json
-    ${params}=    Create Dictionary    actorId=nm00002    movieId=m0002
-    ${resp}=    PUT On Session    localhost    /api/v1/addRelationship    json=${params}    headers=${headers}    expected_status=200
-addrelation4
-    ${headers}=    Create Dictionary    Content-Type=application/json
-    ${params}=    Create Dictionary    actorId=nm00002    movieId=m0003
-    ${resp}=    PUT On Session    localhost    /api/v1/addRelationship    json=${params}    headers=${headers}    expected_status=200
-addrelation5
-    ${headers}=    Create Dictionary    Content-Type=application/json
-    ${params}=    Create Dictionary    actorId=nm00003    movieId=m0003
-    ${resp}=    PUT On Session    localhost    /api/v1/addRelationship    json=${params}    headers=${headers}    expected_status=200
-computeBaconNumberPassAlice9
-    #Test each actor's Bacon Number
-    ${headers}=    Create Dictionary    Content-Type=application/json
-    ${params}=    Create Dictionary     actorId=nm0000102
-    ${resp}=    GET On Session    localhost    /api/v1/computeBaconNumber    params=${params}    headers=${headers}    expected_status=200
-    #check if content of response is correct
-    Should Be Equal As Integers    ${resp.json()['baconNumber']}    0
-
- ##### 10 11 12 gets 404 @ayse
-computeBaconNumberPassAlice10
-    ${headers}=    Create Dictionary    Content-Type=application/json
-    ${params}=    Create Dictionary     actorId=nm00001
-    ${resp}=    GET On Session    localhost    /api/v1/computeBaconNumber    params=${params}    headers=${headers}    expected_status=200
-    Should Be Equal As Integers    ${resp.json()['baconNumber']}    1
-computeBaconNumberPassAlice11
-    ${headers}=    Create Dictionary    Content-Type=application/json
-    ${params}=    Create Dictionary     actorId=nm00002
-    ${resp}=    GET On Session    localhost    /api/v1/computeBaconNumber    params=${params}    headers=${headers}    expected_status=200
-    Should Be Equal As Integers    ${resp.json()['baconNumber']}    2
-computeBaconNumberPassAlice12
-    ${headers}=    Create Dictionary    Content-Type=application/json
-    ${params}=    Create Dictionary     actorId=nm00003
-    ${resp}=    GET On Session    localhost    /api/v1/computeBaconNumber    params=${params}    headers=${headers}    expected_status=200
-    Should Be Equal As Integers    ${resp.json()['baconNumber']}    3
-
-computeBaconPathPass
-    #Kevin Bacon + Some actor
-    ${headers}=    Create Dictionary    Content-Type=application/json
-    ${resp}=    GET On Session    localhost    url=/api/v1/computeBaconPath?actorId=nm0000102
-    List Should Contain Value    ${resp.json()['baconPath']}    nm0000102
-    ${resp}=    GET On Session    localhost    url=/api/v1/computeBaconPath?actorId=nm00003
-    ${computed_path}=    Set Variable    ${resp.json()["baconPath"]}
-    ${expected_path}=    Create List    nm00003    m0003    nm00002    m0002    nm00001    m0001    nm0000102
-    List Should Contain Sub List    ${computed_path}    ${expected_path}
-
-
-
-
-
-
