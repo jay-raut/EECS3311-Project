@@ -42,9 +42,11 @@ public class OPTIONSRequest extends AbstractRequest {
 
     }
 
+
     private static Map<String, Object> help (){
         System.out.println("called help");
         Map<String, Object> returnAvailableCommands = new LinkedHashMap<>();
+        returnAvailableCommands.put("Available Commands", "This API returns all functions for the server. View this response in a JSON format");
         returnAvailableCommands.put("/addActor (PUT)", "Adds a actor into the database using JSON body. Takes two keys and their respective values: name:actor_name, actorId:actor_id");
         returnAvailableCommands.put("/addMovie (PUT)", "Adds a movie into the database using JSON body. Takes two keys and their respective values: name:movie_name, movieId:movie_id");
         returnAvailableCommands.put("/addRelationship (PUT)", "Creates a relationship between a actor node and a movie node using JSON body. Takes two keys and values: actorId:actor_id, movieId:movie_id");
@@ -55,6 +57,7 @@ public class OPTIONSRequest extends AbstractRequest {
         returnAvailableCommands.put("/computeBaconPath (GET)", " returns the shortest Bacon Path in order from the actor given to Kevin Bacon using Params. actorId:nm0000102");
         returnAvailableCommands.put("/deleteActor (DELETE)", "(ADDED FEATURE) Removes a actor node from the database including its relationships using Params. actorId:actor_id");
         returnAvailableCommands.put("/deleteMovie (DELETE)", "(ADDED FEATURE) Removes a movie node from the database including its relationships using Params. movieId:movie_id");
+        returnAvailableCommands.put("/deleteRelationship (DELETE)", "(ADDED FEATURE) Removes a relationship between a actor node and movie node using Params. actorId:actor_id, movieId:movie_id");
         return returnAvailableCommands;
     }
 }
