@@ -128,28 +128,6 @@ getActorPass
     Should Be Equal As Strings    ${resp.json()['name']}    Kavin Bacon
     List Should Contain Value    ${resp.json()['movies']}     afewgoodmenid
 
-<<<<<<< Updated upstream
-#######GET MOVIE#############################################################################
-    ${headers}=    Create Dictionary    Content-Type=application/json
-    ${params}=    Create Dictionary     movieId=afewgoodmenid
-    ${resp}=    GET On Session    localhost    /api/v1/getActor    params=${params}    headers=${headers}    expected_status=200
-    #check if content of response is correct
-    Should Be Equal As Strings    ${resp.json()['movieId']}    afewgoodmenid
-    Should Be Equal As Strings    ${resp.json()['name']}    A Few Good Men
-    List Should Contain Value    ${resp.json()['actors']}     kavinbacon
-
-
-#######GET RELATIONSHIP#############################################################################
-    ${headers}=    Create Dictionary    Content-Type=application/json
-    ${params}=    Create Dictionary     movieId=afewgoodmenid      actorId=kavinbacon
-
-    ${resp}=    GET On Session    localhost    /api/v1/getActor    params=${params}    headers=${headers}    expected_status=200
-    #check if content of response is correct
-    Should Be Equal As Strings    ${resp.json()['movieId']}    afewgoodmenid
-    Should Be Equal As Strings    ${resp.json()['name']}    A Few Good Men
-    List Should Contain Value    ${resp.json()['actors']}     kavinbacon
-
-=======
 getActorFail
     #fail cuz bad formatting
     ${headers}=    Create Dictionary    Content-Type=application/json
@@ -166,6 +144,28 @@ getActorFail2
     ${params}=    Create Dictionary     actorId=nonexistentId
     ${resp}=    GET On Session    localhost    /api/v1/getActor    params=${params}    headers=${headers}    expected_status=404
 
+#######GET MOVIE#############################################################################
+getMoviePass
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary     movieId=afewgoodmenid
+    ${resp}=    GET On Session    localhost    /api/v1/getMovie    params=${params}    headers=${headers}    expected_status=200
+    #check if content of response is correct
+    Should Be Equal As Strings    ${resp.json()['movieId']}    afewgoodmenid
+    Should Be Equal As Strings    ${resp.json()['name']}    A Few Good Men
+    List Should Contain Value    ${resp.json()['actors']}     kavinbacon
+
 
 #######GET RELATIONSHIP#############################################################################
->>>>>>> Stashed changes
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary     movieId=afewgoodmenid      actorId=kavinbacon
+
+    ${resp}=    GET On Session    localhost    /api/v1/getActor    params=${params}    headers=${headers}    expected_status=200
+    #check if content of response is correct
+    Should Be Equal As Strings    ${resp.json()['movieId']}    afewgoodmenid
+    Should Be Equal As Strings    ${resp.json()['name']}    A Few Good Men
+    List Should Contain Value    ${resp.json()['actors']}     kavinbacon
+
+
+
+#######GET RELATIONSHIP#############################################################################
+
