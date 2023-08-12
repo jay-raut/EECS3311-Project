@@ -10,18 +10,18 @@ Suite Setup    Create Session    localhost    http://localhost:8080
 
 addActorPass
     ${headers}=    Create Dictionary    Content-Type=application/json
-    ${params}=    Create Dictionary    name=Kavin Bacon   actorId=nm0000102
+    ${params}=    Create Dictionary    name=Kevin Bacon   actorId=nm0000102
     ${resp}=    PUT On Session    localhost    /api/v1/addActor    json=${params}    headers=${headers}    expected_status=200
     # unique id, altho actor exists it has diff name
     ${headers}=    Create Dictionary    Content-Type=application/json
-    ${params}=    Create Dictionary    name=Kavin Bacon   actorId=nm0000102butuniqueid
+    ${params}=    Create Dictionary    name=Kevin Bacon   actorId=nm0000102butuniqueid
     ${resp}=    PUT On Session    localhost    /api/v1/addActor    json=${params}    headers=${headers}    expected_status=200
 
 
 addActorFail
     #this needs to fail cuz it has "unique" name but id exists
     ${headers}=    Create Dictionary    Content-Type=application/json
-    ${params}=    Create Dictionary    name=Kavin Bacon2   actorId=nm0000102
+    ${params}=    Create Dictionary    name=Kevin Bacon2   actorId=nm0000102
     ${resp}=    PUT On Session    localhost    /api/v1/addActor    json=${params}    headers=${headers}    expected_status=400
 
     #I expect this to fail cuz of bad formattiong i wote actorID and NAME wrong
@@ -129,7 +129,7 @@ getActorPass
     ${resp}=    GET On Session    localhost    /api/v1/getActor    params=${params}    headers=${headers}    expected_status=200
     #check if content of response is correct
     Should Be Equal As Strings    ${resp.json()['actorId']}    nm0000102
-    Should Be Equal As Strings    ${resp.json()['name']}    Kavin Bacon
+    Should Be Equal As Strings    ${resp.json()['name']}    Kevin Bacon
     List Should Contain Value    ${resp.json()['movies']}     afewgoodmenid
 
 getActorFail
@@ -185,36 +185,32 @@ getRelationshipPass
     Should Be Equal As Strings    ${resp.json()['actorId']}    nm0000102
     Should Be True    ${resp.json()['hasRelationship']}
 
-getRelationshipFail1
+getRelationshipFail
     #fail cuz bad formatting // nonexistent parameter for movieId
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary     Nonexistentparameter=afewgoodmenid         actorId=nm0000102
     ${resp}=    GET On Session    localhost    /api/v1/hasRelationship    params=${params}    headers=${headers}    expected_status=400
 
-getRelationshipFail2
     #fail cuz bad formatting // nonexistent parameter for actorId
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary     movieId=afewgoodmenid         Nonexistentparameter=nm0000102
     ${resp}=    GET On Session    localhost    /api/v1/hasRelationship    params=${params}    headers=${headers}    expected_status=400
 
-getRelationshipFail3
     #fail cuz movieId is null
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary     movieId=${null}         actorId=nm0000102
     ${resp}=    GET On Session    localhost    /api/v1/hasRelationship    params=${params}    headers=${headers}    expected_status=400
 
-getRelationshipFail4
     #fail cuz actorId is null
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary     movieId=afewgoodmenid         actorId=${null}
     ${resp}=    GET On Session    localhost    /api/v1/hasRelationship    params=${params}    headers=${headers}    expected_status=400
 
-getRelationshipFail5
     #fail cuz not found
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary     movieId=nonexistentId         actorId=nm0000102
     ${resp}=    GET On Session    localhost    /api/v1/hasRelationship    params=${params}    headers=${headers}    expected_status=404
-getRelationshipFail6
+
     #fail cuz not found
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary     movieId=afewgoodmenid         actorId=nonexistentId
@@ -305,6 +301,27 @@ computeBaconNumberPass
     ${resp}=    GET On Session    localhost    /api/v1/computeBaconNumber    params=${params}    headers=${headers}    expected_status=200
     #check if content of response is correct
     Should Be Equal As Integers    ${resp.json()['baconNumber']}    3
+
+computeBaconNumberFail
+    #fail cuz actorID not found
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary     actorId=RandomIdDoesntExist
+    ${resp}=    GET On Session    localhost    /api/v1/computeBaconNumber    params=${params}    headers=${headers}    expected_status=404
+
+    #fail cuz actor is either unreachable or path is more than 6 (unreachable for my test)
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary     actorId=outOfReachID
+
+    #fail cuz actor nullz
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary     actorId=${null}
+    ${resp}=    GET On Session    localhost    /api/v1/computeBaconNumber    params=${params}    headers=${headers}    expected_status=400
+
+    #fail cuz bad formatting
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary     wrongParameter=someid
+    ${resp}=    GET On Session    localhost    /api/v1/computeBaconNumber    params=${params}    headers=${headers}    expected_status=400
+
 
 
     ##############################################
