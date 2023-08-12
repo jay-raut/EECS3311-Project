@@ -128,42 +128,97 @@ getActorPass
     Should Be Equal As Strings    ${resp.json()['name']}    Kavin Bacon
     List Should Contain Value    ${resp.json()['movies']}     afewgoodmenid
 
-<<<<<<< Updated upstream
-#######GET MOVIE#############################################################################
-    ${headers}=    Create Dictionary    Content-Type=application/json
-    ${params}=    Create Dictionary     movieId=afewgoodmenid
-    ${resp}=    GET On Session    localhost    /api/v1/getActor    params=${params}    headers=${headers}    expected_status=200
-    #check if content of response is correct
-    Should Be Equal As Strings    ${resp.json()['movieId']}    afewgoodmenid
-    Should Be Equal As Strings    ${resp.json()['name']}    A Few Good Men
-    List Should Contain Value    ${resp.json()['actors']}     kavinbacon
-
-
-#######GET RELATIONSHIP#############################################################################
-    ${headers}=    Create Dictionary    Content-Type=application/json
-    ${params}=    Create Dictionary     movieId=afewgoodmenid      actorId=kavinbacon
-
-    ${resp}=    GET On Session    localhost    /api/v1/getActor    params=${params}    headers=${headers}    expected_status=200
-    #check if content of response is correct
-    Should Be Equal As Strings    ${resp.json()['movieId']}    afewgoodmenid
-    Should Be Equal As Strings    ${resp.json()['actorId']}    kavinbacon
-    Should Be Equal As Boolean    ${resp.json()['hasRelationship']}    True
-
 getActorFail
     #fail cuz bad formatting
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary     Nonexistentparameter=kavinbacon
     ${resp}=    GET On Session    localhost    /api/v1/getActor    params=${params}    headers=${headers}    expected_status=400
-getActorFail1
+
     #fail cuz nullz
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary     actorId=${null}
     ${resp}=    GET On Session    localhost    /api/v1/getActor    params=${params}    headers=${headers}    expected_status=400
-getActorFail2
+
     #fail cuz not found
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary     actorId=nonexistentId
     ${resp}=    GET On Session    localhost    /api/v1/getActor    params=${params}    headers=${headers}    expected_status=404
 
+#######GET MOVIE#############################################################################
+getMoviePass
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary     movieId=afewgoodmenid
+    ${resp}=    GET On Session    localhost    /api/v1/getMovie    params=${params}    headers=${headers}    expected_status=200
+    #check if content of response is correct
+    Should Be Equal As Strings    ${resp.json()['movieId']}    afewgoodmenid
+    Should Be Equal As Strings    ${resp.json()['name']}    A Few Good Men
+    List Should Contain Value    ${resp.json()['actors']}     kavinbacon
+
+getMovieFail
+    #fail cuz bad formatting
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary     NotARealParameter=afewgoodmenid
+    ${resp}=    GET On Session    localhost    /api/v1/getMovie    params=${params}    headers=${headers}    expected_status=400
+
+    #fail cuz Nulz
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary     movieId=${null}
+    ${resp}=    GET On Session    localhost    /api/v1/getMovie    params=${params}    headers=${headers}    expected_status=400
+
+    #fail cuz not found
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary     movieId=NotARealMovieID
+    ${resp}=    GET On Session    localhost    /api/v1/getMovie    params=${params}    headers=${headers}    expected_status=404
+
+
+
 
 #######GET RELATIONSHIP#############################################################################
+getRelationshipPass
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary     movieId=afewgoodmenid    actorId=kavinbacon
+    ${resp}=    GET On Session    localhost    /api/v1/hasRelationship    params=${params}    headers=${headers}    expected_status=200
+    #check if content of response is correct
+    Should Be Equal As Strings    ${resp.json()['movieId']}    afewgoodmenid
+    Should Be Equal As Strings    ${resp.json()['actorId']}    kavinbacon
+    Should Be True    ${resp.json()['hasRelationship']}
+
+getRelationshipFail1
+    #fail cuz bad formatting // nonexistent parameter for movieId
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary     Nonexistentparameter=afewgoodmenid         actorId=kavinbacon
+    ${resp}=    GET On Session    localhost    /api/v1/hasRelationship    params=${params}    headers=${headers}    expected_status=400
+
+getRelationshipFail2
+    #fail cuz bad formatting // nonexistent parameter for actorId
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary     movieId=afewgoodmenid         Nonexistentparameter=kavinbacon
+    ${resp}=    GET On Session    localhost    /api/v1/hasRelationship    params=${params}    headers=${headers}    expected_status=400
+
+getRelationshipFail3
+    #fail cuz movieId is null
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary     movieId=${null}         actorId=kavinbacon
+    ${resp}=    GET On Session    localhost    /api/v1/hasRelationship    params=${params}    headers=${headers}    expected_status=400
+
+getRelationshipFail4
+    #fail cuz actorId is null
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary     movieId=afewgoodmenid         actorId=${null}
+    ${resp}=    GET On Session    localhost    /api/v1/hasRelationship    params=${params}    headers=${headers}    expected_status=400
+
+getRelationshipFail4
+    #fail cuz actorId is null
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary     movieId=nonexistentId         actorId=kavinbacon
+    ${resp}=    GET On Session    localhost    /api/v1/hasRelationship    params=${params}    headers=${headers}    expected_status=404
+
+    #fail cuz not found
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary     movieId=afewgoodmenid actorId=nonexistentId
+    ${resp}=    GET On Session    localhost    /api/v1/getActor    params=${params}    headers=${headers}    expected_status=404
+
+
+
+
+
