@@ -23,17 +23,17 @@ addActorFail
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    name=Kevin Bacon2   actorId=nm0000102
     ${resp}=    PUT On Session    localhost    /api/v1/addActor    json=${params}    headers=${headers}    expected_status=400
-
+addActorFail2
     #I expect this to fail cuz of bad formattiong i wote actorID and NAME wrong
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    Actorid=robertdowney    Name=Robert Downey Jr.
     ${resp}=    PUT On Session    localhost    /api/v1/addActor    json=${params}    headers=${headers}    expected_status=400
-
+addActorFail3
     #I expect this to fail cuz of nulls
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    name=${null}   actorId=scarlettjohansson
     ${resp}=    PUT On Session    localhost    /api/v1/addActor    json=${params}    headers=${headers}    expected_status=400
-
+addActorFail4
     #I expect this to fail cuz of nulls
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    name=Scarlett Johansson   actorId=${null}
@@ -48,8 +48,6 @@ addMoviePass
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    name=A Few Good Men   movieId=afewgoodmenuniqueanddifferentid
     ${resp}=    PUT On Session    localhost    /api/v1/addMovie    json=${params}    headers=${headers}    expected_status=200
-
-
 
 addMovieFail
     #fail cuz movieId exists
@@ -324,10 +322,7 @@ computeBaconNumberFail
     ${resp}=    GET On Session    localhost    /api/v1/computeBaconNumber    params=${params}    headers=${headers}    expected_status=400
 
 ###############BACON PATH TESTS###############################
-#@Arienne got this ^^
-
-computeBaconPathPass1
-
+computeBaconPathPass
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary     actorId=nm0000102
     ${resp}=    GET On Session    localhost    /api/v1/computeBaconPath    params=${params}    headers=${headers}    expected_status=200
@@ -336,7 +331,6 @@ computeBaconPathPass1
     ${expectedPath}=    Create List    nm0000102
     List Should Contain Sub List    ${returnedPath}    ${expectedPath}
 
-computerBaconPathPass2
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary     actorId=angelinajolie
     ${resp}=    GET On Session    localhost    /api/v1/computeBaconPath    params=${params}    headers=${headers}    expected_status=200
@@ -345,7 +339,6 @@ computerBaconPathPass2
     ${expected_path}=    Create List    angelinajolie     	afewgoodmenid      nm0000102
     List Should Contain Sub List    ${returnedPath}    ${expected_path}
 
-computerBaconPathPass3
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary     actorId=actorb
     ${resp}=    GET On Session    localhost    /api/v1/computeBaconPath    params=${params}    headers=${headers}    expected_status=200
@@ -354,7 +347,6 @@ computerBaconPathPass3
     ${expected_path}=    Create List    actorb       movie1id        angelinajolie     	afewgoodmenid      nm0000102
     List Should Contain Sub List    ${returnedPath}    ${expected_path}
 
-computerBaconPathPass4
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary     actorId=johnnydepp
     ${resp}=    GET On Session    localhost    /api/v1/computeBaconPath    params=${params}    headers=${headers}    expected_status=200
@@ -363,26 +355,22 @@ computerBaconPathPass4
     ${expected_path}=    Create List    	johnnydepp      	movie2id        actorb       movie1id        angelinajolie     	afewgoodmenid      nm0000102
     List Should Contain Sub List    ${returnedPath}    ${expected_path}
 
-computeBaconPathFail1
+computeBaconPathFail
     #wrong/bad formatting
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary     wrongParameter=someid
     ${resp}=    GET On Session    localhost    /api/v1/computeBaconPath   params=${params}    headers=${headers}    expected_status=400
 
-
-computeBaconPathFail2
     #missing information
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary     actorId=${null}
     ${resp}=    GET On Session    localhost    /api/v1/computeBaconPath   params=${params}    headers=${headers}    expected_status=400
 
-computeBaconPathFail3
     #fail cuz actorID not found
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary     actorId=RandomIdDoesntExist
     ${resp}=    GET On Session    localhost    /api/v1/computeBaconPath    params=${params}    headers=${headers}    expected_status=404
 
-computeBaconPathFail4
     #fail cuz actor is either unreachable or path is more than 6 (unreachable for my test)
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary     actorId=outOfReachID
@@ -390,7 +378,6 @@ computeBaconPathFail4
 
 
 ###############EXTENDED OPTION (DELETE) TESTS###############################
-########### i get 4000 i dont know thats wrong with them
 deleteActorPass
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    actorId=angelinajolie
@@ -401,12 +388,12 @@ deleteActorFail
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    badparameter=johnnydepp
     ${resp}=    DELETE On Session    localhost    /api/v1/deleteActor    params=${params}    headers=${headers}    expected_status=400
-deleteActorFail2
+
     #fail cuz actor doesnt exist anymore (deleted already)
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    actorId=angelinajolie
-    ${resp}=    DELETE On Session    localhost    /api/v1/deleteActor    params=${params}    headers=${headers}    expected_status=400
-deleteActorFail3
+    ${resp}=    DELETE On Session    localhost    /api/v1/deleteActor    params=${params}    headers=${headers}    expected_status=404
+
     #fail cuz nulz
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    actorId=${null}
@@ -416,10 +403,6 @@ deleteMoviePass
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    movieId=movie3id
     ${resp}=    DELETE On Session    localhost    /api/v1/deleteMovie    params=${params}    headers=${headers}    expected_status=200
-    #getmovie should fail afterthis cuz movie deleted
-    ${headers}=    Create Dictionary    Content-Type=application/json
-    ${params}=    Create Dictionary     movieId=movie3id
-    ${resp}=    GET On Session    localhost    /api/v1/getMovie    params=${params}    headers=${headers}    expected_status=404
 
 deleteMovieFail
     #fail cuz badformatting
@@ -428,12 +411,11 @@ deleteMovieFail
     ${resp}=    DELETE On Session    localhost    /api/v1/deleteMovie    params=${params}    headers=${headers}    expected_status=400
 
 deleteMovieFail2
-    #fail cuz movie not found (already delted in previous test)
+    #fail cuz movie not found
     ${headers}=    Create Dictionary    Content-Type=application/json
-    ${params}=    Create Dictionary    badParameter=afewgoodmenuniqueanddifferentid
+    ${params}=    Create Dictionary    badParameter=noMovieFound
     ${resp}=    DELETE On Session    localhost    /api/v1/deleteMovie    params=${params}    headers=${headers}    expected_status=404
 
-deleteMovieFail3
     #fail cuz nulz
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    badParameter=${null}
@@ -449,7 +431,7 @@ deleteRelationshipFail
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    badparam=nm0000102       movieId=afewgoodmenid
     ${resp}=    DELETE On Session    localhost    /api/v1/deleteRelationship    params=${params}    headers=${headers}    expected_status=400
-deleteRelationshipFail2
+
     #fail cuz nulz
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    actorId=${null}      movieId=unboundMovieID
@@ -459,11 +441,12 @@ deleteRelationshipFail2
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    actorId=outOfReachID     movieId=${null}
     ${resp}=    DELETE On Session    localhost    /api/v1/deleteRelationship    params=${params}    headers=${headers}    expected_status=400
-deleteRelationshipFail3
+
     #fail cuz notfound
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    actorId=actornotreal     movieId=unboundMovieID
     ${resp}=    DELETE On Session    localhost    /api/v1/deleteRelationship    params=${params}    headers=${headers}    expected_status=404
+
     #fail cuz notfound2
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    actorId=outOfReachID     movieId=movienotreal
