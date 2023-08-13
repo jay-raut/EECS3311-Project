@@ -394,7 +394,7 @@ computeBaconPathFail4
 deleteActorPass
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    actorId=angelinajolie
-    ${resp}=    DELETE On Session    localhost    /api/v1/deleteActor    json=${params}    headers=${headers}    expected_status=200
+    ${resp}=    DELETE On Session    localhost    /api/v1/deleteActor    params=${params}    headers=${headers}    expected_status=200
 
 deleteMoviePass
 ### I am absolutely sure this node exists and code knows it
@@ -403,5 +403,5 @@ deleteMoviePass
     ${resp}=    PUT On Session    localhost    /api/v1/addMovie    json=${params}    headers=${headers}    expected_status=200
 ###
     ${headers}=    Create Dictionary    Content-Type=application/json
-    ${params}=    Create Dictionary    movieId=shouldDel
-    ${resp}=    DELETE On Session    localhost    /api/v1/deleteMovie    json=${params}    headers=${headers}    expected_status=200
+    ${params}=    Create Dictionary    movieId=shouldDelete
+    ${resp}=    DELETE On Session    localhost    /api/v1/deleteMovie    params=${params}    headers=${headers}    expected_status=200
