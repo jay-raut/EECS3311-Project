@@ -146,7 +146,7 @@ public class DELETERequest extends AbstractRequest {
             StatementResult result = checkIfRelationshipExists.run(checkRelationshipExists, Values.parameters("actorId", actorId, "movieId", movieId));
             if (result.hasNext()) {
                 if (!result.next().get("relationshipExists").asBoolean()) { //if the relationship doesn't exist
-                    return 400;
+                    return 404;
                 }
             }
 
