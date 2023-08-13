@@ -328,21 +328,30 @@ computeBaconNumberFail
 
 computeBaconPathPass1
 
-    ${endpoint _with_param1}= Set Variable ${computeBaconPath)?$(actorId)-${A16}
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary     actorId=nm0000102
+    ${resp}=    GET On Session    localhost    /api/v1/computeBaconPath    params=${params}    headers=${headers}    expected_status=200
+    #check if content of response is correct
+    ${returnedPath}=    Set Variable    ${resp.json()["baconPath"]}
+    ${expectedPath}=    Create List    nm0000102
+    List Should Contain Sub List    ${returnedPath}    ${expectedPath}
 
-    ${resp1}= GET On Session localhost ${endpoint_with_param1}
+computeBaconPathPass???
+    ${endpoint _with_param1}=   Set Variable    ${computeBaconPath)?$(actorId)-${A16}
 
-    Should Be Equal As Strings ${resp1.status_code}  200
+    ${resp1}=   GET On Session      localhost    ${endpoint_with_param1}
 
-    ${json1}= To Json ${resp1. content}
+    Should Be Equal As Strings  ${resp1.status_code}    200
 
-    ${expected_bacon_path1}= Create List   0016   0007   0008   0008   0009   0009   0001  0001 nm1001231
+    ${json1}=   ${resp.json()} ${resp1. content}
 
-    Lists Should Be Equal ${json1['baconPath']}  ${expected_bacon_path1}
+    ${expected_bacon_path1}=    Create List   0016   0007   0008   0008   0009   0009   0001  0001 nm1001231
+
+    Lists Should Be Equal   ${json1['baconPath']}   ${expected_bacon_path1}
 
 
     # edge case where path variable is Kevin Bacon's id
-    ${endpoint_with_param2}= Set Variable  ${computeBaconPath}?${actorId}=${KevinBaconId}
+    ${endpoint_with_param2}=    Set Variable  ${computeBaconPath}?${actorId}=${KevinBaconId}
 
     ${resp2}=  GET On Session    localhost   ${endpoint_with_param2}
 
