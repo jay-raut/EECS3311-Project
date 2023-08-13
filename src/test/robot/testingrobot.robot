@@ -333,7 +333,7 @@ computeBaconPathPass1
     ${resp}=    GET On Session    localhost    /api/v1/computeBaconPath    params=${params}    headers=${headers}    expected_status=200
     #check if content of response is correct
     ${returnedPath}=    Set Variable    ${resp.json()["baconPath"]}
-    ${expectedPath}=    Create List    nm0000102
+    ${expectedPath}=    Create List    Jdepp
     List Should Contain Sub List    ${returnedPath}    ${expectedPath}
 
 
@@ -343,7 +343,7 @@ computerBaconPathPass2
     ${resp}=    GET On Session    localhost    /api/v1/computeBaconPath    params=${params}    headers=${headers}    expected_status=200
     #check if content of response is correct
     ${returnedPath}=    Set Variable    ${resp.json()["baconPath"]}
-    ${expected_path}=    Create List    nm00003    m0003
+    ${expected_path}=    Create List    Jdepp       movie2
     List Should Contain Sub List    ${computed_path}    ${expected_path}
 
 computerBaconPathPass3
@@ -352,7 +352,7 @@ computerBaconPathPass3
     ${resp}=    GET On Session    localhost    /api/v1/computeBaconPath    params=${params}    headers=${headers}    expected_status=200
     #check if content of response is correct
     ${returnedPath}=    Set Variable    ${resp.json()["baconPath"]}
-    ${expected_path}=    Create List    nm00003    m0003    nm00002
+    ${expected_path}=    Create List    Jdepp       movie2      actorB Movie1
     List Should Contain Sub List    ${computed_path}    ${expected_path}
 
 computerBaconPathPass4
@@ -361,7 +361,7 @@ computerBaconPathPass4
     ${resp}=    GET On Session    localhost    /api/v1/computeBaconPath    params=${params}    headers=${headers}    expected_status=200
     #check if content of response is correct
     ${returnedPath}=    Set Variable    ${resp.json()["baconPath"]}
-    ${expected_path}=    Create List    nm00003    m0003    nm00002    m0002
+    ${expected_path}=    Create List    Jdepp       movie2      actorB Movie1    Angelina jolie
     List Should Contain Sub List    ${computed_path}    ${expected_path}
 
 computerBaconPathPass5
@@ -370,7 +370,7 @@ computerBaconPathPass5
     ${resp}=    GET On Session    localhost    /api/v1/computeBaconPath    params=${params}    headers=${headers}    expected_status=200
     #check if content of response is correct
     ${returnedPath}=    Set Variable    ${resp.json()["baconPath"]}
-    ${expected_path}=    Create List    nm00003    m0003    nm00002    m0002    nm00001
+    ${expected_path}=    Create List    Jdepp       movie2      actorB Movie1    Angelina jolie     afewgoodman
     List Should Contain Sub List    ${computed_path}    ${expected_path}
 
 
@@ -380,17 +380,17 @@ computerBaconPathPass6
     ${resp}=    GET On Session    localhost    /api/v1/computeBaconPath    params=${params}    headers=${headers}    expected_status=200
     #check if content of response is correct
     ${returnedPath}=    Set Variable    ${resp.json()["baconPath"]}
-    ${expected_path}=    Create List    nm00003    m0003    nm00002    m0002    nm00001    m0001
+    ${expected_path}=    Create List    Jdepp       movie2      actorB Movie1    Angelina jolie     afewgoodman      kevinbacon
     List Should Contain Sub List    ${computed_path}    ${expected_path}
 
-computerBaconPathPass2
-    ${headers}=    Create Dictionary    Content-Type=application/json
-    ${params}=    Create Dictionary     actorId=nm0000102
-    ${resp}=    GET On Session    localhost    /api/v1/computeBaconPath    params=${params}    headers=${headers}    expected_status=200
-    #check if content of response is correct
-    ${returnedPath}=    Set Variable    ${resp.json()["baconPath"]}
-    ${expected_path}=    Create List    nm00003    m0003    nm00002    m0002    nm00001    m0001    nm0000102
-    List Should Contain Sub List    ${computed_path}    ${expected_path}
+#computerBaconPathPass2
+#    ${headers}=    Create Dictionary    Content-Type=application/json
+#    ${params}=    Create Dictionary     actorId=nm0000102
+#    ${resp}=    GET On Session    localhost    /api/v1/computeBaconPath    params=${params}    headers=${headers}    expected_status=200
+#    #check if content of response is correct
+#    ${returnedPath}=    Set Variable    ${resp.json()["baconPath"]}
+#    ${expected_path}=    Create List    Jdepp       movie2      actorB Movie1    Angelina jolie     afewgoodman      kevinbacon
+#    List Should Contain Sub List    ${computed_path}    ${expected_path}
 
 computeBaconPathPass???
     ${endpoint _with_param1}=   Set Variable    ${computeBaconPath)?$(actorId)-${A16}
