@@ -344,7 +344,7 @@ computerBaconPathPass2
     #check if content of response is correct
     ${returnedPath}=    Set Variable    ${resp.json()["baconPath"]}
     ${expected_path}=    Create List    nm00003    m0003
-    List Should Contain Sub List    ${computed_path}    ${expected_path}
+    List Should Contain Sub List    ${returnedPath}    ${expected_path}
 
 computerBaconPathPass3
     ${headers}=    Create Dictionary    Content-Type=application/json
@@ -353,7 +353,7 @@ computerBaconPathPass3
     #check if content of response is correct
     ${returnedPath}=    Set Variable    ${resp.json()["baconPath"]}
     ${expected_path}=    Create List    nm00003    m0003    nm00002
-    List Should Contain Sub List    ${computed_path}    ${expected_path}
+    List Should Contain Sub List    ${returnedPath}}    ${expected_path}
 
 computerBaconPathPass4
     ${headers}=    Create Dictionary    Content-Type=application/json
@@ -362,7 +362,7 @@ computerBaconPathPass4
     #check if content of response is correct
     ${returnedPath}=    Set Variable    ${resp.json()["baconPath"]}
     ${expected_path}=    Create List    nm00003    m0003    nm00002    m0002
-    List Should Contain Sub List    ${computed_path}    ${expected_path}
+    List Should Contain Sub List    ${returnedPath}    ${expected_path}
 
 computerBaconPathPass5
     ${headers}=    Create Dictionary    Content-Type=application/json
@@ -371,7 +371,7 @@ computerBaconPathPass5
     #check if content of response is correct
     ${returnedPath}=    Set Variable    ${resp.json()["baconPath"]}
     ${expected_path}=    Create List    nm00003    m0003    nm00002    m0002    nm00001
-    List Should Contain Sub List    ${computed_path}    ${expected_path}
+    List Should Contain Sub List    ${returnedPath}    ${expected_path}
 
 
 computerBaconPathPass6
@@ -381,7 +381,7 @@ computerBaconPathPass6
     #check if content of response is correct
     ${returnedPath}=    Set Variable    ${resp.json()["baconPath"]}
     ${expected_path}=    Create List    nm00003    m0003    nm00002    m0002    nm00001    m0001
-    List Should Contain Sub List    ${computed_path}    ${expected_path}
+    List Should Contain Sub List    ${returnedPath}    ${expected_path}
 
 computerBaconPathPass2
     ${headers}=    Create Dictionary    Content-Type=application/json
@@ -390,7 +390,7 @@ computerBaconPathPass2
     #check if content of response is correct
     ${returnedPath}=    Set Variable    ${resp.json()["baconPath"]}
     ${expected_path}=    Create List    nm00003    m0003    nm00002    m0002    nm00001    m0001    nm0000102
-    List Should Contain Sub List    ${computed_path}    ${expected_path}
+    List Should Contain Sub List    ${returnedPath}    ${expected_path}
 
 computeBaconPathPass???
     ${endpoint _with_param1}=   Set Variable    ${computeBaconPath)?$(actorId)-${A16}
