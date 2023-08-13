@@ -389,10 +389,6 @@ computeBaconPathFail4
     ${resp}=    GET On Session    localhost    /api/v1/computeBaconPath    params=${params}    headers=${headers}    expected_status=404
 
 
-
-
-
-
 ###############EXTENDED OPTION (DELETE) TESTS###############################
 ########### i get 4000 i dont know thats wrong with them
 deleteActorPass
@@ -401,6 +397,7 @@ deleteActorPass
     ${resp}=    DELETE On Session    localhost    /api/v1/deleteActor    json=${params}    headers=${headers}    expected_status=200
 
 deleteMoviePass
+### I am absolutely sure this node exists and code knows it
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    name=Movie to delete!   movieId=shouldDelete
     ${resp}=    PUT On Session    localhost    /api/v1/addMovie    json=${params}    headers=${headers}    expected_status=200
