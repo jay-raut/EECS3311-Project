@@ -25,8 +25,6 @@ public class DELETERequest extends AbstractRequest {
         endpointHandlers.put("/deleteActor", DELETERequest::deleteActor);
         endpointHandlers.put("/deleteMovie", DELETERequest::deleteMovie);
         endpointHandlers.put("/deleteRelationship", DELETERequest::deleteRelationship);
-
-
     }
 
     @Override
