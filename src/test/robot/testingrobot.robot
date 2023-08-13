@@ -324,6 +324,49 @@ computeBaconNumberFail
 
 ###############BACON PATH TESTS###############################
 #@Arienne got this ^^
+
+computeBaconPathPass1
+
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary     actorId=nm0000102
+    ${resp}=    GET On Session    localhost    /api/v1/computeBaconPath   params=${params}    headers=${headers}    expected_status=200
+    #check if content of response is correct
+    Should Be Equal As Strings    ${bacon_path[0]}    nm0000102
+    Should Be Equal As Strings    ${bacon_path[1]}    nm0000102
+    Should Be Equal As Strings    ${bacon_path[2]}    nm0000102
+    Should Be Equal As Strings    ${bacon_path[3]}    nm0000102
+
+
+computeBaconPathFail1
+    #wrong/bad formatting
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary     wrongParameter=someid
+    ${resp}=    GET On Session    localhost    /api/v1/computeBaconPath   params=${params}    headers=${headers}    expected_status=400
+
+
+computeBaconPathFail2
+    #missing information
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary     actorId=${null}
+    ${resp}=    GET On Session    localhost    /api/v1/computeBaconPath   params=${params}    headers=${headers}    expected_status=400
+
+computeBaconPathFail3
+    #fail cuz actorID not found
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary     actorId=RandomIdDoesntExist
+    ${resp}=    GET On Session    localhost    /api/v1/computeBaconPath    params=${params}    headers=${headers}    expected_status=404
+
+computeBaconPathFail4
+    #fail cuz actor is either unreachable or path is more than 6 (unreachable for my test)
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary     actorId=outOfReachID
+
+
+
+
+
+
+
 ###############EXTENDED OPTION (DELETE) TESTS###############################
 
 deleteActorPass
