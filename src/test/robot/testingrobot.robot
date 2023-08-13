@@ -345,6 +345,8 @@ computerBaconPathPass2
     ${returnedPath}=    Set Variable    ${resp.json()["baconPath"]}
     ${expected_path}=    Create List    Jdepp       movie2
     List Should Contain Sub List    ${computed_path}    ${expected_path}
+    ${expected_path}=    Create List    nm00003    m0003
+    List Should Contain Sub List    ${returnedPath}    ${expected_path}
 
 computerBaconPathPass3
     ${headers}=    Create Dictionary    Content-Type=application/json
@@ -354,6 +356,8 @@ computerBaconPathPass3
     ${returnedPath}=    Set Variable    ${resp.json()["baconPath"]}
     ${expected_path}=    Create List    Jdepp       movie2      actorB Movie1
     List Should Contain Sub List    ${computed_path}    ${expected_path}
+    ${expected_path}=    Create List    nm00003    m0003    nm00002
+    List Should Contain Sub List    ${returnedPath}}    ${expected_path}
 
 computerBaconPathPass4
     ${headers}=    Create Dictionary    Content-Type=application/json
@@ -363,6 +367,8 @@ computerBaconPathPass4
     ${returnedPath}=    Set Variable    ${resp.json()["baconPath"]}
     ${expected_path}=    Create List    Jdepp       movie2      actorB Movie1    Angelina jolie
     List Should Contain Sub List    ${computed_path}    ${expected_path}
+    ${expected_path}=    Create List    nm00003    m0003    nm00002    m0002
+    List Should Contain Sub List    ${returnedPath}    ${expected_path}
 
 computerBaconPathPass5
     ${headers}=    Create Dictionary    Content-Type=application/json
@@ -372,6 +378,8 @@ computerBaconPathPass5
     ${returnedPath}=    Set Variable    ${resp.json()["baconPath"]}
     ${expected_path}=    Create List    Jdepp       movie2      actorB Movie1    Angelina jolie     afewgoodman
     List Should Contain Sub List    ${computed_path}    ${expected_path}
+    ${expected_path}=    Create List    nm00003    m0003    nm00002    m0002    nm00001
+    List Should Contain Sub List    ${returnedPath}    ${expected_path}
 
 
 computerBaconPathPass6
@@ -380,6 +388,7 @@ computerBaconPathPass6
     ${resp}=    GET On Session    localhost    /api/v1/computeBaconPath    params=${params}    headers=${headers}    expected_status=200
     #check if content of response is correct
     ${returnedPath}=    Set Variable    ${resp.json()["baconPath"]}
+
     ${expected_path}=    Create List    Jdepp       movie2      actorB Movie1    Angelina jolie     afewgoodman      kevinbacon
     List Should Contain Sub List    ${computed_path}    ${expected_path}
 
@@ -391,6 +400,19 @@ computerBaconPathPass6
 #    ${returnedPath}=    Set Variable    ${resp.json()["baconPath"]}
 #    ${expected_path}=    Create List    Jdepp       movie2      actorB Movie1    Angelina jolie     afewgoodman      kevinbacon
 #    List Should Contain Sub List    ${computed_path}    ${expected_path}
+
+    ${expected_path}=    Create List    nm00003    m0003    nm00002    m0002    nm00001    m0001
+    List Should Contain Sub List    ${returnedPath}    ${expected_path}
+
+computerBaconPathPass2
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary     actorId=nm0000102
+    ${resp}=    GET On Session    localhost    /api/v1/computeBaconPath    params=${params}    headers=${headers}    expected_status=200
+    #check if content of response is correct
+    ${returnedPath}=    Set Variable    ${resp.json()["baconPath"]}
+    ${expected_path}=    Create List    nm00003    m0003    nm00002    m0002    nm00001    m0001    nm0000102
+    List Should Contain Sub List    ${returnedPath}    ${expected_path}
+
 
 computeBaconPathPass???
     ${endpoint _with_param1}=   Set Variable    ${computeBaconPath)?$(actorId)-${A16}
