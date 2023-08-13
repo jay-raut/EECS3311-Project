@@ -311,6 +311,7 @@ computeBaconNumberFail
     #fail cuz actor is either unreachable or path is more than 6 (unreachable for my test)
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary     actorId=outOfReachID
+    ${resp}=    GET On Session    localhost    /api/v1/computeBaconNumber    params=${params}    headers=${headers}    expected_status=404
 
     #fail cuz actor nullz
     ${headers}=    Create Dictionary    Content-Type=application/json
@@ -360,7 +361,7 @@ computeBaconPathFail4
     #fail cuz actor is either unreachable or path is more than 6 (unreachable for my test)
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary     actorId=outOfReachID
-
+    ${resp}=    GET On Session    localhost    /api/v1/computeBaconPath    params=${params}    headers=${headers}    expected_status=404
 
 
 
