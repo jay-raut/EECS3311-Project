@@ -372,10 +372,17 @@ computeBaconPathFail4
 
 
 ###############EXTENDED OPTION (DELETE) TESTS###############################
-
+########### i get 4000 i dont know thats wrong with them
 deleteActorPass
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    actorId=angelinajolie
     ${resp}=    DELETE On Session    localhost    /api/v1/deleteActor    json=${params}    headers=${headers}    expected_status=200
 
-
+deleteMoviePass
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary    name=Movie to delete!   movieId=shouldDelete
+    ${resp}=    PUT On Session    localhost    /api/v1/addMovie    json=${params}    headers=${headers}    expected_status=200
+###
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary    movieId=shouldDel
+    ${resp}=    DELETE On Session    localhost    /api/v1/deleteMovie    json=${params}    headers=${headers}    expected_status=200
