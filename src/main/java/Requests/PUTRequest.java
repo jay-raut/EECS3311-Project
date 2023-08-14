@@ -5,9 +5,7 @@ import ca.yorku.eecs.Utils;
 import com.sun.net.httpserver.HttpExchange;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.neo4j.driver.v1.*;
