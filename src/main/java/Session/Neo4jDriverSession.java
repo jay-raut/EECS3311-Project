@@ -21,28 +21,28 @@ public final class Neo4jDriverSession {//using singleton design pattern to use t
             // checking if Kevin Bacon is in the database once the connection is established for the first time.
             // if not, add him there w/ a fixed id as said in the handout.
             // if he is, ignore and proceed straight to returning the database driver reference.
-            
-            try (Session session = driver.session()) { //checking if id already exists
 
-                String checkForExistingActor = "MATCH (a:Actor {actorId: $actorId}) RETURN COUNT(a) AS count";
-                StatementResult result = session.run(checkForExistingActor, Values.parameters("actorId", "nm0000102"));
-                if (result.hasNext()) {
-                    Record record = result.next();
-                    int count = record.get("count").asInt();
-                    if (count != 0) {
-                        return driver;
-                    }
-                }
+            // try (Session session = driver.session()) { //checking if id already exists
+
+            //     String checkForExistingActor = "MATCH (a:Actor {actorId: $actorId}) RETURN COUNT(a) AS count";
+            //     StatementResult result = session.run(checkForExistingActor, Values.parameters("actorId", "nm0000102"));
+            //     if (result.hasNext()) {
+            //         Record record = result.next();
+            //         int count = record.get("count").asInt();
+            //         if (count != 0) {
+            //             return driver;
+            //         }
+            //     }
     
-                String createActorQuery = "CREATE (:Actor {name: $name, actorId: $actorId})";
-                driver.session().run(createActorQuery, Values.parameters("name", "Kevin Bacon", "actorId", "nm0000102"));
+            //     String createActorQuery = "CREATE (:Actor {name: $name, actorId: $actorId})";
+            //     driver.session().run(createActorQuery, Values.parameters("name", "Kevin Bacon", "actorId", "nm0000102"));
     
     
-            } catch (Exception e) {
-                // Handle exceptions and log errors if needed
-                e.printStackTrace();
-                throw e;
-            }
+            // } catch (Exception e) {
+            //     // Handle exceptions and log errors if needed
+            //     e.printStackTrace();
+            //     throw e;
+            // }
         }
         return driver;
     }
