@@ -11,7 +11,7 @@ Suite Setup    Create Session    localhost    http://localhost:8080
 addActorPass
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    name=Kevin Bacon   actorId=nm0000102
-    ${resp}=    PUT On Session    localhost    /api/v1/addActor    json=${params}    headers=${headers}
+    
 #this is what i planned to do but prof said he would make sure to add kevinbacon before runnin our tests I will put it here anyway just to be safe
 
 #    ${headers}=    Create Dictionary    Content-Type=application/json
