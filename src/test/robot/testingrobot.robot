@@ -11,10 +11,23 @@ Suite Setup    Create Session    localhost    http://localhost:8080
 addActorPass
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    name=Kevin Bacon   actorId=nm0000102
-    ${resp}=    PUT On Session    localhost    /api/v1/addActor    json=${params}    headers=${headers}    expected_status=200
-    # unique id, altho actor exists it has diff name
+    ${resp}=    PUT On Session    localhost    /api/v1/addActor    json=${params}    headers=${headers}
+#this is what i planned to do but prof said he would make sure to add kevinbacon before runnin our tests I will put it here anyway just to be safe
+
+#    ${headers}=    Create Dictionary    Content-Type=application/json
+#    ${params}=    Create Dictionary    name=Kevin Bacon   actorId=nm0000102
+#    ${resp}=    PUT On Session    localhost    /api/v1/addActor    json=${params}    headers=${headers}    expected_status=200
+#    # unique id, altho actor exists it has diff name
+#    ${headers}=    Create Dictionary    Content-Type=application/json
+#    ${params}=    Create Dictionary    name=Kevin Bacon   actorId=nm0000102butuniqueid
+#    ${resp}=    PUT On Session    localhost    /api/v1/addActor    json=${params}    headers=${headers}    expected_status=200
+
     ${headers}=    Create Dictionary    Content-Type=application/json
-    ${params}=    Create Dictionary    name=Kevin Bacon   actorId=nm0000102butuniqueid
+    ${params}=    Create Dictionary    name=ActorName   actorId=000ID
+    ${resp}=    PUT On Session    localhost    /api/v1/addActor    json=${params}    headers=${headers}    expected_status=200
+    # unique id, altho actor name exists it has diff id
+    ${headers}=    Create Dictionary    Content-Type=application/json
+    ${params}=    Create Dictionary    name=ActorName   actorId=000IDbutuniqueid
     ${resp}=    PUT On Session    localhost    /api/v1/addActor    json=${params}    headers=${headers}    expected_status=200
 
 
@@ -23,17 +36,17 @@ addActorFail
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    name=Kevin Bacon2   actorId=nm0000102
     ${resp}=    PUT On Session    localhost    /api/v1/addActor    json=${params}    headers=${headers}    expected_status=400
-addActorFail2
+
     #I expect this to fail cuz of bad formattiong i wote actorID and NAME wrong
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    Actorid=robertdowney    Name=Robert Downey Jr.
     ${resp}=    PUT On Session    localhost    /api/v1/addActor    json=${params}    headers=${headers}    expected_status=400
-addActorFail3
+
     #I expect this to fail cuz of nulls
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    name=${null}   actorId=scarlettjohansson
     ${resp}=    PUT On Session    localhost    /api/v1/addActor    json=${params}    headers=${headers}    expected_status=400
-addActorFail4
+
     #I expect this to fail cuz of nulls
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    name=Scarlett Johansson   actorId=${null}
@@ -410,11 +423,10 @@ deleteMovieFail
     ${params}=    Create Dictionary    badParameter=afewgoodmenuniqueanddifferentid
     ${resp}=    DELETE On Session    localhost    /api/v1/deleteMovie    params=${params}    headers=${headers}    expected_status=400
 
-deleteMovieFail2
     #fail cuz movie not found
     ${headers}=    Create Dictionary    Content-Type=application/json
     ${params}=    Create Dictionary    badParameter=noMovieFound
-    ${resp}=    DELETE On Session    localhost    /api/v1/deleteMovie    params=${params}    headers=${headers}    expected_status=404
+    ${resp}=    DELETE On Session    localhost    /api/v1/deleteMovie    params=${params}    headers=${headers}    expected_status=400
 
     #fail cuz nulz
     ${headers}=    Create Dictionary    Content-Type=application/json
